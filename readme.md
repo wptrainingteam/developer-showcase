@@ -1,4 +1,3 @@
-```markdown
 # Contributing to This Repository
 
 Welcome! This guide explains how to contribute using our **simplified Git Flow** approach.
@@ -305,4 +304,3 @@ If you have any questions about the contribution process, please:
 - Reach out to the maintainers
 
 **Happy Contributing!** 🎉
-```
