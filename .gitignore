@@ -1,12 +1,10 @@
 # WordPress
-wp-config-local.php
-wp-content/uploads/
-wp-content/backup-*
-wp-content/cache/
-wp-content/upgrade/
-wp-content/database/
-wp-content/fonts/
-wp-content/mu-plugins/
+database
+fonts
+mu-plugins/
+themes/twenty*/
+uploads/
+db.php
 
 # Dependencies
 node_modules/
