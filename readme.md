@@ -12,11 +12,7 @@ This repository serves as a comprehensive showcase for developers exploring the 
 
 ## ✨ Features
 
-- **Block Development Examples** - Modern block patterns and custom block implementations
-- **Theme Development** - Full Site Editing (FSE) templates and theme.json configurations
-- **API Demonstrations** - REST API, Interactivity API, and new WordPress APIs
-- **Performance Optimizations** - Best practices for speed and efficiency
-- **Accessibility Patterns** - WCAG-compliant component examples
+> **🚧 TBD - Coming Soon**
 
 ---
 
@@ -32,18 +28,12 @@ This repository serves as a comprehensive showcase for developers exploring the 
 ## 🚀 Local Setup
 
 > **🚧 TBD - Coming Soon**
->
-> Detailed local setup instructions are currently being finalized. This section will be updated with:
-> - Environment configuration steps
-> - Database setup
-> - Development server instructions
-> - Testing environment setup
->
-> *Check back soon or watch this repository for updates.*
 
 ---
 
 ## 📁 Repository Structure
+
+> **🚧 TBD - Coming Soon**
 
 ---
 
@@ -91,4 +81,4 @@ This project is licensed under the [GPLv2 or later](LICENSE) - the same license 
 
 ---
 
-*Have questions or suggestions? Open an issue or start a discussion!*
+_Have questions or suggestions? Open an issue or start a discussion!_
