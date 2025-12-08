@@ -33,7 +33,14 @@ This repository serves as a comprehensive showcase for developers exploring the 
 
 ## 📁 Repository Structure
 
-> **🚧 TBD - Coming Soon**
+The root of the repository is wp-content
+
+```
+├── themes/
+├── plugins/
+├── CONTRIBUTING.md
+└── README.md
+```
 
 ---
 
