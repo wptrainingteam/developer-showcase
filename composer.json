@@ -1,0 +1,17 @@
+{
+  "name": "wordpress/developer-showcase",
+  "description": "A showcase of features for WordPress 6.9 and beyond",
+  "license": "GPL-2.0-or-later",
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
+  "require": {
+    "php": ">=7.4"
+  },
+  "require-dev": {
+    "wp-coding-standards/wpcs": "^3.0"
+  },
+  "lint": "./vendor/bin/phpcs . --standard=phpcs.xml"
+}

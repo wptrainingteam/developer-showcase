@@ -1,0 +1,39 @@
+# WordPress
+wp-config-local.php
+wp-content/uploads/
+wp-content/backup-*
+wp-content/cache/
+wp-content/upgrade/
+wp-content/database/
+wp-content/fonts/
+wp-content/mu-plugins/
+
+# Dependencies
+node_modules/
+vendor/
+composer.lock
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Build artifacts
+dist/
+build/
