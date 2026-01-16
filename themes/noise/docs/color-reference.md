@@ -11,6 +11,7 @@ Use for content background and overlays.
 - `var(--wp--preset--color--background-level-0)`: `white` / `neutral-950`
 - `var(--wp--preset--color--background-level-1)`: `neutral-50` / `neutral-900`
 - `var(--wp--preset--color--background-level-2)`: `neutral-100` / `neutral-800`
+- `var(--wp--preset--color--background-accent)`: `primary-600` / `primary-700`
 - `var(--wp--preset--color--background-overlay)`: `neutral-100` / `neutral-800`
 
 ## Foreground/Text/Content
@@ -20,8 +21,9 @@ Use for text and icons that sit on one of the existing background colors.
 - `var(--wp--preset--color--foreground-default)`: `neutral-900` / `neutral-200`
 - `var(--wp--preset--color--foreground-subtle)`: `neutral-600` / `neutral-400`
 - `var(--wp--preset--color--foreground-muted)`: `neutral-400` / `neutral-600`
+- `var(--wp--preset--color--foreground-accent)`: `primary-700` / `primary-300`
+- `var(--wp--preset--color--foreground-on-accent)`: `white` / `white`
 - `var(--wp--preset--color--foreground-on-overlay)`: `white` / `neutral-800`
-- `var(--wp--preset--color--foreground-brand)`: `primary-700` / `primary-300`
 
 ## Borders
 
@@ -29,7 +31,7 @@ Use for borders on elements that sit on one of the existing backgrounds. `bounds
 
 - `var(--wp--preset--color--border-bounds)`: `neutral-200` / `neutral-800`
 - `var(--wp--preset--color--border-emphasis)`: `neutral-700` / `neutral-400`
-- `var(--wp--preset--color--border-brand)`: `primary-700` / `primary-300`
+- `var(--wp--preset--color--border-accent)`: `primary-700` / `primary-300`
 
 ## Buttons
 
