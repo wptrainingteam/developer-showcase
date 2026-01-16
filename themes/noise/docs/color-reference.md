@@ -39,7 +39,7 @@ Use for borders on elements that sit on one of the existing backgrounds. `bounds
 - `var(--wp--preset--color--button-filled-background-interact)`: `primary-700` / `primary-600`
 - `var(--wp--preset--color--button-filled-foreground)`: `white` / `white`
 
-### Links
+## Links
 
 ### Link: Primary
 
