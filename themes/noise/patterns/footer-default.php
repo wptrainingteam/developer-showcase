@@ -53,9 +53,7 @@ defined('ABSPATH') || exit;
 			"className":"is-style-text-normalize"
 		} /-->
 
-		<!-- wp:paragraph -->
-		<p><?= esc_html__('Powered by WordPress, crazy ideas, and passion.', 'developer-showcase-noise') ?></p>
-		<!-- /wp:paragraph -->
+		<!-- wp:site-tagline /-->
 	</div>
 	<!-- /wp:group -->
 
