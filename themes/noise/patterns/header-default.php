@@ -50,7 +50,7 @@ defined('ABSPATH') || exit;
 			"layout":{"type":"flex","flexWrap":"nowrap"}
 		} -->
 		<div class="wp-block-group">
-			<!-- wp:site-logo /-->
+			<!-- wp:site-logo {"width":24,"shouldSyncIcon":true} /-->
 			<!-- wp:site-title /-->
 		</div>
 		<!-- /wp:group -->
