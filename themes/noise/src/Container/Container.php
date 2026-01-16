@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Bifrost\Noise\Container;
+namespace DeveloperShowcase\Noise\Container;
 
 /**
  * Defines the dependency injection container interface, which allows for

@@ -2,7 +2,7 @@
 
 /**
  * Title: Footer: Default
- * Slug: bifrost-noise/footer-default
+ * Slug: developer-showcase-noise/footer-default
  * Description:
  * Categories: footer
  * Keywords: footer
@@ -16,7 +16,7 @@ defined('ABSPATH') || exit;
 
 ?>
 <!-- wp:group {
-	"metadata":{"name":"<?= esc_attr__('Footer Container', 'bifrost-noise') ?>"},
+	"metadata":{"name":"<?= esc_attr__('Footer Container', 'developer-showcase-noise') ?>"},
 	"style":{
 		"spacing":{
 			"padding":{
@@ -33,7 +33,7 @@ defined('ABSPATH') || exit;
 <div class="wp-block-group is-style-site-footer" style="padding-top:var(--wp--preset--spacing--100);padding-right:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--100);padding-left:var(--wp--preset--spacing--70)">
 
 	<!-- wp:group {
-		"metadata":{"name":"<?= esc_attr__('Footer Content', 'bifrost-noise') ?>"},
+		"metadata":{"name":"<?= esc_attr__('Footer Content', 'developer-showcase-noise') ?>"},
 		"align":"wide",
 		"style":{
 			"spacing":{
@@ -54,7 +54,7 @@ defined('ABSPATH') || exit;
 		} /-->
 
 		<!-- wp:paragraph -->
-		<p><?= esc_html__('Powered by WordPress, crazy ideas, and passion.', 'bifrost-noise') ?></p>
+		<p><?= esc_html__('Powered by WordPress, crazy ideas, and passion.', 'developer-showcase-noise') ?></p>
 		<!-- /wp:paragraph -->
 	</div>
 	<!-- /wp:group -->

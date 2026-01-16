@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Bifrost\Noise\Contracts;
+namespace DeveloperShowcase\Noise\Contracts;
 
 /**
  * Defines the contract that bootable classes should utilize. Bootable classes

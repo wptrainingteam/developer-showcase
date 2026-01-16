@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Bifrost\Noise;
+namespace DeveloperShowcase\Noise;
 
-use Bifrost\Noise\Contracts\Bootable;
-use Bifrost\Noise\Core\ServiceProvider;
+use DeveloperShowcase\Noise\Contracts\Bootable;
+use DeveloperShowcase\Noise\Core\ServiceProvider;
 
 final class ThemeServiceProvider extends ServiceProvider implements Bootable
 {

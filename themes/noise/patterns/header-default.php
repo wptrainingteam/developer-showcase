@@ -2,7 +2,7 @@
 
 /**
  * Title: Header: Default
- * Slug: bifrost-noise/header-default
+ * Slug: developer-showcase-noise/header-default
  * Description:
  * Categories: header
  * Keywords: header
@@ -17,7 +17,7 @@ defined('ABSPATH') || exit;
 
 ?>
 <!-- wp:group {
-	"metadata":{"name":"<?= esc_attr__('Site Header', 'bifrost-noise') ?>"},
+	"metadata":{"name":"<?= esc_attr__('Site Header', 'developer-showcase-noise') ?>"},
 	"align":"full",
 	"className": "is-style-site-header",
 	"style":{"spacing":{"blockGap":"0"}},
@@ -25,7 +25,7 @@ defined('ABSPATH') || exit;
 } -->
 <div class="wp-block-group alignfull is-style-site-header">
 	<!-- wp:group {
-		"metadata":{"name":"<?= esc_attr__('Header Content', 'bifrost-noise') ?>"},
+		"metadata":{"name":"<?= esc_attr__('Header Content', 'developer-showcase-noise') ?>"},
 		"align":"full",
 		"style":{
 			"spacing":{
@@ -42,7 +42,7 @@ defined('ABSPATH') || exit;
 	<div class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--70);padding-right:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70)">
 
 		<!-- wp:group {
-			"metadata":{"name":"<?= esc_attr__('Branding', 'bifrost-noise') ?>"},
+			"metadata":{"name":"<?= esc_attr__('Branding', 'developer-showcase-noise') ?>"},
 			"style":{
 				"spacing":{"blockGap":"var:preset|spacing|30"},
 				"layout":{"selfStretch":"fill","flexSize":null}

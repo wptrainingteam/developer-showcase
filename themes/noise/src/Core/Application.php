@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace Bifrost\Noise\Core;
+namespace DeveloperShowcase\Noise\Core;
 
 use InvalidArgumentException;
-use Bifrost\Noise\Container\Container;
-use Bifrost\Noise\Contracts\Bootable;
+use DeveloperShowcase\Noise\Container\Container;
+use DeveloperShowcase\Noise\Contracts\Bootable;
 
 /**
  * Base class that does the heavy lifting of bootstrapping an application while

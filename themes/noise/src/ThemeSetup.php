@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace Bifrost\Noise;
+namespace DeveloperShowcase\Noise;
 
-use Bifrost\Noise\Contracts\Bootable;
+use DeveloperShowcase\Noise\Contracts\Bootable;
 
 /**
  * Handles theme setup and feature registration.

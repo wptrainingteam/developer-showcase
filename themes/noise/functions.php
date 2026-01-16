@@ -12,7 +12,7 @@
 
 declare(strict_types=1);
 
-namespace Bifrost\Noise;
+namespace DeveloperShowcase\Noise;
 
 # Prevent direct access.
 defined('ABSPATH') || exit;

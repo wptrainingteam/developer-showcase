@@ -1,5 +1,5 @@
 {
-	"name": "bifrost/noise",
+	"name": "developer-showcase/noise",
 	"type": "wordpress-theme",
 	"license": "GPL-3.0-or-later",
 	"scripts": {
@@ -16,7 +16,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Bifrost\\Noise\\": "src/"
+			"DeveloperShowcase\\Noise\\": "src/"
 		},
 		"files" : [
 			"src/functions-helpers.php"
