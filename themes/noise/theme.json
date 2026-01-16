@@ -632,19 +632,59 @@
 			"fluid": false,
 			"fontFamilies": [
 				{
-					"fontFamily": "'Source Serif', Charter, 'Bitstream Charter', 'Sitka Text', Cambria, Georgia, serif",
+					"fontFamily": "Oswald, ui-sans-serif, sans-serif",
 					"slug": "primary",
-					"name": "Primary (Source Serif)"
+					"name": "Primary (Oswald)",
+					"fontFace": [
+						{
+							"fontFamily": "Oswald",
+							"fontWeight": "200 700",
+							"fontStyle": "normal",
+							"fontStretch": "normal",
+							"src": [ "file:./public/fonts/oswald/oswald.woff2" ]
+						}
+					]
 				},
 				{
-					"fontFamily": "'Source Sans', ui-sans-serif, sans-serif",
+					"fontFamily": "'Roboto Flex', ui-sans-serif, sans-serif",
 					"slug": "secondary",
-					"name": "Secondary (Source Sans)"
+					"name": "Secondary (Roboto Flex)",
+					"fontFace": [
+						{
+							"fontFamily": "Roboto Flex",
+							"fontWeight": "100 1000",
+							"fontStyle": "normal",
+							"fontStretch": "25% 151%",
+							"src": [
+								"file:./public/fonts/roboto/roboto-flex.woff2"
+							]
+						}
+					]
 				},
 				{
-					"fontFamily": "ui-monospace, 'Fira Code', 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace",
+					"fontFamily": "'JetBrains Mono', ui-monospace, 'Fira Code', 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace",
 					"slug": "mono",
-					"name": "Monospace"
+					"name": "Monospace (JetBrains Mono)",
+					"fontFace": [
+						{
+							"fontFamily": "JetBrains Mono",
+							"fontWeight": "100 800",
+							"fontStyle": "normal",
+							"fontStretch": "normal",
+							"src": [
+								"file:./public/fonts/jetbrains-mono/jetbrains-mono.woff2"
+							]
+						},
+						{
+							"fontFamily": "JetBrains Mono",
+							"fontWeight": "100 800",
+							"fontStyle": "italic",
+							"fontStretch": "normal",
+							"src": [
+								"file:./public/fonts/jetbrains-mono/jetbrains-mono-italic.woff2"
+							]
+						}
+					]
 				}
 			],
 			"fontSizes": [
@@ -805,7 +845,7 @@
 			"heading": {
 				"typography": {
 					"fontFamily": "var(--wp--preset--font-family--primary)",
-					"fontWeight": "400"
+					"fontWeight": "700"
 				}
 			},
 			"h1": {
@@ -1110,8 +1150,9 @@
 					"blockGap": "var(--wp--preset--spacing--40) var(--wp--preset--spacing--70)"
 				},
 				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--mono)",
 					"fontSize": "var(--wp--preset--font-size--sm)",
-					"fontWeight": "500",
+					"fontWeight": "400",
 					"lineHeight": "var(--wp--custom--line-height--sm)"
 				},
 				"elements": {
@@ -1366,8 +1407,8 @@
 				"typography": {
 					"fontFamily": "var(--wp--preset--font-family--primary)",
 					"fontSize": "var(--wp--preset--font-size--md)",
-					"fontStyle": "italic",
-					"fontWeight": "400",
+					"fontStyle": "normal",
+					"fontWeight": "700",
 					"letterSpacing": "0",
 					"textTransform": "none"
 				},
