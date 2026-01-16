@@ -1314,6 +1314,11 @@
 				}
 			},
 			"core/query-pagination": {
+				"spacing": {
+					"margin": {
+						"top": "var(--wp--preset--spacing--70) !important"
+					}
+				},
 				"typography": {
 					"fontSize": "var(--wp--preset--font-size--sm)",
 					"fontWeight": "500",
