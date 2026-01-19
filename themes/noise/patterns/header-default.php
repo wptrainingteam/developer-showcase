@@ -30,16 +30,16 @@ defined('ABSPATH') || exit;
 		"style":{
 			"spacing":{
 				"padding":{
-					"top":"var:preset|spacing|70",
+					"top":"var:preset|spacing|40",
 					"right":"var:preset|spacing|70",
-					"bottom":"var:preset|spacing|70",
+					"bottom":"var:preset|spacing|40",
 					"left":"var:preset|spacing|70"
 				}
 			}
 		},
 		"layout":{"type":"flex","justifyContent":"space-between"}
 	} -->
-	<div class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--70);padding-right:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70)">
+	<div class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--70)">
 
 		<!-- wp:group {
 			"metadata":{"name":"<?= esc_attr__('Branding', 'developer-showcase-noise') ?>"},
