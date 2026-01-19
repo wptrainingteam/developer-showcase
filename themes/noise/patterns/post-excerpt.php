@@ -23,21 +23,35 @@ defined('ABSPATH') || exit;
 } -->
 <article class="wp-block-group">
 
-	<!-- wp:group {
-		"tagName":"header",
-		"metadata":{"name":"<?= esc_attr__('Post Header', 'developer-showcase-noise') ?>"},
-		"layout":{"type":"default"}
-	} -->
-	<header class="wp-block-group">
-		<!-- wp:post-title {"isLink":true} /-->
-	</header>
-	<!-- /wp:group -->
+	<!-- wp:post-featured-image {"aspectRatio":"16/9"} /-->
 
-	<!-- wp:post-excerpt {
-		"moreText":"<?= esc_attr__('Continue reading &rarr;', 'developer-showcase-noise') ?>",
-		"showMoreOnNewLine":false,
-		"excerptLength":35
-	} /-->
+	<!-- wp:group {
+		"style":{
+			"spacing":{
+				"blockGap":"var:preset|spacing|10"
+			}
+		},
+		"layout":{"type":"constrained"}
+	} -->
+	<div class="wp-block-group">
+
+		<!-- wp:group {
+			"tagName":"header",
+			"metadata":{"name":"<?= esc_attr__('Post Header', 'developer-showcase-noise') ?>"},
+			"layout":{"type":"default"}
+		} -->
+		<header class="wp-block-group">
+			<!-- wp:post-title {"isLink":true,"className":"is-style-post-title-secondary"} /-->
+		</header>
+		<!-- /wp:group -->
+
+		<!-- wp:post-excerpt {
+			"showMoreOnNewLine":false,
+			"excerptLength":12
+		} /-->
+
+	</div>
+	<!-- /wp:group -->
 
 	<!-- wp:group {
 		"tagName":"footer",

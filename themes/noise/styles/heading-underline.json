@@ -1,0 +1,26 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/wp/trunk/schemas/json/theme.json",
+	"version": 3,
+	"title": "Underline",
+	"slug": "heading-underline",
+	"blockTypes": [ "core/heading" ],
+	"styles": {
+		"border": {
+			"bottom": {
+				"color": "currentColor",
+				"style": "solid",
+				"width": "4px"
+			}
+		},
+		"spacing": {
+			"padding": {
+				"bottom": "var(--wp--preset--spacing--20)"
+			}
+		},
+		"typography": {
+			"fontSize": "var(--wp--preset--font-size--lg)",
+			"lineHeight": "var(--wp--custom--line-height--lg)",
+			"textTransform": "uppercase"
+		}
+	}
+}

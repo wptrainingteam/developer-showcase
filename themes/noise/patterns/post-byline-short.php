@@ -37,7 +37,7 @@ defined('ABSPATH') || exit;
 	} -->
 	<p><?=
 		// Translators: Metadata separator.
-		esc_html__('&middot;', 'developer-showcase-noise')
+		esc_html__('//', 'developer-showcase-noise')
 	?></p>
 	<!-- /wp:paragraph -->
 
