@@ -57,43 +57,48 @@ defined('ABSPATH') || exit;
 		<!-- /wp:group -->
 
 		<!-- wp:group {"layout":{"type":"constrained"}} -->
-		<div class="wp-block-group"><!-- wp:columns {"align":"wide"} -->
+		<div class="wp-block-group">
 
-			<!-- wp:columns {"verticalAlignment":"top","align":"wide","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|100"}}}} -->
-			<div class="wp-block-columns alignwide are-vertically-aligned-top"><!-- wp:column {"verticalAlignment":"top","width":"40rem","layout":{"type":"constrained","justifyContent":"left"}} -->
-				<div class="wp-block-column is-vertically-aligned-top" style="flex-basis:40rem">
-					<!-- wp:post-content {"className":"is-style-prose","style":{"layout":{"selfStretch":"fixed","flexSize":"40rem"}},"layout":{"type":"constrained"}} /-->
-					<!-- wp:pattern {"slug":"developer-showcase-noise/post-meta-default"} /-->
-				</div>
-				<!-- /wp:column -->
+			<!-- wp:columns {"align":"wide"} -->
+			<div class="wp-block-columns alignwide">
 
-				<!-- wp:column {"verticalAlignment":"top","width":"18.34rem","layout":{"type":"constrained","justifyContent":"right"}} -->
-				<div class="wp-block-column is-vertically-aligned-top" style="flex-basis:18.34rem"><!-- wp:group {"style":{"layout":{"selfStretch":"fit","flexSize":null}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->
-					<div class="wp-block-group"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-						<div class="wp-block-group"><!-- wp:heading {"level":3} -->
-							<h3 class="wp-block-heading">Trending Now</h3>
-							<!-- /wp:heading -->
+				<!-- wp:columns {"verticalAlignment":"top","align":"wide","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|100"}}}} -->
+				<div class="wp-block-columns alignwide are-vertically-aligned-top"><!-- wp:column {"verticalAlignment":"top","width":"40rem","layout":{"type":"constrained","justifyContent":"left"}} -->
+					<div class="wp-block-column is-vertically-aligned-top" style="flex-basis:40rem">
+						<!-- wp:post-content {"className":"is-style-prose","style":{"layout":{"selfStretch":"fixed","flexSize":"40rem"}},"layout":{"type":"constrained"}} /-->
+						<!-- wp:pattern {"slug":"developer-showcase-noise/post-meta-default"} /-->
+					</div>
+					<!-- /wp:column -->
 
-							<!-- wp:latest-posts {"postsToShow":3} /--></div>
-						<!-- /wp:group -->
+					<!-- wp:column {"verticalAlignment":"top","width":"18.34rem","layout":{"type":"constrained","justifyContent":"right"}} -->
+					<div class="wp-block-column is-vertically-aligned-top" style="flex-basis:18.34rem"><!-- wp:group {"style":{"layout":{"selfStretch":"fit","flexSize":null}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->
+						<div class="wp-block-group"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"flex","orientation":"vertical"}} -->
+							<div class="wp-block-group"><!-- wp:heading {"level":3} -->
+								<h3 class="wp-block-heading">Trending Now</h3>
+								<!-- /wp:heading -->
 
-						<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->
-						<div class="wp-block-group"><!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}}} -->
-							<p class="has-text-align-center">Join 12K Subscribers</p>
-							<!-- /wp:paragraph -->
+								<!-- wp:latest-posts {"postsToShow":3} /--></div>
+							<!-- /wp:group -->
 
-							<!-- wp:buttons -->
-							<div class="wp-block-buttons"><!-- wp:button {"width":100} -->
-								<div class="wp-block-button has-custom-width wp-block-button__width-100"><a class="wp-block-button__link wp-element-button">Subscribe</a></div>
-								<!-- /wp:button --></div>
-							<!-- /wp:buttons --></div>
+							<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->
+							<div class="wp-block-group"><!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}}} -->
+								<p class="has-text-align-center">Join 12K Subscribers</p>
+								<!-- /wp:paragraph -->
+
+								<!-- wp:buttons -->
+								<div class="wp-block-buttons"><!-- wp:button {"width":100} -->
+									<div class="wp-block-button has-custom-width wp-block-button__width-100"><a class="wp-block-button__link wp-element-button">Subscribe</a></div>
+									<!-- /wp:button --></div>
+								<!-- /wp:buttons --></div>
+							<!-- /wp:group --></div>
 						<!-- /wp:group --></div>
-					<!-- /wp:group --></div>
-				<!-- /wp:column --></div>
+					<!-- /wp:column --></div>
+				<!-- /wp:columns --></div>
 			<!-- /wp:columns -->
 
 		</div>
 		<!-- /wp:group -->
+
 
 	</article>
 	<!-- /wp:group -->
