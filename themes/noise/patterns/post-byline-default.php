@@ -24,9 +24,10 @@ defined('ABSPATH') || exit;
 		"type":"flex",
 		"flexWrap":"wrap"
 	},
+	"align":"wide",
 	"className": "is-style-meta"
 } -->
-<div class="wp-block-group is-style-meta">
+<div class="wp-block-group is-style-meta alignwide">
 
 	<!-- wp:group {
 		"metadata":{
@@ -43,14 +44,7 @@ defined('ABSPATH') || exit;
 		}
 	} -->
 	<div class="wp-block-group">
-		<!-- wp:paragraph {
-			"metadata":{
-				"name":"<?= esc_attr__('Prefix', 'developer-showcase-noise') ?>"
-			}
-		} -->
-		<p><?= esc_html__('By', 'developer-showcase-noise') ?></p>
-		<!-- /wp:paragraph -->
-
+		<!-- wp:avatar {"size":32} /-->
 		<!-- wp:post-author-name {"isLink":true} /-->
 	</div>
 	<!-- /wp:group -->
@@ -62,11 +56,24 @@ defined('ABSPATH') || exit;
 	} -->
 	<p><?=
 		// Translators: Metadata separator.
-		esc_html__('&middot;', 'developer-showcase-noise')
+		esc_html__('//', 'developer-showcase-noise')
 	?></p>
 	<!-- /wp:paragraph -->
 
 	<!-- wp:post-date /-->
+
+	<!-- wp:paragraph {
+		"metadata":{
+			"name":"<?= esc_attr__('Separator', 'developer-showcase-noise') ?>"
+		}
+	} -->
+	<p><?=
+		// Translators: Metadata separator.
+		esc_html__('//', 'developer-showcase-noise')
+		?></p>
+	<!-- /wp:paragraph -->
+
+	<!-- wp:post-time-to-read {"displayAsRange":false} /-->
 
 </div>
 <!-- /wp:group -->

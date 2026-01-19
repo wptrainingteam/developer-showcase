@@ -829,8 +829,11 @@
 			},
 			"h1": {
 				"typography": {
-					"fontSize": "var(--wp--preset--font-size--4-xl)",
-					"lineHeight": "var(--wp--custom--line-height--4-xl)"
+					"fontSize": "var(--wp--preset--font-size--5-xl)",
+					"fontWeight": "900",
+					"letterSpacing": "-0.05em",
+					"lineHeight": "var(--wp--custom--line-height--5-xl)",
+					"textTransform": "uppercase"
 				}
 			},
 			"h2": {

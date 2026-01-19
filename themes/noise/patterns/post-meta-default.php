@@ -22,7 +22,7 @@ defined('ABSPATH') || exit;
 		}
 	},
 	"layout":{
-		"type":"constrained"
+		"type":"default"
 	},
 	"className":"is-style-meta"
 } -->
