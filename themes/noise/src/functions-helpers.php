@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace DeveloperShowcase\Noise;
+namespace Bifrost\Noise;
 
-use DeveloperShowcase\Noise\Container\{Container, ServiceContainer};
-use DeveloperShowcase\Noise\Core\Application;
+use Bifrost\Noise\Container\{Container, ServiceContainer};
+use Bifrost\Noise\Core\Application;
 
 /**
  * Returns the theme application instance.

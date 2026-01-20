@@ -2,7 +2,7 @@
 
 /**
  * Title: Post Byline (Short)
- * Slug: developer-showcase-noise/post-byline-short
+ * Slug: bifrost-noise/post-byline-short
  */
 
 declare(strict_types=1);
@@ -13,7 +13,7 @@ defined('ABSPATH') || exit;
 ?>
 <!-- wp:group {
 	"metadata":{
-		"name":"<?= esc_attr__('Post Byline', 'developer-showcase-noise') ?>"
+		"name":"<?= esc_attr__('Post Byline', 'bifrost-noise') ?>"
 	},
 	"style":{
 		"spacing":{
@@ -32,12 +32,12 @@ defined('ABSPATH') || exit;
 
 	<!-- wp:paragraph {
 		"metadata":{
-			"name":"<?= esc_attr__('Separator', 'developer-showcase-noise') ?>"
+			"name":"<?= esc_attr__('Separator', 'bifrost-noise') ?>"
 		}
 	} -->
 	<p><?=
 		// Translators: Metadata separator.
-		esc_html__('//', 'developer-showcase-noise')
+		esc_html__('//', 'bifrost-noise')
 	?></p>
 	<!-- /wp:paragraph -->
 

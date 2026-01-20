@@ -2,7 +2,7 @@
 
 /**
  * Title: Post Meta
- * Slug: developer-showcase-noise/post-meta-default
+ * Slug: bifrost-noise/post-meta-default
  */
 
 declare(strict_types=1);
@@ -14,7 +14,7 @@ defined('ABSPATH') || exit;
 <!-- wp:group {
 	"tagName":"footer",
 	"metadata":{
-		"name":"<?= esc_attr__('Post Footer', 'developer-showcase-noise') ?>"
+		"name":"<?= esc_attr__('Post Footer', 'bifrost-noise') ?>"
 	},
 	"style":{
 		"spacing":{

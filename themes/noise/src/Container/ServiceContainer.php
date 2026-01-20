@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace DeveloperShowcase\Noise\Container;
+namespace Bifrost\Noise\Container;
 
 use Closure;
 use Exception;

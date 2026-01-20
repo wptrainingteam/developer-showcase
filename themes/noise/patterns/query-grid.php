@@ -2,7 +2,7 @@
 
 /**
  * Title: Post Grid
- * Slug: developer-showcase-noise/query-grid
+ * Slug: bifrost-noise/query-grid
  * Description: Displays a grid of posts.
  * Categories: posts
  * Keywords: query, loop, grid, posts, box
@@ -33,7 +33,7 @@ defined('ABSPATH') || exit;
 <div class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--70);padding-right:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70)">
 
 	<!-- wp:query {
-		"metadata":{"name":"<?= esc_attr__('Posts Query', 'developer-showcase-noise') ?>"},
+		"metadata":{"name":"<?= esc_attr__('Posts Query', 'bifrost-noise') ?>"},
 		"queryId":0,
 		"query":{
 			"perPage":6,
@@ -57,7 +57,7 @@ defined('ABSPATH') || exit;
 			"layout":{"type":"grid","columnCount":3}
 		} -->
 
-			<!-- wp:pattern {"slug":"developer-showcase-noise/post-excerpt"} /-->
+			<!-- wp:pattern {"slug":"bifrost-noise/post-excerpt"} /-->
 
 		<!-- /wp:post-template -->
 

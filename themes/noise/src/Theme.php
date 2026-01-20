@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace DeveloperShowcase\Noise;
+namespace Bifrost\Noise;
 
-use DeveloperShowcase\Noise\Core\Application;
+use Bifrost\Noise\Core\Application;
 
 /**
  * The Theme class is an implementation of the Application contract. It's used

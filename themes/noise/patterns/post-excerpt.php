@@ -2,7 +2,7 @@
 
 /**
  * Title: Post: Excerpt
- * Slug: developer-showcase-noise/post-excerpt
+ * Slug: bifrost-noise/post-excerpt
  */
 
 declare(strict_types=1);
@@ -13,7 +13,7 @@ defined('ABSPATH') || exit;
 ?>
 <!-- wp:group {
 	"tagName":"article",
-	"metadata":{"name":"<?= esc_attr__('Post', 'developer-showcase-noise') ?>"},
+	"metadata":{"name":"<?= esc_attr__('Post', 'bifrost-noise') ?>"},
 	"style":{
 		"spacing":{
 			"blockGap":"var:preset|spacing|40"
@@ -37,7 +37,7 @@ defined('ABSPATH') || exit;
 
 		<!-- wp:group {
 			"tagName":"header",
-			"metadata":{"name":"<?= esc_attr__('Post Header', 'developer-showcase-noise') ?>"},
+			"metadata":{"name":"<?= esc_attr__('Post Header', 'bifrost-noise') ?>"},
 			"layout":{"type":"default"}
 		} -->
 		<header class="wp-block-group">
@@ -55,11 +55,11 @@ defined('ABSPATH') || exit;
 
 	<!-- wp:group {
 		"tagName":"footer",
-		"metadata":{"name":"<?= esc_attr__('Post Footer', 'developer-showcase-noise') ?>"},
+		"metadata":{"name":"<?= esc_attr__('Post Footer', 'bifrost-noise') ?>"},
 		"layout":{"type":"default"}
 	} -->
 	<footer class="wp-block-group">
-		<!-- wp:pattern {"slug":"developer-showcase-noise/post-byline-short"} /-->
+		<!-- wp:pattern {"slug":"bifrost-noise/post-byline-short"} /-->
 	</footer>
 	<!-- /wp:group -->
 

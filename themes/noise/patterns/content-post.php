@@ -2,7 +2,7 @@
 
 /**
  * Title: Post Content
- * Slug: developer-showcase-noise/content-post
+ * Slug: bifrost-noise/content-post
  */
 
 declare(strict_types=1);
@@ -13,7 +13,7 @@ defined('ABSPATH') || exit;
 ?>
 <!-- wp:group {
 	"tagName":"main",
-	"metadata":{"name":"<?= esc_attr__('Content', 'developer-showcase-noise') ?>"},
+	"metadata":{"name":"<?= esc_attr__('Content', 'bifrost-noise') ?>"},
 	"style":{
 		"spacing":{
 			"blockGap":"0"
@@ -26,7 +26,7 @@ defined('ABSPATH') || exit;
 
 	<!-- wp:group {
 		"tagName":"article",
-		"metadata":{"name":"<?= esc_attr__('Post', 'developer-showcase-noise') ?>"},
+		"metadata":{"name":"<?= esc_attr__('Post', 'bifrost-noise') ?>"},
 		"style":{
 			"spacing":{
 				"padding":{
@@ -41,7 +41,7 @@ defined('ABSPATH') || exit;
 
 		<!-- wp:group {
 			"tagName":"header",
-			"metadata":{"name":"<?= esc_attr__('Post Header', 'developer-showcase-noise') ?>"},
+			"metadata":{"name":"<?= esc_attr__('Post Header', 'bifrost-noise') ?>"},
 			"style":{
 				"spacing":{
 					"blockGap":"var:preset|spacing|70"
@@ -51,7 +51,7 @@ defined('ABSPATH') || exit;
 		} -->
 		<header class="wp-block-group">
 			<!-- wp:post-title {"level":1,"align":"wide","className":"is-style-text-headline"} /-->
-			<!-- wp:pattern {"slug":"developer-showcase-noise/post-byline-default"} /-->
+			<!-- wp:pattern {"slug":"bifrost-noise/post-byline-default"} /-->
 			<!-- wp:post-featured-image {"aspectRatio":"2/1","align":"wide"} /-->
 		</header>
 		<!-- /wp:group -->
@@ -66,7 +66,7 @@ defined('ABSPATH') || exit;
 				<div class="wp-block-columns alignwide are-vertically-aligned-top"><!-- wp:column {"verticalAlignment":"top","width":"40rem","layout":{"type":"constrained","justifyContent":"left"}} -->
 					<div class="wp-block-column is-vertically-aligned-top" style="flex-basis:40rem">
 						<!-- wp:post-content {"className":"is-style-prose","style":{"layout":{"selfStretch":"fixed","flexSize":"40rem"}},"layout":{"type":"constrained"}} /-->
-						<!-- wp:pattern {"slug":"developer-showcase-noise/post-meta-default"} /-->
+						<!-- wp:pattern {"slug":"bifrost-noise/post-meta-default"} /-->
 					</div>
 					<!-- /wp:column -->
 

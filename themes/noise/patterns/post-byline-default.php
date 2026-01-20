@@ -2,7 +2,7 @@
 
 /**
  * Title: Post Byline
- * Slug: developer-showcase-noise/post-byline-default
+ * Slug: bifrost-noise/post-byline-default
  */
 
 declare(strict_types=1);
@@ -13,7 +13,7 @@ defined('ABSPATH') || exit;
 ?>
 <!-- wp:group {
 	"metadata":{
-		"name":"<?= esc_attr__('Post Byline', 'developer-showcase-noise') ?>"
+		"name":"<?= esc_attr__('Post Byline', 'bifrost-noise') ?>"
 	},
 	"style":{
 		"spacing":{
@@ -31,7 +31,7 @@ defined('ABSPATH') || exit;
 
 	<!-- wp:group {
 		"metadata":{
-			"name":"<?= esc_attr__('Post Author', 'developer-showcase-noise') ?>"
+			"name":"<?= esc_attr__('Post Author', 'bifrost-noise') ?>"
 		},
 		"style":{
 			"spacing":{
@@ -51,12 +51,12 @@ defined('ABSPATH') || exit;
 
 	<!-- wp:paragraph {
 		"metadata":{
-			"name":"<?= esc_attr__('Separator', 'developer-showcase-noise') ?>"
+			"name":"<?= esc_attr__('Separator', 'bifrost-noise') ?>"
 		}
 	} -->
 	<p><?=
 		// Translators: Metadata separator.
-		esc_html__('//', 'developer-showcase-noise')
+		esc_html__('//', 'bifrost-noise')
 	?></p>
 	<!-- /wp:paragraph -->
 
@@ -64,12 +64,12 @@ defined('ABSPATH') || exit;
 
 	<!-- wp:paragraph {
 		"metadata":{
-			"name":"<?= esc_attr__('Separator', 'developer-showcase-noise') ?>"
+			"name":"<?= esc_attr__('Separator', 'bifrost-noise') ?>"
 		}
 	} -->
 	<p><?=
 		// Translators: Metadata separator.
-		esc_html__('//', 'developer-showcase-noise')
+		esc_html__('//', 'bifrost-noise')
 		?></p>
 	<!-- /wp:paragraph -->
 

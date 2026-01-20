@@ -16,7 +16,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"DeveloperShowcase\\Noise\\": "src/"
+			"Bifrost\\Noise\\": "src/"
 		},
 		"files" : [
 			"src/functions-helpers.php"

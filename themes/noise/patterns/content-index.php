@@ -2,7 +2,7 @@
 
 /**
  * Title: Index Content
- * Slug: developer-showcase-noise/content-index
+ * Slug: bifrost-noise/content-index
  */
 
 declare(strict_types=1);
@@ -13,7 +13,7 @@ defined('ABSPATH') || exit;
 ?>
 <!-- wp:group {
 	"tagName":"main",
-	"metadata":{"name":"<?= esc_attr__('Content', 'developer-showcase-noise') ?>"},
+	"metadata":{"name":"<?= esc_attr__('Content', 'bifrost-noise') ?>"},
 	"className":"is-style-site-content",
 	"style":{
 		"spacing":{
@@ -38,7 +38,7 @@ defined('ABSPATH') || exit;
 	} -->
 	<div  class="wp-block-group alignfull" style="padding-right:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70)">
 		<!-- wp:heading {"level":1,"className":"is-style-heading-underline"} -->
-		<h1 class="wp-block-heading is-style-heading-underline"><?= esc_html__('The Journal', 'developer-showcase-noise') ?></h1>
+		<h1 class="wp-block-heading is-style-heading-underline"><?= esc_html__('The Journal', 'bifrost-noise') ?></h1>
 		<!-- /wp:heading -->
 	</div>
 	<!-- /wp:group -->

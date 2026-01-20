@@ -2,7 +2,7 @@
 
 /**
  * Title: Footer: Default
- * Slug: developer-showcase-noise/footer-default
+ * Slug: bifrost-noise/footer-default
  * Description:
  * Categories: footer
  * Keywords: footer
@@ -84,7 +84,7 @@ defined('ABSPATH') || exit;
 
 	<!-- wp:group {"layout":{"type":"grid","columnCount":2}} -->
 	<div class="wp-block-group"><!-- wp:paragraph -->
-		<p>© 2026 WordPress. A GPL project.</p>
+		<p>A Bifrost project.</p>
 		<!-- /wp:paragraph -->
 
 		<!-- wp:social-links {"showLabels":true,"size":"has-normal-icon-size","className":"is-style-logos-only","layout":{"type":"flex","justifyContent":"right"}} -->

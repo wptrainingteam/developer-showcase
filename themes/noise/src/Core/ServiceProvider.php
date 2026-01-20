@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace DeveloperShowcase\Noise\Core;
+namespace Bifrost\Noise\Core;
 
-use DeveloperShowcase\Noise\Container\Container;
+use Bifrost\Noise\Container\Container;
 
 /**
  * Service providers allow you to connect services to the application container.
