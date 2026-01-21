@@ -1,10 +1,10 @@
 # WordPress
-database
-fonts
-mu-plugins/
-themes/twenty*/
-uploads/
-db.php
+/database
+/fonts
+/mu-plugins
+/themes/twenty*
+/uploads
+/db.php
 
 # Dependencies
 node_modules/
