@@ -1,0 +1,27 @@
+# Composer dependencies
+/vendor/
+/third-party/
+composer.lock
+
+# Tools
+/tools/php/prefix/vendor/
+/tools/php/lint/vendor/
+
+# Autoload files
+/includes/vendor/
+/includes/composer.json
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+*.log
+npm-debug.log*

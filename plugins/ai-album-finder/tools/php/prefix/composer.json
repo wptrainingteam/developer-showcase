@@ -1,0 +1,12 @@
+{
+	"name": "wptrainingteam/ai-album-finder-tools-prefix",
+	"description": "Tools for prefixing AI Album Finder dependencies",
+	"require": {
+		"humbug/php-scoper": "^1.0"
+	},
+	"config": {
+		"allow-plugins": {
+			"bamarni/composer-bin-plugin": true
+		}
+	}
+}

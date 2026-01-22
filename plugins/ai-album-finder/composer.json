@@ -1,0 +1,64 @@
+{
+	"name": "wptrainingteam/ai-album-finder",
+	"description": "An AI chatbot that helps users discover music albums based on their preferences.",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"keywords": [
+		"wordpress",
+		"plugin",
+		"ai",
+		"chatbot",
+		"music",
+		"albums"
+	],
+	"homepage": "https://github.com/wptrainingteam/developer-showcase/",
+	"require": {
+		"composer/installers": "~1.0",
+		"guzzlehttp/guzzle": "^7.10",
+		"wordpress/abilities-api": "^0.1",
+		"wordpress/php-ai-client": "^0.1",
+		"php": ">=8.0"
+	},
+	"config": {
+		"platform": {
+			"php": "8.0.0"
+		},
+		"allow-plugins": {
+			"composer/installers": true,
+			"php-http/discovery": true
+		}
+	},
+	"autoload": {
+		"psr-4": {
+			"AI_Album_Finder\\": "includes/"
+		}
+	},
+	"scripts": {
+		"post-install-cmd": [
+			"@prefix-dependencies"
+		],
+		"post-update-cmd": [
+			"@prefix-dependencies"
+		],
+		"autoload-includes": [
+			"echo '{ \"autoload\": { \"classmap\": [\"\"] } }' > includes/composer.json",
+			"@composer --working-dir=includes dump-autoload --classmap-authoritative --no-interaction",
+			"cp includes/vendor/composer/autoload_classmap.php includes/",
+			"rm -rf includes/vendor && rm includes/composer.json",
+			"mkdir -p includes/vendor/composer && mv includes/autoload_classmap.php includes/vendor/composer/"
+		],
+		"autoload-third-party": [
+			"echo '{ \"autoload\": { \"classmap\": [\"\"] } }' > third-party/composer.json",
+			"@composer --working-dir=third-party dump-autoload --classmap-authoritative --no-interaction",
+			"cp third-party/vendor/composer/autoload_classmap.php third-party/",
+			"rm -rf third-party/vendor && rm third-party/composer.json",
+			"mkdir -p third-party/vendor/composer && mv third-party/autoload_classmap.php third-party/vendor/composer/"
+		],
+		"prefix-dependencies": [
+			"composer --working-dir=tools/php/prefix update",
+			"tools/php/prefix/vendor/bin/php-scoper add --output-dir=./third-party --force --quiet",
+			"@autoload-includes",
+			"@autoload-third-party"
+		]
+	}
+}
