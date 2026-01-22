@@ -21,7 +21,7 @@ AI Album Finder (featuring "DigBot" by default) is an intelligent music discover
 - WordPress 6.8 or higher
 - PHP 8.0 or higher
 - Composer
-- OpenAI API key (for AI functionality)
+- AI provider API key (OpenAI, Google, Anthropic, etc.) configured via WP AI Client
 
 ## Installation
 
@@ -35,9 +35,13 @@ composer install
 
 3. Activate the plugin through the WordPress admin panel
 
-4. Navigate to **Settings → AI Album Finder** and configure:
-   - Bot Name (default: "DigBot")
-   - OpenAI API Key
+4. Configure AI provider credentials:
+   - Go to **Settings → WP AI Client**
+   - Add API credentials for your preferred provider (OpenAI, Google, Anthropic, etc.)
+
+5. Configure the chatbot:
+   - Go to **Settings → AI Album Finder**
+   - Set your bot name (default: "DigBot")
 
 ## Data Structure
 

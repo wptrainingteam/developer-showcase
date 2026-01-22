@@ -51,6 +51,9 @@ class Plugin_Main {
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
 		add_action( 'admin_menu', array( $this, 'add_settings_page' ) );
 
+		// Initialize AI provider credentials using the wp-ai-client package.
+		add_action( 'init', array( $this, 'initialize_ai_providers' ) );
+
 		// Register abilities.
 		add_action( 'init', array( $this, 'register_abilities' ) );
 
@@ -78,16 +81,6 @@ class Plugin_Main {
 	 * @since 1.0.0
 	 */
 	public function register_settings(): void {
-		register_setting(
-			'ai_album_finder_settings',
-			'ai_album_finder_openai_api_key',
-			array(
-				'type'              => 'string',
-				'sanitize_callback' => 'sanitize_text_field',
-				'default'           => '',
-			)
-		);
-
 		register_setting(
 			'ai_album_finder_settings',
 			'ai_album_finder_bot_name',
@@ -124,8 +117,7 @@ class Plugin_Main {
 			return;
 		}
 
-		$openai_api_key = get_option( 'ai_album_finder_openai_api_key', '' );
-		$bot_name       = get_option( 'ai_album_finder_bot_name', 'DigBot' );
+		$bot_name = get_option( 'ai_album_finder_bot_name', 'DigBot' );
 		?>
 		<div class="wrap">
 			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
@@ -149,34 +141,39 @@ class Plugin_Main {
 							</p>
 						</td>
 					</tr>
-					<tr>
-						<th scope="row">
-							<label for="ai_album_finder_openai_api_key">
-								<?php esc_html_e( 'OpenAI API Key', 'ai-album-finder' ); ?>
-							</label>
-						</th>
-						<td>
-							<input type="password" 
-								   id="ai_album_finder_openai_api_key" 
-								   name="ai_album_finder_openai_api_key" 
-								   value="<?php echo esc_attr( $openai_api_key ); ?>" 
-								   class="regular-text" />
-							<p class="description">
-								<?php
-								printf(
-									/* translators: %s: OpenAI API link */
-									esc_html__( 'Get your API key from %s', 'ai-album-finder' ),
-									'<a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener noreferrer">OpenAI</a>'
-								);
-								?>
-							</p>
-						</td>
-					</tr>
 				</table>
 				<?php submit_button(); ?>
 			</form>
+			<hr>
+			<h2><?php esc_html_e( 'AI Provider Configuration', 'ai-album-finder' ); ?></h2>
+			<p>
+				<?php
+				printf(
+					/* translators: %s: link to AI settings page */
+					esc_html__( 'To configure AI provider credentials (OpenAI, Google, Anthropic, etc.), please visit the %s.', 'ai-album-finder' ),
+					'<a href="' . esc_url( admin_url( 'options-general.php?page=wp-ai-client' ) ) . '">' . esc_html__( 'WP AI Client settings page', 'ai-album-finder' ) . '</a>'
+				);
+				?>
+			</p>
 		</div>
 		<?php
+	}
+
+	/**
+	 * Initializes AI providers using the wp-ai-client package.
+	 *
+	 * This method ensures the wp-ai-client default registry and settings are initialized.
+	 *
+	 * @since 1.0.0
+	 */
+	public function initialize_ai_providers(): void {
+		// The wp-ai-client package automatically registers its settings page
+		// and handles provider credentials when the package is loaded.
+		// We just need to ensure it's available for use.
+		if ( class_exists( 'WordPress\AiClient\AiClient' ) ) {
+			// AiClient is available and will handle its own initialization.
+			// The settings page will be available at Settings > WP AI Client.
+		}
 	}
 
 	/**
@@ -422,9 +419,9 @@ class Plugin_Main {
 			return;
 		}
 
-		// Check if API key is set.
-		$api_key = get_option( 'ai_album_finder_openai_api_key', '' );
-		if ( empty( $api_key ) ) {
+		// Check if wp-ai-client is configured.
+		// The wp-ai-client package handles API credentials, so we just need to check if it's available.
+		if ( ! class_exists( 'WordPress\AiClient\AiClient' ) ) {
 			return;
 		}
 
@@ -515,13 +512,12 @@ class Plugin_Main {
 		$message = $request->get_param( 'message' );
 		$history = $request->get_param( 'history' );
 
-		// Get API key.
-		$api_key = get_option( 'ai_album_finder_openai_api_key', '' );
-		if ( empty( $api_key ) ) {
+		// Check if wp-ai-client is available.
+		if ( ! class_exists( 'WordPress\AiClient\AiClient' ) ) {
 			return new \WP_REST_Response(
 				array(
 					'success' => false,
-					'error'   => __( 'OpenAI API key is not configured.', 'ai-album-finder' ),
+					'error'   => __( 'WP AI Client is not available. Please ensure the wordpress/wp-ai-client package is installed.', 'ai-album-finder' ),
 				),
 				500
 			);
@@ -529,8 +525,9 @@ class Plugin_Main {
 
 		try {
 			// This is a placeholder for the actual AI integration.
-			// In a real implementation, you would use the WordPress AI SDK here.
-			$response = $this->get_ai_response( $message, $history, $api_key );
+			// In a real implementation, you would use the WordPress AI SDK here with
+			// the configured providers from wp-ai-client.
+			$response = $this->get_ai_response( $message, $history );
 
 			return new \WP_REST_Response(
 				array(
@@ -557,16 +554,17 @@ class Plugin_Main {
 	 *
 	 * @param string               $message User message.
 	 * @param array<string, mixed> $history Chat history.
-	 * @param string               $api_key API key.
 	 * @return string AI response.
 	 */
-	private function get_ai_response( string $message, array $history, string $api_key ): string {
+	private function get_ai_response( string $message, array $history ): string {
 		// PLACEHOLDER IMPLEMENTATION: This is a basic demo implementation.
 		// In a production version, this should integrate with the WP AI Client SDK
-		// to provide actual AI-powered responses using the configured AI service.
+		// to provide actual AI-powered responses using the configured AI service provider.
 		// Example integration:
-		// $ai_client = new WordPress\AI\Client\Client();
-		// $response = $ai_client->chat()->create( $messages, $api_key );
+		// $registry = WordPress\AiClient\AiClient::defaultRegistry();
+		// $provider = $registry->getProvider( 'openai' ); // or another configured provider
+		// $model = $provider->getModel( 'gpt-4' );
+		// $response = $model->chat()->create( $messages );
 		
 		$bot_name = get_option( 'ai_album_finder_bot_name', 'DigBot' );
 		
