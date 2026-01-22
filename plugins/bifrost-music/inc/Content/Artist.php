@@ -188,16 +188,16 @@ final class Artist implements Bootable
 
 		// Post updated messages.
 		$messages[$artist_type] = array(
-			1 => PostType . phpesc_html__('Artist updated.', 'bifrost-music') . $view_link,
+			1 => esc_html__('Artist updated.', 'bifrost-music') . $view_link,
 			4 => esc_html__('Artist updated.', 'bifrost-music'),
 			// Translators: %s is the date and time of the revision.
 			5 => isset($_GET['revision']) ? sprintf(esc_html__('Artist restored to revision from %s.', 'bifrost-music'), wp_post_revision_title((int) $_GET['revision'], false)) : false,
-			6 => PostType . phpesc_html__('Artist published.', 'bifrost-music') . $view_link,
+			6 => esc_html__('Artist published.', 'bifrost-music') . $view_link,
 			7 => esc_html__('Artist saved.', 'bifrost-music'),
-			8 => PostType . phpesc_html__('Artist submitted.', 'bifrost-music') . $preview_link,
+			8 => esc_html__('Artist submitted.', 'bifrost-music') . $preview_link,
 			// Translators: %s is the scheduled date for the artist.
-			9 => PostType . phpsprintf(esc_html__('Artist scheduled for: %s.', 'bifrost-music'), "<strong>{$scheduled_date}</strong>") . $scheduled_link,
-			10 => PostType . phpesc_html__('Artist draft updated.', 'bifrost-music') . $preview_link,
+			9 => sprintf(esc_html__('Artist scheduled for: %s.', 'bifrost-music'), "<strong>{$scheduled_date}</strong>") . $scheduled_link,
+			10 => esc_html__('Artist draft updated.', 'bifrost-music') . $preview_link,
 		);
 
 		return $messages;
