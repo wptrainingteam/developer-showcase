@@ -16,7 +16,7 @@
 		"composer/installers": "~1.0",
 		"guzzlehttp/guzzle": "^7.10",
 		"wordpress/abilities-api": "^0.1",
-		"wordpress/php-ai-client": "^0.1",
+		"wordpress/wp-ai-client": "^0.1",
 		"php": ">=8.0"
 	},
 	"config": {
