@@ -16,7 +16,7 @@ namespace Bifrost\Music\Content;
 use Bifrost\Music\Contracts\Bootable;
 use Bifrost\Music\Core\ServiceProvider;
 
-class ContentServiceProvider extends ServiceProvider implements Bootable
+final class ContentServiceProvider extends ServiceProvider implements Bootable
 {
 	/**
 	 * @inheritDoc

@@ -18,7 +18,7 @@ namespace Bifrost\Music;
  * This class includes static methods for activating, deactivating, uninstalling,
  * and bootstrapping the plugin.
  */
-class Lifecycle
+final class Lifecycle
 {
 	/**
 	 * Initializes the plugin and should be used as a callback on the
