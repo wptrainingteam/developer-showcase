@@ -25,6 +25,7 @@
 		container.className = 'ai-album-finder-chatbot-container';
 		container.innerHTML = `
 			<button class="ai-album-finder-chatbot-button" aria-label="${strings.chatTitle}">
+				<span class="screen-reader-text">${strings.chatTitle}</span>
 			</button>
 			<div class="ai-album-finder-chatbot-window">
 				<div class="ai-album-finder-chatbot-header">

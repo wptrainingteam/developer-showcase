@@ -280,15 +280,21 @@ class Plugin_Main {
 			);
 		}
 
-		// Add artist name filter if provided.
+		// Add artist name filter if provided (search by parent artist title).
 		if ( ! empty( $args['artist_name'] ) ) {
-			$query_args['meta_query'] = array(
+			$artist_search = sanitize_text_field( $args['artist_name'] );
+			$artists       = get_posts(
 				array(
-					'key'     => 'artist_name',
-					'value'   => sanitize_text_field( $args['artist_name'] ),
-					'compare' => 'LIKE',
-				),
+					'post_type'      => 'artist',
+					's'              => $artist_search,
+					'posts_per_page' => 1,
+					'fields'         => 'ids',
+				)
 			);
+
+			if ( ! empty( $artists ) ) {
+				$query_args['post_parent'] = $artists[0];
+			}
 		}
 
 		$albums = get_posts( $query_args );
@@ -545,7 +551,7 @@ class Plugin_Main {
 	}
 
 	/**
-	 * Gets AI response (placeholder).
+	 * Gets AI response (placeholder implementation for demo purposes).
 	 *
 	 * @since 1.0.0
 	 *
@@ -555,8 +561,12 @@ class Plugin_Main {
 	 * @return string AI response.
 	 */
 	private function get_ai_response( string $message, array $history, string $api_key ): string {
-		// This is a basic placeholder implementation.
-		// In a production version, this would integrate with the WP AI Client SDK.
+		// PLACEHOLDER IMPLEMENTATION: This is a basic demo implementation.
+		// In a production version, this should integrate with the WP AI Client SDK
+		// to provide actual AI-powered responses using the configured AI service.
+		// Example integration:
+		// $ai_client = new WordPress\AI\Client\Client();
+		// $response = $ai_client->chat()->create( $messages, $api_key );
 		
 		$bot_name = get_option( 'ai_album_finder_bot_name', 'DigBot' );
 		
