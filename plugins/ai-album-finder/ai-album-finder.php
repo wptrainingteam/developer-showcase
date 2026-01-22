@@ -9,6 +9,12 @@
  * @package ai-album-finder
  */
 
+define( "PLUGIN_DIR", plugin_dir_path( __FILE__ ) );
+define( "PLUGIN_URL", plugins_url( '', __FILE__ ) );
+
+use Developer_Showcase\AI_Album_Finder\Plugin_Main;
+use Developer_Showcase\AI_Album_Finder\Chatbot_Assets;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -20,11 +26,11 @@ if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
 
 function devshow_ai_album_finder_load(){
 // Load the plugin.
-	if ( class_exists( 'AI_Album_Finder\Plugin_Main' ) ) {
-		return;
-	}
-	$plugin_instance   = new Developer_Showcase\AI_Album_Finder\Plugin_Main();
-	$plugin_instance->add_hooks();
+	$plugin_main   = new Plugin_Main();
+	$plugin_main->add_hooks();
+
+	$chatbot_assets = new Chatbot_Assets( PLUGIN_DIR, PLUGIN_URL );
+	$chatbot_assets->add_hooks();
 
 }
 

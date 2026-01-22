@@ -5,8 +5,9 @@ namespace Developer_Showcase\AI_Album_Finder;
 use WordPress\AI_Client\AI_Client;
 
 class Plugin_Main {
+
 	public function __construct() {
-		// Plugin initialization code goes here.
+		// Initialize chatbot assets handler.
 	}
 
 	public function add_hooks() {
