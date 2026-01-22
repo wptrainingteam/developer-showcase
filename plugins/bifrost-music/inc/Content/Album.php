@@ -27,6 +27,9 @@ final class Album implements Bootable
 		// Register post types.
 		add_action('init', $this->register(...));
 
+		// Register parent ID with REST API.
+		add_action('rest_api_init', $this->restRegister(...));
+
 		// Filter the "enter title here" text.
 		add_filter('enter_title_here', $this->enterTitleHere(...), 10, 2);
 
@@ -131,6 +134,26 @@ final class Album implements Bootable
 				'author',
 				'custom-fields',
 				'thumbnail'
+			]
+		]);
+	}
+
+	/**
+	 * Since this is a non-hierarchical post type, we need to register a
+	 * parent field with the REST API.
+	 */
+	private function restRegister(): void
+	{
+		register_rest_field(Definitions::POST_TYPE_ALBUM, 'parent', [
+			'get_callback'    => fn($post) => (int) $post['parent'],
+			'update_callback' => fn($value, $post) => wp_update_post([
+				'ID'          => $post->ID,
+				'post_parent' => (int) $value
+			]),
+			'schema' => [
+				'description' => __('Parent Artist ID', 'bifrost-music'),
+				'type'        => 'integer',
+				'context'     => ['view', 'edit']
 			]
 		]);
 	}

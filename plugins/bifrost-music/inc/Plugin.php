@@ -15,6 +15,7 @@ namespace Bifrost\Music;
 
 use Bifrost\Music\Content\ContentServiceProvider;
 use Bifrost\Music\Core\Application;
+use Bifrost\Music\Editor\EditorServiceProvider;
 
 /**
  * The Plugin class is an implementation of the Application contract. It's used
@@ -31,6 +32,7 @@ final class Plugin extends Application
 	 * Defines the plugin's default service providers.
 	 */
 	protected const PROVIDERS = [
-		ContentServiceProvider::class
+		ContentServiceProvider::class,
+		EditorServiceProvider::class
 	];
 }
