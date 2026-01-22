@@ -1,0 +1,22 @@
+{
+  "name": "ai-album-finder",
+  "version": "1.0.0",
+  "description": "AI powered album search chatbot",
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
+    "format": "wp-scripts format",
+    "lint:css": "wp-scripts lint-style",
+    "lint:js": "wp-scripts lint-js",
+    "packages-update": "wp-scripts packages-update"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^31.3.0"
+  },
+  "dependencies": {
+    "@wordpress/element": "^6.0.0",
+    "@wordpress/i18n": "^5.0.0",
+    "@wordpress/components": "^28.0.0",
+    "@wordpress/icons": "^10.0.0"
+  }
+}
