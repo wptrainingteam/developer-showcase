@@ -1,32 +1,19 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "developer-showcase/dev-inspector-container",
+	"name": "developer-showcase/dev-inspector-display",
 	"version": "0.1.0",
-	"title": "Dev Inspector Container",
+	"title": "Dev Inspector Display",
 	"category": "widgets",
 	"icon": "smiley",
 	"description": "Example block scaffolded with Create Block tool.",
 	"example": {},
 	"supports": {
 		"html": false,
-		"interactivity": true
+		"interactivity": true,
+		"multiple": false
 	},
-	"attributes": {
-		"description": {
-			"type": "string"
-		},
-		"resources": {
-			"type": "string"
-		},
-		"sourceCodeOne": {
-			"type": "string"
-		},
-		"sourceCodeTwo": {
-			"type": "string"
-		}
-	},
-	"textdomain": "dev-inspector-container",
+	"textdomain": "dev-inspector-display",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",

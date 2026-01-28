@@ -2,18 +2,14 @@
  * WordPress dependencies
  */
 import { registerBlockType } from '@wordpress/blocks';
-import {
-	useBlockProps,
-	useInnerBlocksProps,
-	InnerBlocks,
-} from '@wordpress/block-editor';
+import { InnerBlocks } from '@wordpress/block-editor';
 /**
  * Internal dependencies
  */
 import './style.scss';
 import Edit from './edit';
 import metadata from './block.json';
-import icon from '../icons.';
+import icon from '../icons';
 import transforms from './transforms';
 
 /**
@@ -37,5 +33,5 @@ registerBlockType( metadata.name, {
 	 */
 	transforms,
 
-	save: () => <InnerBlocks.Content />,
+	save: () => ( <InnerBlocks.Content /> ) as React.JSX.Element,
 } );
