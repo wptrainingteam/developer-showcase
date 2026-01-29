@@ -7,9 +7,11 @@
 		"core/group"
 	],
 	"styles": {
+		"background": {
+			"backgroundImage": "var(--wp--custom--image--noise)"
+		},
 		"color": {
-			"background": "var(--wp--preset--color--background-level-1)",
-			"gradient": "none",
+			"background": "var(--wp--preset--color--background-level-2)",
 			"text": "var(--wp--preset--color--foreground-default)"
 		}
 	}

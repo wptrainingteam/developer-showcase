@@ -1,0 +1,209 @@
+<?php
+
+/**
+ * Title: Front Page Content
+ * Slug: bifrost-noise/content-front-page
+ */
+
+declare(strict_types=1);
+
+# Prevent direct access.
+defined('ABSPATH') || exit;
+
+?>
+<!-- wp:group {"tagName":"main","metadata":{"name":"Content"},"className":"is-style-site-content","style":{"spacing":{"blockGap":"0"}},"layout":{"type":"constrained"}} -->
+<main class="wp-block-group is-style-site-content"><!-- wp:group {"metadata":{"name":"Section: Hero"},"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|110","bottom":"var:preset|spacing|110","left":"var:preset|spacing|70","right":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->
+	<div class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--110);padding-right:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--110);padding-left:var(--wp--preset--spacing--70)"><!-- wp:group {"align":"full","style":{"spacing":{"padding":{"right":"var:preset|spacing|70","left":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->
+		<div class="wp-block-group alignfull" style="padding-right:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70)"><!-- wp:paragraph {"className":"is-style-text-annotation","style":{"typography":{"textAlign":"center"}}} -->
+			<p class="has-text-align-center is-style-text-annotation">New Release: The Rancid Riots</p>
+			<!-- /wp:paragraph -->
+
+			<!-- wp:heading {"textAlign":"center","level":1,"className":"is-style-default","fontSize":"7-xl"} -->
+			<h1 class="wp-block-heading has-text-align-center is-style-default has-7-xl-font-size">No Future.<br>Analog
+				Soul.</h1>
+			<!-- /wp:heading -->
+
+			<!-- wp:paragraph {"className":"has-mono-font-family","style":{"typography":{"textAlign":"center"}}} -->
+			<p class="has-text-align-center has-mono-font-family">A digital sanctuary for the underground. We archive, review, and amplify indie artists who refuse to play by the algorithm's rules.</p>
+			<!-- /wp:paragraph -->
+
+			<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+			<div class="wp-block-buttons"><!-- wp:button -->
+				<div class="wp-block-button"><a class="wp-block-button__link wp-element-button">Listen_Now</a></div>
+				<!-- /wp:button -->
+
+				<!-- wp:button {"className":"is-style-outline"} -->
+				<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button">Collection_Index</a></div>
+				<!-- /wp:button --></div>
+			<!-- /wp:buttons --></div>
+		<!-- /wp:group --></div>
+	<!-- /wp:group -->
+
+	<!-- wp:group {"metadata":{"name":"Section: Albums"},"align":"full","className":"is-style-section-1","style":{"spacing":{"padding":{"top":"var:preset|spacing|110","bottom":"var:preset|spacing|110"}}},"layout":{"type":"constrained","contentSize":"80rem"}} -->
+	<div class="wp-block-group alignfull is-style-section-1" style="padding-top:var(--wp--preset--spacing--110);padding-bottom:var(--wp--preset--spacing--110)"><!-- wp:group {"layout":{"type":"default"}} -->
+		<div class="wp-block-group"><!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"bottom","justifyContent":"space-between"}} -->
+			<div class="wp-block-group"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"default"}} -->
+				<div class="wp-block-group"><!-- wp:heading {"className":"is-style-default"} -->
+					<h2 class="wp-block-heading is-style-default">Latest Drops</h2>
+					<!-- /wp:heading -->
+
+					<!-- wp:paragraph -->
+					<p>Fresh Cuts from the Circuit</p>
+					<!-- /wp:paragraph --></div>
+				<!-- /wp:group -->
+
+				<!-- wp:paragraph -->
+				<p>View_Archive →</p>
+				<!-- /wp:paragraph --></div>
+			<!-- /wp:group --></div>
+		<!-- /wp:group -->
+
+		<!-- wp:group {"layout":{"type":"default"}} -->
+		<div class="wp-block-group"><!-- wp:query {"queryId":0,"query":{"perPage":3,"pages":0,"offset":0,"postType":"music_album","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false,"parents":[],"format":[]},"metadata":{"name":"Posts Query"}} -->
+			<div class="wp-block-query"><!-- wp:post-template {"align":"full","style":{"spacing":{"blockGap":"var:preset|spacing|70"}},"layout":{"type":"grid","columnCount":3}} -->
+				<!-- wp:group {"tagName":"article","metadata":{"name":"Post"},"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"default"}} -->
+				<article class="wp-block-group"><!-- wp:post-featured-image {"isLink":true,"aspectRatio":"1"} /-->
+
+					<!-- wp:group {"metadata":{"name":"Post Byline"},"className":"is-style-meta","style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"flex","flexWrap":"wrap"}} -->
+					<div class="wp-block-group is-style-meta"><!-- wp:post-terms {"term":"music_genre"} /--></div>
+					<!-- /wp:group -->
+
+					<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"constrained"}} -->
+					<div class="wp-block-group"><!-- wp:group {"tagName":"header","metadata":{"name":"Post Header"},"layout":{"type":"default"}} -->
+						<header class="wp-block-group"><!-- wp:post-title {"isLink":true,"className":"is-style-post-title-secondary"} /--></header>
+						<!-- /wp:group --></div>
+					<!-- /wp:group -->
+
+					<!-- wp:group {"metadata":{"name":"Post Byline"},"className":"is-style-meta","style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"flex","flexWrap":"wrap"}} -->
+					<div class="wp-block-group is-style-meta"><!-- wp:paragraph {"metadata":{"name":"Separator"}} -->
+						<p>Artist Name Here</p>
+						<!-- /wp:paragraph --></div>
+					<!-- /wp:group --></article>
+				<!-- /wp:group -->
+				<!-- /wp:post-template --></div>
+			<!-- /wp:query --></div>
+		<!-- /wp:group --></div>
+	<!-- /wp:group -->
+
+	<!-- wp:group {"metadata":{"name":"Section: Featured Artist"},"align":"full","className":"is-style-default","style":{"spacing":{"padding":{"top":"var:preset|spacing|110","bottom":"var:preset|spacing|110"}}},"layout":{"type":"constrained","contentSize":"80rem"}} -->
+	<div class="wp-block-group alignfull is-style-default" style="padding-top:var(--wp--preset--spacing--110);padding-bottom:var(--wp--preset--spacing--110)"><!-- wp:group {"layout":{"type":"default"}} -->
+		<div class="wp-block-group"><!-- wp:query {"queryId":0,"query":{"perPage":1,"pages":0,"offset":0,"postType":"music_artist","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false,"parents":[],"format":[]},"metadata":{"name":"Posts Query"}} -->
+			<div class="wp-block-query"><!-- wp:post-template {"align":"full","style":{"spacing":{"blockGap":"var:preset|spacing|70"}},"layout":{"type":"default","columnCount":3}} -->
+				<!-- wp:group {"layout":{"type":"grid","columnCount":2,"minimumColumnWidth":"18rem"}} -->
+				<div class="wp-block-group"><!-- wp:group {"layout":{"type":"default"}} -->
+					<div class="wp-block-group"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|px"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+						<div class="wp-block-group"><!-- wp:outermost/icon-block {"iconName":"wordpress-starFilled","width":"1.5rem","style":{"layout":{"selfStretch":"fit","flexSize":null}}} -->
+							<div class="wp-block-outermost-icon-block"><div class="icon-container" style="width:1.5rem;transform:rotate(0deg) scaleX(1) scaleY(1)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.776 4.454a.25.25 0 01.448 0l2.069 4.192a.25.25 0 00.188.137l4.626.672a.25.25 0 01.139.426l-3.348 3.263a.25.25 0 00-.072.222l.79 4.607a.25.25 0 01-.362.263l-4.138-2.175a.25.25 0 00-.232 0l-4.138 2.175a.25.25 0 01-.363-.263l.79-4.607a.25.25 0 00-.071-.222L4.754 9.881a.25.25 0 01.139-.426l4.626-.672a.25.25 0 00.188-.137l2.069-4.192z"></path></svg></div></div>
+							<!-- /wp:outermost/icon-block -->
+
+							<!-- wp:paragraph {"placeholder":"Content…"} -->
+							<p>Featured_Artist</p>
+							<!-- /wp:paragraph --></div>
+						<!-- /wp:group -->
+
+						<!-- wp:post-title {"className":"is-style-default"} /-->
+
+						<!-- wp:post-excerpt {"moreText":"View_Profile →"} /--></div>
+					<!-- /wp:group -->
+
+					<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"4/3"} /--></div>
+				<!-- /wp:group -->
+				<!-- /wp:post-template --></div>
+			<!-- /wp:query --></div>
+		<!-- /wp:group --></div>
+	<!-- /wp:group -->
+
+	<!-- wp:group {"metadata":{"name":"Section: About"},"align":"full","className":"is-style-section-1","style":{"spacing":{"padding":{"top":"var:preset|spacing|110","bottom":"var:preset|spacing|110","left":"var:preset|spacing|70","right":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->
+	<div class="wp-block-group alignfull is-style-section-1" style="padding-top:var(--wp--preset--spacing--110);padding-right:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--110);padding-left:var(--wp--preset--spacing--70)"><!-- wp:group {"align":"full","style":{"spacing":{"padding":{"right":"var:preset|spacing|70","left":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->
+		<div class="wp-block-group alignfull" style="padding-right:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70)"><!-- wp:heading {"textAlign":"center","className":"is-style-default"} -->
+			<h2 class="wp-block-heading has-text-align-center is-style-default">Built for the culture.</h2>
+			<!-- /wp:heading -->
+
+			<!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}}} -->
+			<p class="has-text-align-center">NØISE is a collective of music lovers, audiophiles, and creators dedicated to giving a platform to the unheard. We champion the album format and the artists who pour their soul into it.</p>
+			<!-- /wp:paragraph -->
+
+			<!-- wp:group {"align":"wide","layout":{"type":"grid","columnCount":3,"minimumColumnWidth":"18rem"}} -->
+			<div class="wp-block-group alignwide"><!-- wp:group {"className":"is-style-section-2","style":{"spacing":{"blockGap":"var:preset|spacing|10","padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}},"layout":{"type":"constrained"}} -->
+				<div class="wp-block-group is-style-section-2" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)"><!-- wp:outermost/icon-block {"iconName":"","width":"32px"} -->
+					<div class="wp-block-outermost-icon-block"><div class="icon-container" style="width:32px;transform:rotate(0deg) scaleX(1) scaleY(1)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="disc" aria-hidden="true" class="lucide lucide-disc stroke-1 text-purple-400 w-8 h-8 mb-4"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="2"></circle></svg></div></div>
+					<!-- /wp:outermost/icon-block -->
+
+					<!-- wp:heading {"level":3} -->
+					<h3 class="wp-block-heading">Curated</h3>
+					<!-- /wp:heading -->
+
+					<!-- wp:paragraph -->
+					<p>Hand-picked selections. No automated recommendations.</p>
+					<!-- /wp:paragraph --></div>
+				<!-- /wp:group -->
+
+				<!-- wp:group {"className":"is-style-section-2","style":{"spacing":{"blockGap":"var:preset|spacing|10","padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}},"layout":{"type":"constrained"}} -->
+				<div class="wp-block-group is-style-section-2" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)"><!-- wp:outermost/icon-block {"iconName":"","width":"32px"} -->
+					<div class="wp-block-outermost-icon-block"><div class="icon-container" style="width:32px;transform:rotate(0deg) scaleX(1) scaleY(1)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="mic-2" aria-hidden="true" class="lucide lucide-mic-2 stroke-1 text-purple-400 w-8 h-8 mb-4"><path d="m11 7.601-5.994 8.19a1 1 0 0 0 .1 1.298l.817.818a1 1 0 0 0 1.314.087L15.09 12"></path><path d="M16.5 21.174C15.5 20.5 14.372 20 13 20c-2.058 0-3.928 2.356-6 2-2.072-.356-2.775-3.369-1.5-4.5"></path><circle cx="16" cy="7" r="5"></circle></svg></div></div>
+					<!-- /wp:outermost/icon-block -->
+
+					<!-- wp:heading {"level":3} -->
+					<h3 class="wp-block-heading">Artist First</h3>
+					<!-- /wp:heading -->
+
+					<!-- wp:paragraph -->
+					<p>Direct links to artist merch and bandcamp pages.</p>
+					<!-- /wp:paragraph --></div>
+				<!-- /wp:group -->
+
+				<!-- wp:group {"className":"is-style-section-2","style":{"spacing":{"blockGap":"var:preset|spacing|10","padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40","left":"var:preset|spacing|40","right":"var:preset|spacing|40"}}},"layout":{"type":"constrained"}} -->
+				<div class="wp-block-group is-style-section-2" style="padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--40)"><!-- wp:outermost/icon-block {"iconName":"","width":"32px"} -->
+					<div class="wp-block-outermost-icon-block"><div class="icon-container" style="width:32px;transform:rotate(0deg) scaleX(1) scaleY(1)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="share-2" aria-hidden="true" class="lucide lucide-share-2 stroke-1 text-purple-400 w-8 h-8 mb-4"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg></div></div>
+					<!-- /wp:outermost/icon-block -->
+
+					<!-- wp:heading {"level":3} -->
+					<h3 class="wp-block-heading">Community</h3>
+					<!-- /wp:heading -->
+
+					<!-- wp:paragraph -->
+					<p>A space for fans to connect beyond the comments section.</p>
+					<!-- /wp:paragraph --></div>
+				<!-- /wp:group --></div>
+			<!-- /wp:group --></div>
+		<!-- /wp:group --></div>
+	<!-- /wp:group -->
+
+	<!-- wp:group {"metadata":{"name":"Section: Journal"},"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|110","bottom":"var:preset|spacing|110"}}},"layout":{"type":"constrained","contentSize":"80rem"}} -->
+	<div class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--110);padding-bottom:var(--wp--preset--spacing--110)"><!-- wp:group {"layout":{"type":"default"}} -->
+		<div class="wp-block-group"><!-- wp:heading {"className":"is-style-heading-underline"} -->
+			<h2 class="wp-block-heading is-style-heading-underline">The Journal</h2>
+			<!-- /wp:heading --></div>
+		<!-- /wp:group -->
+
+		<!-- wp:group {"layout":{"type":"default"}} -->
+		<div class="wp-block-group"><!-- wp:query {"queryId":0,"query":{"perPage":10,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true},"metadata":{"name":"Posts Query"}} -->
+			<div class="wp-block-query"><!-- wp:post-template {"align":"full","style":{"spacing":{"blockGap":"var:preset|spacing|70"}},"layout":{"type":"grid","columnCount":3}} -->
+				<!-- wp:group {"tagName":"article","metadata":{"name":"Post"},"style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"default"}} -->
+				<article class="wp-block-group"><!-- wp:post-featured-image {"isLink":true,"aspectRatio":"2/1"} /-->
+
+					<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"constrained"}} -->
+					<div class="wp-block-group"><!-- wp:group {"tagName":"header","metadata":{"name":"Post Header"},"layout":{"type":"default"}} -->
+						<header class="wp-block-group"><!-- wp:post-title {"isLink":true,"className":"is-style-post-title-secondary"} /--></header>
+						<!-- /wp:group -->
+
+						<!-- wp:post-excerpt {"showMoreOnNewLine":false,"excerptLength":12} /--></div>
+					<!-- /wp:group -->
+
+					<!-- wp:group {"tagName":"footer","metadata":{"name":"Post Footer"},"layout":{"type":"default"}} -->
+					<footer class="wp-block-group"><!-- wp:group {"metadata":{"name":"Post Byline"},"className":"is-style-meta","style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"flex","flexWrap":"wrap"}} -->
+						<div class="wp-block-group is-style-meta"><!-- wp:post-author-name {"isLink":true} /-->
+
+							<!-- wp:paragraph {"metadata":{"name":"Separator"}} -->
+							<p>//</p>
+							<!-- /wp:paragraph -->
+
+							<!-- wp:post-date {"metadata":{"bindings":{"datetime":{"source":"core/post-data","args":{"field":"date"}}}}} /--></div>
+						<!-- /wp:group --></footer>
+					<!-- /wp:group --></article>
+				<!-- /wp:group -->
+				<!-- /wp:post-template --></div>
+			<!-- /wp:query --></div>
+		<!-- /wp:group --></div>
+	<!-- /wp:group --></main>
+<!-- /wp:group -->
