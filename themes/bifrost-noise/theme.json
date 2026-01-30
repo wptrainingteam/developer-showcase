@@ -1145,6 +1145,12 @@
 					}
 				}
 			},
+			"core/post-featured-image": {
+				"filter": {
+					"duotone": "unset"
+				},
+				"css": "& a img { filter: grayscale(100%); transition: filter 0.3s ease; } & a:hover img { filter: grayscale(0%); } & a:focus img { filter: grayscale(0%); }"
+			},
 			"core/navigation": {
 				"css": "& :is(.wp-block-navigation__responsive-container-close, .wp-block-navigation__responsive-container-open) svg {\n\twidth: 30px; height: 30px;\n}",
 				"spacing": {
