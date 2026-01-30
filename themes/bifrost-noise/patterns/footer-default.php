@@ -87,8 +87,8 @@ defined('ABSPATH') || exit;
 		<p>A Bifrost project.</p>
 		<!-- /wp:paragraph -->
 
-		<!-- wp:social-links {"showLabels":true,"size":"has-normal-icon-size","className":"is-style-logos-only","layout":{"type":"flex","justifyContent":"right"}} -->
-		<ul class="wp-block-social-links has-normal-icon-size has-visible-labels is-style-logos-only"><!-- wp:social-link {"url":"https://wordpress.org","service":"wordpress"} /-->
+		<!-- wp:social-links {"showLabels":true,"size":"has-normal-icon-size","className":"is-style-social-links-text-only","layout":{"type":"flex","justifyContent":"right"}} -->
+		<ul class="wp-block-social-links has-normal-icon-size has-visible-labels is-style-social-links-text-only"><!-- wp:social-link {"url":"https://wordpress.org","service":"wordpress"} /-->
 
 			<!-- wp:social-link {"url":"https://github.com","service":"github"} /-->
 

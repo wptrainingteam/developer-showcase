@@ -1,0 +1,41 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/wp/trunk/schemas/json/theme.json",
+	"version": 3,
+	"title": "Text Only",
+	"description": "Text-only (no icons) social links.",
+	"slug": "social-links-text-only",
+	"blockTypes": [
+		"core/social-links"
+	],
+	"styles": {
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--mono)",
+			"fontSize": "var(--wp--preset--font-size--md) !important",
+			"fontWeight": "300",
+			"lineHeight": "var(--wp--custom--line-height--sm)",
+			"textTransform": "uppercase"
+		},
+		"blocks": {
+			"core/social-link": {
+				"css": "&-anchor svg { display: none; }",
+				"color": {
+					"background": "transparent",
+					"text": "currentColor"
+				},
+				"typography": {
+					"fontSize": "inherit !important"
+				},
+				"elements": {
+					"link": {
+						"spacing": {
+							"padding": {
+								"left": "0",
+								"right": "0"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
