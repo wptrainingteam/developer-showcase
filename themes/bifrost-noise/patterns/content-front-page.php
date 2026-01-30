@@ -43,12 +43,12 @@ defined('ABSPATH') || exit;
 	<div class="wp-block-group alignfull is-style-section-1" style="padding-top:var(--wp--preset--spacing--110);padding-bottom:var(--wp--preset--spacing--110)"><!-- wp:group {"layout":{"type":"default"}} -->
 		<div class="wp-block-group"><!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap","verticalAlignment":"bottom","justifyContent":"space-between"}} -->
 			<div class="wp-block-group"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"default"}} -->
-				<div class="wp-block-group"><!-- wp:heading {"className":"is-style-default"} -->
-					<h2 class="wp-block-heading is-style-default">Latest Drops</h2>
+				<div class="wp-block-group"><!-- wp:heading {"className":"is-style-text-section-heading"} -->
+					<h2 class="wp-block-heading is-style-text-section-heading">Latest Drops</h2>
 					<!-- /wp:heading -->
 
-					<!-- wp:paragraph -->
-					<p>Fresh Cuts from the Circuit</p>
+					<!-- wp:paragraph {"className":"is-style-text-section-subheading"} -->
+					<p class="is-style-text-section-subheading">Fresh Cuts from the Circuit</p>
 					<!-- /wp:paragraph --></div>
 				<!-- /wp:group -->
 
@@ -65,7 +65,7 @@ defined('ABSPATH') || exit;
 				<article class="wp-block-group"><!-- wp:post-featured-image {"isLink":true,"aspectRatio":"1"} /-->
 
 					<!-- wp:group {"metadata":{"name":"Post Byline"},"className":"is-style-meta","style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"flex","flexWrap":"wrap"}} -->
-					<div class="wp-block-group is-style-meta"><!-- wp:post-terms {"term":"music_genre"} /--></div>
+					<div class="wp-block-group is-style-meta"><!-- wp:post-terms {"term":"music_genre","className":"is-style-post-terms-badges"} /--></div>
 					<!-- /wp:group -->
 
 					<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"constrained"}} -->
@@ -90,14 +90,14 @@ defined('ABSPATH') || exit;
 		<div class="wp-block-group"><!-- wp:query {"queryId":0,"query":{"perPage":1,"pages":0,"offset":0,"postType":"music_artist","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false,"parents":[],"format":[]},"metadata":{"name":"Posts Query"}} -->
 			<div class="wp-block-query"><!-- wp:post-template {"align":"full","style":{"spacing":{"blockGap":"var:preset|spacing|70"}},"layout":{"type":"default","columnCount":3}} -->
 				<!-- wp:group {"layout":{"type":"grid","columnCount":2,"minimumColumnWidth":"18rem"}} -->
-				<div class="wp-block-group"><!-- wp:group {"layout":{"type":"default"}} -->
+				<div class="wp-block-group"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"default"}} -->
 					<div class="wp-block-group"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|px"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
 						<div class="wp-block-group"><!-- wp:outermost/icon-block {"iconName":"wordpress-starFilled","width":"1.5rem","style":{"layout":{"selfStretch":"fit","flexSize":null}}} -->
 							<div class="wp-block-outermost-icon-block"><div class="icon-container" style="width:1.5rem;transform:rotate(0deg) scaleX(1) scaleY(1)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.776 4.454a.25.25 0 01.448 0l2.069 4.192a.25.25 0 00.188.137l4.626.672a.25.25 0 01.139.426l-3.348 3.263a.25.25 0 00-.072.222l.79 4.607a.25.25 0 01-.362.263l-4.138-2.175a.25.25 0 00-.232 0l-4.138 2.175a.25.25 0 01-.363-.263l.79-4.607a.25.25 0 00-.071-.222L4.754 9.881a.25.25 0 01.139-.426l4.626-.672a.25.25 0 00.188-.137l2.069-4.192z"></path></svg></div></div>
 							<!-- /wp:outermost/icon-block -->
 
-							<!-- wp:paragraph {"placeholder":"Content…"} -->
-							<p>Featured_Artist</p>
+							<!-- wp:paragraph {"placeholder":"Content…","className":"is-style-text-kicker"} -->
+							<p class="is-style-text-kicker">Featured_Artist</p>
 							<!-- /wp:paragraph --></div>
 						<!-- /wp:group -->
 
@@ -115,8 +115,8 @@ defined('ABSPATH') || exit;
 
 	<!-- wp:group {"metadata":{"name":"Section: About"},"align":"full","className":"is-style-section-1","style":{"spacing":{"padding":{"top":"var:preset|spacing|110","bottom":"var:preset|spacing|110","left":"var:preset|spacing|70","right":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->
 	<div class="wp-block-group alignfull is-style-section-1" style="padding-top:var(--wp--preset--spacing--110);padding-right:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--110);padding-left:var(--wp--preset--spacing--70)"><!-- wp:group {"align":"full","style":{"spacing":{"padding":{"right":"var:preset|spacing|70","left":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->
-		<div class="wp-block-group alignfull" style="padding-right:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70)"><!-- wp:heading {"textAlign":"center","className":"is-style-default"} -->
-			<h2 class="wp-block-heading has-text-align-center is-style-default">Built for the culture.</h2>
+		<div class="wp-block-group alignfull" style="padding-right:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70)"><!-- wp:heading {"textAlign":"center","className":"is-style-text-section-heading"} -->
+			<h2 class="wp-block-heading has-text-align-center is-style-text-section-heading">Built for the culture.</h2>
 			<!-- /wp:heading -->
 
 			<!-- wp:paragraph {"style":{"typography":{"textAlign":"center"}}} -->
