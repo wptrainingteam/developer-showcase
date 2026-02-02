@@ -35,9 +35,10 @@
 		},
 		"typography": {
 			"fontFamily": "var(--wp--preset--font-family--mono)",
-			"fontSize": "var(--wp--preset--font-size--xs)",
-			"fontWeight": "300",
-			"lineHeight": "var(--wp--custom--line-height--xs)"
+			"fontSize": "var(--wp--preset--font-size--3-xs)",
+			"fontWeight": "400",
+			"lineHeight": "var(--wp--custom--line-height--3-xs)",
+			"textTransform": "uppercase"
 		}
 	}
 }

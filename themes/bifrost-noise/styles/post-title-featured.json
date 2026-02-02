@@ -1,0 +1,18 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/wp/trunk/schemas/json/theme.json",
+	"version": 3,
+	"title": "Featured",
+	"description": "Big post title",
+	"slug": "post-title-featured",
+	"blockTypes": [
+		"core/post-title"
+	],
+	"styles": {
+		"typography": {
+			"fontSize": "var(--wp--preset--font-size--5-xl)",
+			"letterSpacing": "-0.05em",
+			"lineHeight": "var(--wp--custom--line-height--5-xl)",
+			"textTransform": "uppercase"
+		}
+	}
+}

@@ -15,7 +15,7 @@
 		"typography": {
 			"fontFamily": "var(--wp--preset--font-family--mono)",
 			"fontSize": "var(--wp--preset--font-size--2-xs)",
-			"fontWeight": "300",
+			"fontWeight": "400",
 			"lineHeight": "var(--wp--custom--line-height--2-xs)",
 			"textTransform": "uppercase"
 		}

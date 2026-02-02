@@ -13,8 +13,9 @@
 		"core/media-text"
 	],
 	"styles": {
+		"css": "backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); position: relative;",
 		"color": {
-			"background": "var(--wp--preset--color--background-level-1)",
+			"background": "color-mix(in oklab, var(--wp--custom--color--neutral-100) 50%, transparent)",
 			"text": "var(--wp--preset--color--foreground-default)"
 		}
 	}

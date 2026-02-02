@@ -13,11 +13,21 @@
 		"core/media-text"
 	],
 	"styles": {
-		"background": {
-			"backgroundImage": "var(--wp--custom--image--noise)"
+		"css": "backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); position: relative; overflow: hidden;",
+		"border": {
+			"top": {
+				"color": "color-mix(in oklab, var(--wp--custom--color--neutral-200) 50%, transparent)",
+				"style": "solid",
+				"width": "1px"
+			},
+			"bottom": {
+				"color": "color-mix(in oklab, var(--wp--custom--color--neutral-200) 50%, transparent)",
+				"style": "solid",
+				"width": "1px"
+			}
 		},
 		"color": {
-			"background": "var(--wp--preset--color--background-level-2)",
+			"background": "color-mix(in oklab, var(--wp--custom--color--neutral-200) 60%, transparent)",
 			"text": "var(--wp--preset--color--foreground-default)"
 		}
 	}
