@@ -997,26 +997,23 @@
 			"core/button": {
 				"variations": {
 					"outline": {
+						"border": {
+							"color": "color-mix(in oklab, currentColor 25%, transparent)",
+							"width": "1px"
+						},
 						"spacing": {
 							"padding": {
-								"top": {
-									"ref": "styles.elements.button.spacing.padding.top"
-								},
-								"bottom": {
-									"ref": "styles.elements.button.spacing.padding.bottom"
-								},
-								"left": {
-									"ref": "styles.elements.button.spacing.padding.left"
-								},
-								"right": {
-									"ref": "styles.elements.button.spacing.padding.right"
-								}
+								"top": "calc(var(--wp--preset--spacing--20) - 1px)",
+								"bottom": "calc(var(--wp--preset--spacing--20) - 1px)",
+								"left": "calc(var(--wp--preset--spacing--20) - 1px)",
+								"right": "calc(var(--wp--preset--spacing--20) - 1px)"
 							}
 						}
 					}
 				}
 			},
 			"core/buttons": {
+				"css": "& .wp-block-button__width-50 { width: calc(50% - var(--wp--preset--spacing--40) / 2) !important; }",
 				"spacing": {
 					"blockGap": "var(--wp--preset--spacing--40)"
 				}
