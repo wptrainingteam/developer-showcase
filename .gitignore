@@ -5,6 +5,9 @@
 /themes/twenty*
 /uploads
 /db.php
+/plugins/akismet
+/plugins/gutenberg
+/plugins/icon-block
 
 # Dependencies
 node_modules/
