@@ -30,6 +30,7 @@ final class Theme extends Application
 	 * Defines the theme's default service providers.
 	 */
 	protected const PROVIDERS = [
-		ThemeServiceProvider::class
+		ThemeServiceProvider::class,
+		Block\Stylesheet\StylesheetServiceProvider::class
 	];
 }

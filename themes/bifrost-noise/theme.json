@@ -1013,7 +1013,6 @@
 				}
 			},
 			"core/buttons": {
-				"css": "& .wp-block-button__width-50 { width: calc(50% - var(--wp--preset--spacing--40) / 2) !important; }",
 				"spacing": {
 					"blockGap": "var(--wp--preset--spacing--40)"
 				}
@@ -1172,8 +1171,7 @@
 			"core/post-featured-image": {
 				"filter": {
 					"duotone": "unset"
-				},
-				"css": "& a img { filter: grayscale(100%); transition: filter 0.3s ease; } & a:hover img { filter: grayscale(0%); } & a:focus img { filter: grayscale(0%); }"
+				}
 			},
 			"core/navigation": {
 				"css": "& :is(.wp-block-navigation__responsive-container-close, .wp-block-navigation__responsive-container-open) svg {\n\twidth: 30px; height: 30px;\n}",
@@ -1256,7 +1254,6 @@
 				}
 			},
 			"core/playlist": {
-				"css": "&__current-item { gap: var(--wp--preset--spacing--40) !important; border-bottom-color: var(--wp--preset--color--border-bounds) !important; } &__current-item > div { gap: 0 !important; } &__item-title { font-family: var(--wp--preset--font-family--mono); font-weight: 400 !important; } font-size: var(--wp--preset--font-size--sm) !important; } &__current-item-artist-album { gap: var(--wp--preset--spacing--20) !important; color: var(--wp--preset--color--foreground-subtle) } &__tracklist { list-style-position: inside; padding: 0 !important; counter-reset: item; }",
 				"border": {
 					"width": "0"
 				},
@@ -1270,7 +1267,6 @@
 				}
 			},
 			"core/playlist-track": {
-				"css": "list-style-type: none; counter-increment: item; &__button { align-items: center; gap: var(--wp--preset--spacing--40); padding: var(--wp--preset--spacing--40) !important; border-radius: 8px; } &__button:hover { cursor: pointer; background: color-mix(in oklab, var(--wp--preset--color--background-level-1) 25%, transparent) !important; } &__button::focus { cursor: pointer; background: color-mix(in oklab, var(--wp--preset--color--background-level-1) 25%, transparent) !important; } &__button[aria-current=true] { cursor: pointer; background: color-mix(in oklab, var(--wp--preset--color--background-level-1) 25%, transparent) !important; } &__button::before { content: counter(item, decimal-leading-zero) \" \"; font-family: var(--wp--preset--font-family--mono); font-size: var(--wp--preset--font-size--sm); color: var(--wp--preset--color--foreground-subtle); } &__button[aria-current=true]::before { color: inherit !important; } &__button[aria-current=true] { font-weight: inherit !important; color: var(--wp--preset--color--foreground-accent) !important; } &__button span { margin-right: 0 !important; } &__title { font-size: var(--wp--preset--font-size--sm); } &__length { font-family: var(--wp--preset--font-family--mono); font-size: var(--wp--preset--font-size--3-xs); } &__length .screen-reader-text { display: inline; position: unset; margin: 0; padding: 0; clip-path: unset; }",
 				"border": {
 					"color": "var(--wp--preset--color--border-bounds)"
 				},
