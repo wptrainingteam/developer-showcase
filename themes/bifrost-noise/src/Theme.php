@@ -31,6 +31,7 @@ final class Theme extends Application
 	 */
 	protected const PROVIDERS = [
 		ThemeServiceProvider::class,
+		Block\Binding\BindingServiceProvider::class,
 		Block\Stylesheet\StylesheetServiceProvider::class
 	];
 }

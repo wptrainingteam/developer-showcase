@@ -74,8 +74,8 @@ defined('ABSPATH') || exit;
 		<!-- wp:column {"width":"40rem"} -->
 		<div class="wp-block-column" style="flex-basis:40rem"><!-- wp:group {"tagName":"header","metadata":{"name":"Post Header"},"style":{"spacing":{"blockGap":"var:preset|spacing|0"}},"layout":{"type":"constrained"}} -->
 			<header class="wp-block-group"><!-- wp:group {"metadata":{"name":"Post Byline"},"align":"wide","className":"is-style-meta","style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"flex","flexWrap":"wrap"}} -->
-				<div class="wp-block-group alignwide is-style-meta"><!-- wp:paragraph -->
-					<p>Artist Name</p>
+				<div class="wp-block-group alignwide is-style-meta"><!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"bifrost-music/album","args":{"key":"artist"}}}}} -->
+					<p></p>
 					<!-- /wp:paragraph --></div>
 				<!-- /wp:group -->
 

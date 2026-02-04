@@ -11,16 +11,15 @@ declare(strict_types=1);
 defined('ABSPATH') || exit;
 
 ?>
-<!-- wp:group {"tagName":"main","metadata":{"name":"Content"},"className":"is-style-site-content","style":{"spacing":{"blockGap":"0"}},"layout":{"type":"constrained"}} -->
+<!-- wp:group {"tagName":"main","metadata":{"name":"Front Page Content","patternName":"bifrost-noise/content-front-page"},"className":"is-style-site-content","style":{"spacing":{"blockGap":"0"}},"layout":{"type":"constrained"}} -->
 <main class="wp-block-group is-style-site-content"><!-- wp:group {"metadata":{"name":"Section: Hero"},"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|110","bottom":"var:preset|spacing|110","left":"var:preset|spacing|70","right":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->
 	<div class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--110);padding-right:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--110);padding-left:var(--wp--preset--spacing--70)"><!-- wp:group {"align":"full","style":{"spacing":{"padding":{"right":"var:preset|spacing|70","left":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->
 		<div class="wp-block-group alignfull" style="padding-right:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70)"><!-- wp:paragraph {"className":"is-style-text-annotation","style":{"typography":{"textAlign":"center"}}} -->
 			<p class="has-text-align-center is-style-text-annotation">New Release: The Rancid Riots</p>
 			<!-- /wp:paragraph -->
 
-			<!-- wp:heading {"textAlign":"center","level":1,"className":"is-style-default","fontSize":"7-xl"} -->
-			<h1 class="wp-block-heading has-text-align-center is-style-default has-7-xl-font-size">No Future.<br>Analog
-				Soul.</h1>
+			<!-- wp:heading {"level":1,"className":"is-style-default","style":{"typography":{"textAlign":"center"}},"fontSize":"7-xl"} -->
+			<h1 class="wp-block-heading has-text-align-center is-style-default has-7-xl-font-size">No Future.<br>Analog Soul.</h1>
 			<!-- /wp:heading -->
 
 			<!-- wp:paragraph {"className":"has-mono-font-family","style":{"typography":{"textAlign":"center"}}} -->
@@ -74,8 +73,8 @@ defined('ABSPATH') || exit;
 						<!-- wp:post-title {"isLink":true,"className":"is-style-post-title-secondary"} /-->
 
 						<!-- wp:group {"metadata":{"name":"Post Byline"},"className":"is-style-meta","style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"flex","flexWrap":"wrap"}} -->
-						<div class="wp-block-group is-style-meta"><!-- wp:paragraph {"metadata":{"name":"Separator"}} -->
-							<p>Artist Name Here</p>
+						<div class="wp-block-group is-style-meta"><!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"bifrost-music/album","args":{"key":"artist"}}}}} -->
+							<p></p>
 							<!-- /wp:paragraph --></div>
 						<!-- /wp:group --></div>
 					<!-- /wp:group --></article>
@@ -120,7 +119,7 @@ defined('ABSPATH') || exit;
 	<!-- wp:group {"metadata":{"name":"Section: About"},"align":"full","className":"is-style-section-1","style":{"spacing":{"padding":{"top":"var:preset|spacing|110","bottom":"var:preset|spacing|110","left":"var:preset|spacing|70","right":"var:preset|spacing|70"}}},"layout":{"type":"constrained","contentSize":"54rem"}} -->
 	<div class="wp-block-group alignfull is-style-section-1" style="padding-top:var(--wp--preset--spacing--110);padding-right:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--110);padding-left:var(--wp--preset--spacing--70)"><!-- wp:group {"align":"full","style":{"spacing":{"padding":{"right":"var:preset|spacing|70","left":"var:preset|spacing|70"}}},"layout":{"type":"constrained","contentSize":"54rem"}} -->
 		<div class="wp-block-group alignfull" style="padding-right:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70)"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"default"}} -->
-			<div class="wp-block-group"><!-- wp:heading {"textAlign":"center","className":"is-style-text-section-heading"} -->
+			<div class="wp-block-group"><!-- wp:heading {"className":"is-style-text-section-heading","style":{"typography":{"textAlign":"center"}}} -->
 				<h2 class="wp-block-heading has-text-align-center is-style-text-section-heading">Built for the culture.</h2>
 				<!-- /wp:heading -->
 
