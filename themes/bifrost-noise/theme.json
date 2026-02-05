@@ -1562,6 +1562,58 @@
 			"core/table-of-contents": {
 				"css": "& ol {\n\tlist-style: initial;\n}"
 			},
+			"core/tabs-menu": {
+				"border": {
+					"color": "var(--wp--custom--color--neutral-800)",
+					"style": "solid",
+					"width": "1px",
+					"left": {
+						"width": "0"
+					},
+					"right": {
+						"width": "0"
+					}
+				},
+				"color": {
+					"background": "var(--wp--custom--color--neutral-950)",
+					"text": "var(--wp--custom--color--neutral-50)"
+				},
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--mono)",
+					"fontSize": "var(--wp--preset--font-size--xs)",
+					"textTransform": "uppercase"
+				},
+				"elements": {
+					"link": {
+						"color": {
+							"text": "var(--wp--custom--color--neutral-400)"
+						},
+						":focus": {
+							"color": {
+								"background": "var(--wp--custom--color--neutral-800) !important",
+								"text": "var(--wp--custom--color--neutral-50) !important"
+							}
+						},
+						":hover": {
+							"color": {
+								"background": "var(--wp--custom--color--neutral-800) !important",
+								"text": "var(--wp--custom--color--neutral-50) !important"
+							}
+						}
+					}
+				}
+			},
+			"core/tabs-menu-item": {
+				"css": "--custom-tab-active-color: var(--wp--custom--color--neutral-800); --custom-tab-hover-color: var(--wp--custom--color--neutral-800); --custom-tab-hover-text-color: var(--wp--custom--color--neutral-50);",
+				"spacing": {
+					"padding": {
+						"top": "var(--wp--preset--spacing--40)",
+						"bottom": "var(--wp--preset--spacing--40)",
+						"left": "var(--wp--preset--spacing--40)",
+						"right": "var(--wp--preset--spacing--40)"
+					}
+				}
+			},
 			"core/tag-cloud": {
 				"elements": {
 					"link": {
