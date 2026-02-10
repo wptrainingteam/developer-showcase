@@ -188,7 +188,7 @@ defined('ABSPATH') || exit;
 		<!-- /wp:group -->
 
 		<!-- wp:group {"layout":{"type":"default"}} -->
-		<div class="wp-block-group"><!-- wp:query {"queryId":0,"query":{"perPage":10,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true},"metadata":{"name":"Posts Query"}} -->
+		<div class="wp-block-group"><!-- wp:query {"queryId":0,"query":{"perPage":3,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false},"metadata":{"name":"Posts Query"}} -->
 			<div class="wp-block-query"><!-- wp:post-template {"align":"full","style":{"spacing":{"blockGap":"var:preset|spacing|70"}},"layout":{"type":"grid","columnCount":3}} -->
 				<!-- wp:group {"tagName":"article","metadata":{"name":"Post"},"style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"default"}} -->
 				<article class="wp-block-group"><!-- wp:post-featured-image {"isLink":true,"aspectRatio":"2/1","className":"is-style-post-featured-image-accent"} /-->

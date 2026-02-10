@@ -11,38 +11,46 @@ declare(strict_types=1);
 defined('ABSPATH') || exit;
 
 ?>
-<!-- wp:group {
-	"tagName":"main",
-	"metadata":{"name":"<?= esc_attr__('Content', 'bifrost-noise') ?>"},
-	"className":"is-style-site-content",
-	"style":{
-		"spacing":{
-			"blockGap":"0"
-		}
-	},
-	"layout":{"type":"constrained"}
-} -->
-<main class="wp-block-group is-style-site-content">
-
-	<!-- wp:group {
-		"align":"full",
-		"style":{
-			"spacing":{
-				"padding":{
-					"right":"var:preset|spacing|70",
-					"left":"var:preset|spacing|70"
-				}
-			}
-		},
-		"layout":{"type":"default"}
-	} -->
-	<div  class="wp-block-group alignfull" style="padding-right:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70)">
-		<!-- wp:heading {"level":1,"className":"is-style-heading-underline"} -->
-		<h1 class="wp-block-heading is-style-heading-underline"><?= esc_html__('The Journal', 'bifrost-noise') ?></h1>
-		<!-- /wp:heading -->
-	</div>
+<!-- wp:group {"tagName":"main","metadata":{"name":"Index Content","patternName":"bifrost-noise/content-index"},"className":"is-style-site-content","style":{"spacing":{"padding":{"top":"var:preset|spacing|90","bottom":"var:preset|spacing|90"}}},"layout":{"type":"constrained","contentSize":"80rem"}} -->
+<main class="wp-block-group is-style-site-content" style="padding-top:var(--wp--preset--spacing--90);padding-bottom:var(--wp--preset--spacing--90)"><!-- wp:group {"layout":{"type":"default"}} -->
+	<div class="wp-block-group"><!-- wp:heading {"level":1,"className":"is-style-default"} -->
+		<h1 class="wp-block-heading is-style-default">The Journal</h1>
+		<!-- /wp:heading --></div>
 	<!-- /wp:group -->
 
-	<!-- wp:template-part {"slug":"loop","align":"full"} /-->
-</main>
+	<!-- wp:query {"queryId":0,"query":{"perPage":12,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true},"metadata":{"name":"Posts Query"}} -->
+	<div class="wp-block-query"><!-- wp:post-template {"align":"full","style":{"spacing":{"blockGap":"var:preset|spacing|70"}},"layout":{"type":"grid","columnCount":3}} -->
+		<!-- wp:group {"tagName":"article","metadata":{"name":"Post: Excerpt","patternName":"bifrost-noise/post-excerpt"},"style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"default"}} -->
+		<article class="wp-block-group"><!-- wp:post-featured-image {"aspectRatio":"16/9"} /-->
+
+			<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"constrained"}} -->
+			<div class="wp-block-group"><!-- wp:group {"tagName":"header","metadata":{"name":"Post Header"},"layout":{"type":"default"}} -->
+				<header class="wp-block-group"><!-- wp:post-title {"isLink":true,"className":"is-style-post-title-secondary"} /--></header>
+				<!-- /wp:group -->
+
+				<!-- wp:post-excerpt {"showMoreOnNewLine":false,"excerptLength":12} /--></div>
+			<!-- /wp:group -->
+
+			<!-- wp:group {"tagName":"footer","metadata":{"name":"Post Footer"},"layout":{"type":"default"}} -->
+			<footer class="wp-block-group"><!-- wp:group {"metadata":{"name":"Post Byline (Short)","patternName":"bifrost-noise/post-byline-short"},"className":"is-style-meta","style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"flex","flexWrap":"wrap"}} -->
+				<div class="wp-block-group is-style-meta"><!-- wp:post-author-name {"isLink":true} /-->
+
+					<!-- wp:paragraph {"metadata":{"name":"Separator"}} -->
+					<p>//</p>
+					<!-- /wp:paragraph -->
+
+					<!-- wp:post-date {"metadata":{"bindings":{"datetime":{"source":"core/post-data","args":{"field":"date"}}}}} /--></div>
+				<!-- /wp:group --></footer>
+			<!-- /wp:group --></article>
+		<!-- /wp:group -->
+		<!-- /wp:post-template -->
+
+		<!-- wp:query-pagination {"paginationArrow":"arrow","layout":{"type":"flex"}} -->
+		<!-- wp:query-pagination-previous /-->
+
+		<!-- wp:query-pagination-numbers /-->
+
+		<!-- wp:query-pagination-next /-->
+		<!-- /wp:query-pagination --></div>
+	<!-- /wp:query --></main>
 <!-- /wp:group -->
