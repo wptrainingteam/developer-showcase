@@ -1,0 +1,20 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/wp/trunk/schemas/json/theme.json",
+	"version": 3,
+	"title": "Widget Heading",
+	"description": "Widget Heading",
+	"slug": "text-widget-heading",
+	"blockTypes": [
+		"core/heading",
+		"core/paragraph"
+	],
+	"styles": {
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--primary)",
+			"fontSize": "var(--wp--preset--font-size--md)",
+			"fontWeight": "700",
+			"lineHeight": "var(--wp--custom--line-height--md)",
+			"textTransform": "uppercase"
+		}
+	}
+}

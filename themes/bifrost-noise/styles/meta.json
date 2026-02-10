@@ -1,5 +1,5 @@
 {
-	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/wp/6.8/schemas/json/theme.json",
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/wp/trunk/schemas/json/theme.json",
 	"version": 3,
 	"title": "Meta",
 	"slug": "meta",
@@ -11,6 +11,7 @@
 		"typography": {
 			"fontFamily": "var(--wp--preset--font-family--mono)",
 			"fontSize": "var(--wp--preset--font-size--xs)",
+			"fontWeight": "400",
 			"lineHeight": "var(--wp--custom--line-height--xs)"
 		},
 		"elements": {

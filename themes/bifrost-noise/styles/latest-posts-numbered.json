@@ -1,0 +1,19 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/wp/trunk/schemas/json/theme.json",
+	"version": 3,
+	"title": "Numbered",
+	"slug": "query-numbered",
+	"blockTypes": [ "core/query" ],
+	"styles": {
+		"blocks": {
+			"core/post-title": {
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--mono)",
+					"fontSize": "var(--wp--preset--font-size--2-xs)",
+					"fontWeight": "700",
+					"lineHeight": "var(--wp--custom--font-size--2-xs)"
+				}
+			}
+		}
+	}
+}
