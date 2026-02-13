@@ -41,7 +41,7 @@ defined('ABSPATH') || exit;
 
 				<!-- wp:tab-panels {"lock":{"remove":true}} -->
 				<div class="wp-block-tab-panels"><!-- wp:tab {"label":"Albums","style":{"spacing":{"padding":{"top":"var:preset|spacing|0","bottom":"var:preset|spacing|0"}}},"layout":{"type":"constrained","contentSize":"80rem"},"anchor":"albums"} -->
-					<section id="albums" class="wp-block-tab" style="padding-top:var(--wp--preset--spacing--0);padding-bottom:var(--wp--preset--spacing--0)"><!-- wp:query {"queryId":0,"query":{"perPage":4,"pages":0,"offset":0,"postType":"music_album","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false,"parents":[],"format":[]},"metadata":{"name":"Posts Query"}} -->
+					<section id="albums" class="wp-block-tab" style="padding-top:var(--wp--preset--spacing--0);padding-bottom:var(--wp--preset--spacing--0)"><!-- wp:query {"queryId":0,"query":{"postType":"music_album","perPage":8},"namespace":"bifrost-noise/query-artist-albums","metadata":{"name":"Posts Query"}} -->
 						<div class="wp-block-query"><!-- wp:post-template {"align":"full","style":{"spacing":{"blockGap":"var:preset|spacing|70"}},"layout":{"type":"grid","columnCount":4}} -->
 							<!-- wp:group {"tagName":"article","metadata":{"name":"Post"},"style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"default"}} -->
 							<article class="wp-block-group"><!-- wp:post-featured-image {"isLink":true,"aspectRatio":"1"} /-->

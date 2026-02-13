@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Bifrost\Noise;
 
 use Bifrost\Noise\Core\Application;
+use Bifrost\Noise\Editor\EditorServiceProvider;
 
 /**
  * The Theme class is an implementation of the Application contract. It's used
@@ -32,6 +33,8 @@ final class Theme extends Application
 	protected const PROVIDERS = [
 		ThemeServiceProvider::class,
 		Block\Binding\BindingServiceProvider::class,
-		Block\Stylesheet\StylesheetServiceProvider::class
+		Block\Render\RenderServiceProvider::class,
+		Block\Stylesheet\StylesheetServiceProvider::class,
+		EditorServiceProvider::class
 	];
 }
