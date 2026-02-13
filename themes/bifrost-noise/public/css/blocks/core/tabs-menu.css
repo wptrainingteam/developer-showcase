@@ -1,7 +1,1 @@
-
-.wp-block-tabs-menu {
-	width: 100%;
-	padding-left: max(var(--wp--preset--spacing--70), calc((100% - 80rem) / 2));
-	padding-right: max(var(--wp--preset--spacing--70), calc((100% - 80rem) / 2));
-	box-sizing: border-box;
-}
+.wp-block-tabs-menu{box-sizing:border-box;padding-left:max(var(--wp--preset--spacing--70),(100% - 80rem)/2);padding-right:max(var(--wp--preset--spacing--70),(100% - 80rem)/2);width:100%}
