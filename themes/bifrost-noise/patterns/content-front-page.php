@@ -10,33 +10,35 @@ declare(strict_types=1);
 # Prevent direct access.
 defined('ABSPATH') || exit;
 
+$video = get_theme_file_uri('public/media/videos/spinning.mp4');
+
 ?>
 <!-- wp:group {"tagName":"main","metadata":{"name":"Front Page Content","patternName":"bifrost-noise/content-front-page"},"className":"is-style-site-content","style":{"spacing":{"blockGap":"0"}},"layout":{"type":"constrained"}} -->
-<main class="wp-block-group is-style-site-content"><!-- wp:group {"metadata":{"name":"Section: Hero"},"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|110","bottom":"var:preset|spacing|110","left":"var:preset|spacing|70","right":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->
-	<div class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--110);padding-right:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--110);padding-left:var(--wp--preset--spacing--70)"><!-- wp:group {"align":"full","style":{"spacing":{"padding":{"right":"var:preset|spacing|70","left":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->
-		<div class="wp-block-group alignfull" style="padding-right:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70)"><!-- wp:paragraph {"className":"is-style-text-annotation","style":{"typography":{"textAlign":"center"}}} -->
-			<p class="has-text-align-center is-style-text-annotation">New Release: The Rancid Riots</p>
-			<!-- /wp:paragraph -->
+<main class="wp-block-group is-style-site-content"><!-- wp:cover {"url":"<?= esc_url($video) ?>","id":83,"dimRatio":70,"overlayColor":"black","isUserOverlayColor":true,"backgroundType":"video","sizeSlug":"full","metadata":{"name":"Section: Hero"},"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|110","bottom":"var:preset|spacing|110","left":"var:preset|spacing|70","right":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->
+	<div class="wp-block-cover alignfull" style="padding-top:var(--wp--preset--spacing--110);padding-right:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--110);padding-left:var(--wp--preset--spacing--70)"><video class="wp-block-cover__video-background intrinsic-ignore" autoplay muted loop playsinline src="<?= esc_url($video) ?>" data-object-fit="cover"></video><span aria-hidden="true" class="wp-block-cover__background has-black-background-color has-background-dim-70 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:group {"align":"full","style":{"spacing":{"padding":{"right":"var:preset|spacing|70","left":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->
+			<div class="wp-block-group alignfull" style="padding-right:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70)"><!-- wp:paragraph {"className":"is-style-text-annotation","style":{"typography":{"textAlign":"center"}}} -->
+				<p class="has-text-align-center is-style-text-annotation">New Release: The Rancid Riots</p>
+				<!-- /wp:paragraph -->
 
-			<!-- wp:heading {"level":1,"className":"is-style-default","style":{"typography":{"textAlign":"center"}},"fontSize":"7-xl"} -->
-			<h1 class="wp-block-heading has-text-align-center is-style-default has-7-xl-font-size">No Future.<br>Analog Soul.</h1>
-			<!-- /wp:heading -->
+				<!-- wp:heading {"level":1,"className":"is-style-default","style":{"typography":{"textAlign":"center"}},"fontSize":"7-xl"} -->
+				<h1 class="wp-block-heading has-text-align-center is-style-default has-7-xl-font-size">No Future.<br>Analog Soul.</h1>
+				<!-- /wp:heading -->
 
-			<!-- wp:paragraph {"className":"has-mono-font-family","style":{"typography":{"textAlign":"center"}}} -->
-			<p class="has-text-align-center has-mono-font-family">A digital sanctuary for the underground. We archive, review, and amplify indie artists who refuse to play by the algorithm's rules.</p>
-			<!-- /wp:paragraph -->
+				<!-- wp:paragraph {"className":"has-mono-font-family","style":{"typography":{"textAlign":"center"}}} -->
+				<p class="has-text-align-center has-mono-font-family">A digital sanctuary for the underground. We archive, review, and amplify indie artists who refuse to play by the algorithm's rules.</p>
+				<!-- /wp:paragraph -->
 
-			<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
-			<div class="wp-block-buttons"><!-- wp:button -->
-				<div class="wp-block-button"><a class="wp-block-button__link wp-element-button">Listen_Now</a></div>
-				<!-- /wp:button -->
+				<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+				<div class="wp-block-buttons"><!-- wp:button -->
+					<div class="wp-block-button"><a class="wp-block-button__link wp-element-button">Listen_Now</a></div>
+					<!-- /wp:button -->
 
-				<!-- wp:button {"className":"is-style-outline"} -->
-				<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button">Collection_Index</a></div>
-				<!-- /wp:button --></div>
-			<!-- /wp:buttons --></div>
-		<!-- /wp:group --></div>
-	<!-- /wp:group -->
+					<!-- wp:button {"className":"is-style-outline"} -->
+					<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button">Collection_Index</a></div>
+					<!-- /wp:button --></div>
+				<!-- /wp:buttons --></div>
+			<!-- /wp:group --></div></div>
+	<!-- /wp:cover -->
 
 	<!-- wp:group {"metadata":{"name":"Section: Albums"},"align":"full","className":"is-style-section-1","style":{"spacing":{"padding":{"top":"var:preset|spacing|110","bottom":"var:preset|spacing|110"}}},"layout":{"type":"constrained","contentSize":"80rem"}} -->
 	<div class="wp-block-group alignfull is-style-section-1" style="padding-top:var(--wp--preset--spacing--110);padding-bottom:var(--wp--preset--spacing--110)"><!-- wp:group {"layout":{"type":"default"}} -->
