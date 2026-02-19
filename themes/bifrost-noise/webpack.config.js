@@ -55,6 +55,8 @@ module.exports = (() => {
 			...{
 				entry: {
 					...groupStylesheets('blocks/core'),
+					'css/screen': path.resolve(process.cwd(), 'resources/scss', 'screen.scss'),
+					'js/cursor': path.resolve(process.cwd(), 'resources/js', 'cursor.js'),
 					'js/editor':  path.resolve(process.cwd(), 'resources/js', 'editor.js')
 				},
 				plugins: [
