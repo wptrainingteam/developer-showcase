@@ -20,6 +20,7 @@
 }
 
 .wp-block-playlist ol.wp-block-playlist__tracklist {
+	margin-top: var(--wp--preset--spacing--40);
 	list-style-position: inside;
 	padding: 0;
 	counter-reset: item;

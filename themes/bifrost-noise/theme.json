@@ -1268,7 +1268,11 @@
 			},
 			"core/playlist-track": {
 				"border": {
-					"color": "var(--wp--preset--color--border-bounds)"
+					"color": "var(--wp--preset--color--border-bounds)",
+					"bottom": {
+						"width": "1px",
+						"style": "dashed"
+					}
 				},
 				"spacing": {
 					"padding": {

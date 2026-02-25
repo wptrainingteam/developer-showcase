@@ -2,13 +2,17 @@
 .wp-block-playlist-track {
 	list-style-type: none;
 	counter-increment: item;
+
+	&:has([aria-current=true]),
+	&:hover {
+		background: none;
+	}
 }
 
 .wp-block-playlist-track .wp-block-playlist-track__button {
 	align-items: center;
 	gap: var(--wp--preset--spacing--40);
 	padding: var(--wp--preset--spacing--40);
-	border-radius: 8px;
 }
 
 .wp-block-playlist-track .wp-block-playlist-track__button:hover,
@@ -48,7 +52,7 @@
 
 .wp-block-playlist-track .wp-block-playlist-track__length {
 	font-family: var(--wp--preset--font-family--mono);
-	font-size: var(--wp--preset--font-size--3-xs);
+	font-size: var(--wp--preset--font-size--3-xs) !important; // overwriting core
 }
 
 .wp-block-playlist-track .wp-block-playlist-track__length .screen-reader-text {
