@@ -29,9 +29,15 @@ defined('ABSPATH') || exit;
 					<p>//</p>
 					<!-- /wp:paragraph -->
 
-					<!-- wp:paragraph -->
-					<p>435 Articles</p>
-					<!-- /wp:paragraph --></div>
+					<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+					<div class="wp-block-group"><!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"bifrost-music/post-type","args":{"postType":"post","field":"count"}}}}} -->
+						<p>0</p>
+						<!-- /wp:paragraph -->
+
+						<!-- wp:paragraph -->
+						<p>Articles</p>
+						<!-- /wp:paragraph --></div>
+					<!-- /wp:group --></div>
 				<!-- /wp:group -->
 
 				<!-- wp:heading {"level":1,"className":"is-style-default"} -->

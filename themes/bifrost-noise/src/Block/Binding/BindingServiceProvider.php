@@ -22,7 +22,8 @@ final class BindingServiceProvider extends ServiceProvider implements Bootable
 	 * Array of block binding source classnames.
 	 */
 	private const SOURCES = [
-		Sources\Album::class
+		Sources\Album::class,
+		Sources\PostType::class
 	];
 
 	/**
