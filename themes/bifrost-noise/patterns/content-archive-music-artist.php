@@ -11,34 +11,54 @@ declare(strict_types=1);
 defined('ABSPATH') || exit;
 
 ?>
-<!-- wp:group {"tagName":"main","metadata":{"name":"Artist Archive Content","patternName":"bifrost-noise/content-archive-music-artist"},"className":"is-style-site-content","style":{"spacing":{"blockGap":"var:preset|spacing|0"}},"layout":{"type":"constrained","contentSize":"80rem"}} -->
-<main class="wp-block-group is-style-site-content"><!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}}},"layout":{"type":"default"}} -->
-	<div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:query-title {"type":"archive","showPrefix":false} /--></div>
-	<!-- /wp:group -->
+<!-- wp:group {"tagName":"main","metadata":{"name":"Artist Archive Content","patternName":"bifrost-noise/content-archive-music-artist"},"className":"is-style-site-content","style":{"spacing":{"blockGap":"var:preset|spacing|0"}},"layout":{"type":"default"}} -->
+<main class="wp-block-group is-style-site-content"><!-- wp:cover {"url":"http://localhost:8884/wp-content/uploads/2026/02/image-1024x768.png","id":84,"hasParallax":true,"dimRatio":80,"overlayColor":"black","isUserOverlayColor":true,"sizeSlug":"large","style":{"color":{"duotone":"var:preset|duotone|grayscale"},"spacing":{"padding":{"right":"var:preset|spacing|0","left":"var:preset|spacing|0"}}},"layout":{"type":"constrained","contentSize":"80rem"}} -->
+	<div class="wp-block-cover has-parallax" style="padding-right:var(--wp--preset--spacing--0);padding-left:var(--wp--preset--spacing--0)"><div class="wp-block-cover__image-background wp-image-84 size-large has-parallax" style="background-position:50% 50%;background-image:url(http://localhost:8884/wp-content/uploads/2026/02/image-1024x768.png)"></div><span aria-hidden="true" class="wp-block-cover__background has-black-background-color has-background-dim-80 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"constrained","justifyContent":"left"}} -->
+			<div class="wp-block-group"><!-- wp:group {"className":"is-style-meta","style":{"elements":{"link":{"color":{"text":"var:preset|color|foreground-on-accent"}}},"spacing":{"blockGap":"var:preset|spacing|40"}},"textColor":"foreground-on-accent","fontSize":"2-xs","layout":{"type":"flex","flexWrap":"nowrap"}} -->
+				<div class="wp-block-group is-style-meta has-foreground-on-accent-color has-text-color has-link-color has-2-xs-font-size"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+					<div class="wp-block-group"><!-- wp:outermost/icon-block {"iconName":"","width":"1.38em"} -->
+						<div class="wp-block-outermost-icon-block"><div class="icon-container" style="width:1.38em;transform:rotate(0deg) scaleX(1) scaleY(1)"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="6" r="4"></circle><path stroke-linecap="round" d="M15 9a3 3 0 1 0 0-6"></path><ellipse cx="9" cy="17" rx="7" ry="4"></ellipse><path stroke-linecap="round" d="M18 14c1.754.385 3 1.359 3 2.5c0 1.03-1.014 1.923-2.5 2.37"></path></g></svg></div></div>
+						<!-- /wp:outermost/icon-block -->
 
-	<!-- wp:query {"queryId":0,"query":{"perPage":12,"pages":0,"offset":0,"postType":"music_album","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true,"parents":[],"format":[]},"metadata":{"name":"Posts Query"},"align":"full","layout":{"type":"default"}} -->
-	<div class="wp-block-query alignfull"><!-- wp:post-template {"align":"full","style":{"spacing":{"blockGap":"var:preset|spacing|0"}},"layout":{"type":"grid","columnCount":2}} -->
-		<!-- wp:cover {"useFeaturedImage":true,"dimRatio":50,"overlayColor":"black","isUserOverlayColor":true,"minHeight":100,"minHeightUnit":"vh","contentPosition":"bottom left","style":{"spacing":{"blockGap":"var:preset|spacing|40","padding":{"right":"var:preset|spacing|0","left":"var:preset|spacing|0"}},"elements":{"link":{"color":{"text":"var:preset|color|foreground-on-accent"}}}},"textColor":"foreground-on-accent","layout":{"type":"constrained","contentSize":"80rem"}} -->
-		<div class="wp-block-cover has-custom-content-position is-position-bottom-left has-foreground-on-accent-color has-text-color has-link-color" style="padding-right:var(--wp--preset--spacing--0);padding-left:var(--wp--preset--spacing--0);min-height:100vh"><span aria-hidden="true" class="wp-block-cover__background has-black-background-color has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|40","padding":{"right":"var:preset|spacing|70","left":"var:preset|spacing|70","top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}},"color":{"background":"#0000004f"}},"layout":{"type":"constrained","justifyContent":"left"}} -->
-				<div class="wp-block-group has-background" style="background-color:#0000004f;padding-top:var(--wp--preset--spacing--70);padding-right:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70)"><!-- wp:group {"tagName":"header","metadata":{"name":"Post Header"},"style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"default"}} -->
-					<header class="wp-block-group"><!-- wp:post-title {"align":"wide","className":"is-style-text-headline is-style-default"} /--></header>
+						<!-- wp:paragraph -->
+						<p>Global Directory</p>
+						<!-- /wp:paragraph --></div>
 					<!-- /wp:group -->
 
-					<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"default"}} -->
-					<div class="wp-block-group"><!-- wp:post-excerpt {"showMoreOnNewLine":false,"excerptLength":25,"className":"is-style-post-excerpt-featured","style":{"elements":{"link":{"color":{"text":"var:preset|color|foreground-on-accent"}}}},"textColor":"foreground-on-accent"} /-->
+					<!-- wp:paragraph -->
+					<p>//</p>
+					<!-- /wp:paragraph -->
 
-						<!-- wp:read-more {"content":"View_Profile →"} /--></div>
-					<!-- /wp:group --></div>
-				<!-- /wp:group --></div></div>
-		<!-- /wp:cover -->
-		<!-- /wp:post-template -->
+					<!-- wp:paragraph -->
+					<p>999 Artists</p>
+					<!-- /wp:paragraph --></div>
+				<!-- /wp:group -->
 
-		<!-- wp:query-pagination {"paginationArrow":"arrow","layout":{"type":"flex"}} -->
-		<!-- wp:query-pagination-previous /-->
+				<!-- wp:query-title {"type":"archive","showPrefix":false,"align":"wide"} /-->
 
-		<!-- wp:query-pagination-numbers /-->
+				<!-- wp:paragraph {"fontSize":"sm","fontFamily":"tertiary"} -->
+				<p class="has-tertiary-font-family has-sm-font-size">Explore the vanguard of sonic exploration. From brutalist techno to ethereal darkwave, discover the creators shaping the future of underground sound.</p>
+				<!-- /wp:paragraph --></div>
+			<!-- /wp:group --></div></div>
+	<!-- /wp:cover -->
 
-		<!-- wp:query-pagination-next /-->
-		<!-- /wp:query-pagination --></div>
-	<!-- /wp:query --></main>
+	<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}}},"layout":{"type":"constrained","contentSize":"80rem"}} -->
+	<div class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:query {"queryId":0,"query":{"perPage":12,"pages":0,"offset":0,"postType":"music_album","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true,"parents":[],"format":[]},"metadata":{"name":"Posts Query"},"layout":{"type":"default"}} -->
+		<div class="wp-block-query"><!-- wp:post-template {"align":"full","layout":{"type":"grid","columnCount":4}} -->
+			<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"constrained"}} -->
+			<div class="wp-block-group"><!-- wp:post-featured-image {"isLink":true,"aspectRatio":"1","className":"is-style-post-featured-image-accent"} /-->
+
+				<!-- wp:post-title {"className":"is-style-post-title-secondary"} /--></div>
+			<!-- /wp:group -->
+			<!-- /wp:post-template -->
+
+			<!-- wp:query-pagination {"paginationArrow":"arrow","layout":{"type":"flex"}} -->
+			<!-- wp:query-pagination-previous /-->
+
+			<!-- wp:query-pagination-numbers /-->
+
+			<!-- wp:query-pagination-next /-->
+			<!-- /wp:query-pagination --></div>
+		<!-- /wp:query --></div>
+	<!-- /wp:group --></main>
 <!-- /wp:group -->

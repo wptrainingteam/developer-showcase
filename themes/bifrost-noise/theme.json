@@ -751,7 +751,7 @@
 			"textColumns": false,
 			"textDecoration": false,
 			"textTransform": false,
-			"writingMode": false
+			"writingMode": true
 		},
 		"useRootPaddingAwareAlignments": true
 	},
