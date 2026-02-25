@@ -5,6 +5,7 @@
 	"description": "A note or comment added to a text or diagram.",
 	"slug": "text-annotation",
 	"blockTypes": [
+		"core/group",
 		"core/heading",
 		"core/paragraph"
 	],
@@ -39,6 +40,18 @@
 			"fontWeight": "400",
 			"lineHeight": "var(--wp--custom--line-height--3-xs)",
 			"textTransform": "uppercase"
+		},
+		"elements": {
+			"heading": {
+				"typography": {
+					"fontFamily": "inherit !important",
+					"fontWeight": "inherit !important",
+					"fontSize": "inherit !important",
+					"fontStyle": "inherit !important",
+					"lineHeight": "inherit !important",
+					"textTransform": "inherit !important"
+				}
+			}
 		}
 	}
 }
