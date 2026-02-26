@@ -1630,6 +1630,13 @@
 					}
 				}
 			},
+			"core/term-description": {
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--tertiary)",
+					"fontSize": "var(--wp--preset--font-size--sm)",
+					"lineHeight": "var(--wp--custom--line-height--sm)"
+				}
+			},
 			"core/verse": {
 				"typography": {
 					"fontFamily": "var(--wp--preset--font-family--primary)",
