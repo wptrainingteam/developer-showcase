@@ -35,6 +35,7 @@ final class Theme extends Application
 		Block\Render\RenderServiceProvider::class,
 		Block\Stylesheet\StylesheetServiceProvider::class,
 		Editor\EditorServiceProvider::class,
-		Frontend\FrontendServiceProvider::class
+		Frontend\FrontendServiceProvider::class,
+		PostType\PostTypeServiceProvider::class
 	];
 }

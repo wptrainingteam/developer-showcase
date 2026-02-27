@@ -69,7 +69,7 @@ final class Term extends BindingSource
 		return sprintf(
 			// Translators: 1: Number of posts, 2: Post type label (singular or plural)
 			esc_html(_n('%1$s %2$s', '%1$s %2$s', $total, 'bifrost-noise')),
-			'<strong>' . number_format_i18n($total) . '</strong>',
+			number_format_i18n($total),
 			$total === 1 ? $postTypeObject->labels->singular_name : $postTypeObject->labels->name
 		);
 	}
