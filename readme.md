@@ -79,7 +79,13 @@ The destination server and paths are hardcoded in the workflow file itself (`sft
 
 To include a new plugin or theme in the automated vendor deployment:
 
-**1. Edit [`.github/workflows/deploy-vendors.yml`](.github/workflows/deploy-vendors.yml)** and add two steps following the same pattern as the existing ones.
+**1. Edit [`.github/workflows/deploy-vendors.yml`](.github/workflows/deploy-vendors.yml)** and make two changes.
+
+Add a line to the **"Ensure remote vendor directories exist"** step:
+
+```bash
+mkdir -fp htdocs/wp-content/plugins/your-package-name/vendor;
+```
 
 Add a `composer install` step:
 
