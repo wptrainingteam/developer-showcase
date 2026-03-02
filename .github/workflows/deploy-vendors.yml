@@ -44,7 +44,7 @@ jobs:
           ftp-username: ${{ secrets.SFTP_USER }}
           ftp-password: ${{ secrets.SFTP_PASSWORD }}
           local-dir: plugins/bifrost-music/vendor/
-          git-ftp-args: --all --insecure
+          git-ftp-args: --all
           known-hosts: ${{ secrets.SFTP_KNOWN_HOSTS }}
 
       # ── Theme ───────────────────────────────────────────────────────────────
@@ -63,5 +63,5 @@ jobs:
           ftp-username: ${{ secrets.SFTP_USER }}
           ftp-password: ${{ secrets.SFTP_PASSWORD }}
           local-dir: themes/bifrost-noise/vendor/
-          git-ftp-args: --all --insecure
+          git-ftp-args: --all
           known-hosts: ${{ secrets.SFTP_KNOWN_HOSTS }}
