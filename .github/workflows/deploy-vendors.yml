@@ -38,7 +38,7 @@ jobs:
         if: ${{ inputs.dry_run != true && hashFiles('plugins/bifrost-music/vendor/**') != '' }}
         uses: Automattic/FTP-Deploy-Action@3.1.2
         with:
-          ftp-server: sftp://sftp.wp.com/htdocs/wp-content/plugins/bifrost-music/
+          ftp-server: sftp://sftp.wp.com/htdocs/wp-content/plugins/bifrost-music/vendor/
           ftp-username: ${{ secrets.SFTP_USER }}
           ftp-password: ${{ secrets.SFTP_PASSWORD }}
           local-dir: plugins/bifrost-music/vendor/
@@ -55,7 +55,7 @@ jobs:
         if: ${{ inputs.dry_run != true && hashFiles('themes/bifrost-noise/vendor/**') != '' }}
         uses: Automattic/FTP-Deploy-Action@3.1.2
         with:
-          ftp-server: sftp://sftp.wp.com/htdocs/wp-content/themes/bifrost-noise/
+          ftp-server: sftp://sftp.wp.com/htdocs/wp-content/themes/bifrost-noise/vendor/
           ftp-username: ${{ secrets.SFTP_USER }}
           ftp-password: ${{ secrets.SFTP_PASSWORD }}
           local-dir: themes/bifrost-noise/vendor/
