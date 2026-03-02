@@ -6,6 +6,11 @@ on:
       - trunk
       - staging
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run — connect and build but do not upload any files'
+        type: boolean
+        default: false
 
 jobs:
   deploy-vendors:
@@ -37,7 +42,7 @@ jobs:
           ftp-password: ${{ secrets.SFTP_PASSWORD }}
           local-dir: plugins/bifrost-music/vendor/
           # vendor/ is gitignored, so --all forces upload of untracked files
-          git-ftp-args: --all
+          git-ftp-args: ${{ inputs.dry_run == true && '--all --dry-run' || '--all' }}
 
       # ── Theme ───────────────────────────────────────────────────────────────
 
@@ -53,4 +58,4 @@ jobs:
           ftp-password: ${{ secrets.SFTP_PASSWORD }}
           local-dir: themes/bifrost-noise/vendor/
           # vendor/ is gitignored, so --all forces upload of untracked files
-          git-ftp-args: --all
+          git-ftp-args: ${{ inputs.dry_run == true && '--all --dry-run' || '--all' }}
