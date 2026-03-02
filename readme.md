@@ -71,7 +71,7 @@ Under each environment, add the following secrets (same names, different values)
 | `SFTP_PASSWORD` | SFTP password for this environment |
 | `SFTP_KNOWN_HOSTS` | SSH host fingerprint for `sftp.wp.com` — get it by running `ssh-keyscan sftp.wp.com` in your terminal and pasting the full output |
 
-The destination server and paths are hardcoded in the workflow file itself (`sftp://sftp.wp.com/htdocs/wp-content/...`).
+The destination server and paths are hardcoded in the workflow file itself (`sftp://sftp.wp.com/htdocs/wp-content/.../vendor/`).
 
 ---
 
@@ -79,9 +79,7 @@ The destination server and paths are hardcoded in the workflow file itself (`sft
 
 To include a new plugin or theme in the automated vendor deployment:
 
-**1. Edit [`.github/workflows/deploy-vendors.yml`](.github/workflows/deploy-vendors.yml)** and add two steps following the same pattern as the existing ones.
-
-Add a `composer install` step:
+**1. Edit [`.github/workflows/deploy-vendors.yml`](.github/workflows/deploy-vendors.yml)** and add a `composer install` step:
 
 ```yaml
 - name: Install dependencies (your-package-name)
@@ -93,13 +91,15 @@ Add an upload step immediately after:
 
 ```yaml
 - name: Upload your-package-name vendor folder
+  if: ${{ inputs.dry_run != true && hashFiles('plugins/your-package-name/vendor/**') != '' }}
   uses: Automattic/FTP-Deploy-Action@3.1.2
   with:
-    ftp-server: sftp://sftp.wp.com/htdocs/wp-content/plugins/your-package-name/   # or themes/your-package-name/
+    ftp-server: sftp://sftp.wp.com/htdocs/wp-content/plugins/your-package-name/vendor/   # or themes/your-package-name/vendor/
     ftp-username: ${{ secrets.SFTP_USER }}
     ftp-password: ${{ secrets.SFTP_PASSWORD }}
     local-dir: plugins/your-package-name/vendor/   # or themes/your-package-name/vendor/
     git-ftp-args: --all
+    known-hosts: ${{ secrets.SFTP_KNOWN_HOSTS }}
 ```
 
 No additional secrets or variables are needed.
