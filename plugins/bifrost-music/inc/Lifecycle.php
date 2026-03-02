@@ -76,19 +76,6 @@ final class Lifecycle
 			$role->add_cap('delete_others_music_artists');
 			$role->add_cap('edit_private_music_artists');
 			$role->add_cap('edit_published_music_artists');
-
-			// Song caps.
-			$role->add_cap('create_music_songs');
-			$role->add_cap('edit_music_songs');
-			$role->add_cap('edit_others_music_songs');
-			$role->add_cap('publish_music_songs');
-			$role->add_cap('read_private_music_songs');
-			$role->add_cap('delete_music_songs');
-			$role->add_cap('delete_private_music_songs');
-			$role->add_cap('delete_published_music_songs');
-			$role->add_cap('delete_others_music_songs');
-			$role->add_cap('edit_private_music_songs');
-			$role->add_cap('edit_published_music_songs');
 		}
 	}
 
@@ -147,19 +134,6 @@ final class Lifecycle
 			$role->remove_cap('delete_others_music_artists');
 			$role->remove_cap('edit_private_music_artists');
 			$role->remove_cap('edit_published_music_artists');
-
-			// Song caps.
-			$role->remove_cap('create_music_songs');
-			$role->remove_cap('edit_music_songs');
-			$role->remove_cap('edit_others_music_songs');
-			$role->remove_cap('publish_music_songs');
-			$role->remove_cap('read_private_music_songs');
-			$role->remove_cap('delete_music_songs');
-			$role->remove_cap('delete_private_music_songs');
-			$role->remove_cap('delete_published_music_songs');
-			$role->remove_cap('delete_others_music_songs');
-			$role->remove_cap('edit_private_music_songs');
-			$role->remove_cap('edit_published_music_songs');
 		}
 	}
 }

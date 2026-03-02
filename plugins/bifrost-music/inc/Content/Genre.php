@@ -36,8 +36,7 @@ final class Genre implements Bootable
 		register_taxonomy(
 			Definitions::TAXONOMY_GENRE,
 			[
-				Definitions::POST_TYPE_ALBUM,
-				Definitions::POST_TYPE_SONG
+				Definitions::POST_TYPE_ALBUM
 			],
 			[
 			'public'            => true,

@@ -25,7 +25,6 @@ final class ContentServiceProvider extends ServiceProvider implements Bootable
 	{
 		$this->container->singleton(Album::class);
 		$this->container->singleton(Artist::class);
-		$this->container->singleton(Song::class);
 		$this->container->singleton(Genre::class);
 	}
 
@@ -36,7 +35,6 @@ final class ContentServiceProvider extends ServiceProvider implements Bootable
 	{
 		$this->container->get(Album::class)->boot();
 		$this->container->get(Artist::class)->boot();
-		$this->container->get(Song::class)->boot();
 		$this->container->get(Genre::class)->boot();
 	}
 }
