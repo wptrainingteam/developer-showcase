@@ -8,7 +8,10 @@
 
 # Dependencies
 node_modules/
-vendor/
+plugins/**/vendor/*
+!plugins/**/vendor/.gitkeep
+themes/**/vendor/*
+!themes/**/vendor/.gitkeep
 composer.lock
 
 # Environment
