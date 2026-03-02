@@ -44,6 +44,67 @@ The root of the repository is wp-content
 
 ---
 
+## 🚢 Deployment
+
+Vendor folders for plugins and themes with a `composer.json` are built and deployed automatically via [`.github/workflows/deploy-vendors.yml`](.github/workflows/deploy-vendors.yml) on every push to `trunk` or `staging`. It can also be triggered manually via **Actions → Run workflow** in the GitHub UI.
+
+The workflow uses [GitHub Environments](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment) to keep production and staging credentials and server URLs separate. The active environment is selected automatically based on the branch:
+
+| Branch | Environment |
+|---|---|
+| `trunk` | `production` |
+| `staging` | `staging` |
+
+### GitHub Repository Setup
+
+**1. Create the environments**
+
+Go to **Settings → Environments** and create two environments: `production` and `staging`.
+
+**2. Add secrets to each environment**
+
+Under each environment, add the following secrets (same names, different values):
+
+| Name | Description |
+|---|---|
+| `SFTP_USER` | SFTP username for this environment |
+| `SFTP_PASSWORD` | SFTP password for this environment |
+
+The destination server and paths are hardcoded in the workflow file itself (`sftp://sftp.wp.com/htdocs/wp-content/...`).
+
+---
+
+### ➕ Adding a Plugin or Theme to the Deployment Workflow
+
+To include a new plugin or theme in the automated vendor deployment:
+
+**1. Edit [`.github/workflows/deploy-vendors.yml`](.github/workflows/deploy-vendors.yml)** and add two steps following the same pattern as the existing ones.
+
+Add a `composer install` step:
+
+```yaml
+- name: Install dependencies (your-package-name)
+  working-directory: plugins/your-package-name   # or themes/your-package-name
+  run: composer install --no-dev --optimize-autoloader --no-interaction
+```
+
+Add an upload step immediately after:
+
+```yaml
+- name: Upload your-package-name vendor folder
+  uses: Automattic/FTP-Deploy-Action@3.1.2
+  with:
+    ftp-server: sftp://sftp.wp.com/htdocs/wp-content/plugins/your-package-name/   # or themes/your-package-name/
+    ftp-username: ${{ secrets.SFTP_USER }}
+    ftp-password: ${{ secrets.SFTP_PASSWORD }}
+    local-dir: plugins/your-package-name/vendor/   # or themes/your-package-name/vendor/
+    git-ftp-args: --all
+```
+
+No additional secrets or variables are needed.
+
+---
+
 ## 🤝 Contributing
 
 We welcome contributions from the community! Whether it's fixing a bug, adding a new example, or improving documentation, your input is valuable.
