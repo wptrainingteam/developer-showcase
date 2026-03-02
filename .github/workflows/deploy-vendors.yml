@@ -1,0 +1,63 @@
+name: Deploy Vendor Folders
+
+on:
+  push:
+    branches:
+      - trunk
+      - staging
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run — runs composer install but skips all uploads'
+        type: boolean
+        default: false
+
+jobs:
+  deploy-vendors:
+    name: Build and Deploy Vendor Folders
+    runs-on: ubuntu-latest
+    environment: ${{ github.ref_name == 'trunk' && 'production' || 'staging' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer
+
+      # ── Plugin ─────────────────────────────────────────────────────────────
+
+      - name: Install plugin dependencies (bifrost-music)
+        working-directory: plugins/bifrost-music
+        run: composer install --no-dev --optimize-autoloader --no-interaction
+
+      - name: Upload plugin vendor folder
+        if: ${{ inputs.dry_run != true && hashFiles('plugins/bifrost-music/vendor/**') != '' }}
+        uses: Automattic/FTP-Deploy-Action@3.1.2
+        with:
+          ftp-server: sftp://sftp.wp.com/htdocs/wp-content/plugins/bifrost-music/vendor/
+          ftp-username: ${{ secrets.SFTP_USER }}
+          ftp-password: ${{ secrets.SFTP_PASSWORD }}
+          local-dir: plugins/bifrost-music/vendor/
+          git-ftp-args: --all
+          known-hosts: ${{ secrets.SFTP_KNOWN_HOSTS }}
+
+      # ── Theme ───────────────────────────────────────────────────────────────
+
+      - name: Install theme dependencies (bifrost-noise)
+        working-directory: themes/bifrost-noise
+        run: composer install --no-dev --optimize-autoloader --no-interaction
+
+      - name: Upload theme vendor folder
+        if: ${{ inputs.dry_run != true && hashFiles('themes/bifrost-noise/vendor/**') != '' }}
+        uses: Automattic/FTP-Deploy-Action@3.1.2
+        with:
+          ftp-server: sftp://sftp.wp.com/htdocs/wp-content/themes/bifrost-noise/vendor/
+          ftp-username: ${{ secrets.SFTP_USER }}
+          ftp-password: ${{ secrets.SFTP_PASSWORD }}
+          local-dir: themes/bifrost-noise/vendor/
+          git-ftp-args: --all
+          known-hosts: ${{ secrets.SFTP_KNOWN_HOSTS }}
