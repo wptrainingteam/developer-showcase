@@ -93,6 +93,7 @@ Add an upload step immediately after:
 
 ```yaml
 - name: Upload your-package-name vendor folder
+  if: ${{ inputs.dry_run != true && hashFiles('plugins/your-package-name/vendor/**') != '' }}
   uses: Automattic/FTP-Deploy-Action@3.1.2
   with:
     ftp-server: sftp://sftp.wp.com/htdocs/wp-content/plugins/your-package-name/   # or themes/your-package-name/
@@ -100,6 +101,7 @@ Add an upload step immediately after:
     ftp-password: ${{ secrets.SFTP_PASSWORD }}
     local-dir: plugins/your-package-name/vendor/   # or themes/your-package-name/vendor/
     git-ftp-args: --all
+    known-hosts: ${{ secrets.SFTP_KNOWN_HOSTS }}
 ```
 
 No additional secrets or variables are needed.

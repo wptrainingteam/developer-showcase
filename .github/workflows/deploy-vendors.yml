@@ -35,7 +35,7 @@ jobs:
         run: composer install --no-dev --optimize-autoloader --no-interaction
 
       - name: Upload plugin vendor folder
-        if: ${{ inputs.dry_run != true }}
+        if: ${{ inputs.dry_run != true && hashFiles('plugins/bifrost-music/vendor/**') != '' }}
         uses: Automattic/FTP-Deploy-Action@3.1.2
         with:
           ftp-server: sftp://sftp.wp.com/htdocs/wp-content/plugins/bifrost-music/
@@ -53,7 +53,7 @@ jobs:
         run: composer install --no-dev --optimize-autoloader --no-interaction
 
       - name: Upload theme vendor folder
-        if: ${{ inputs.dry_run != true }}
+        if: ${{ inputs.dry_run != true && hashFiles('themes/bifrost-noise/vendor/**') != '' }}
         uses: Automattic/FTP-Deploy-Action@3.1.2
         with:
           ftp-server: sftp://sftp.wp.com/htdocs/wp-content/themes/bifrost-noise/
