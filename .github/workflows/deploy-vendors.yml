@@ -1,0 +1,56 @@
+name: Deploy Vendor Folders
+
+on:
+  push:
+    branches:
+      - trunk
+      - staging
+  workflow_dispatch:
+
+jobs:
+  deploy-vendors:
+    name: Build and Deploy Vendor Folders
+    runs-on: ubuntu-latest
+    environment: ${{ github.ref_name == 'trunk' && 'production' || 'staging' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer
+
+      # ── Plugin ─────────────────────────────────────────────────────────────
+
+      - name: Install plugin dependencies (bifrost-music)
+        working-directory: plugins/bifrost-music
+        run: composer install --no-dev --optimize-autoloader --no-interaction
+
+      - name: Upload plugin vendor folder
+        uses: Automattic/FTP-Deploy-Action@3.1.2
+        with:
+          ftp-server: sftp://sftp.wp.com/htdocs/wp-content/plugins/bifrost-music/
+          ftp-username: ${{ secrets.SFTP_USER }}
+          ftp-password: ${{ secrets.SFTP_PASSWORD }}
+          local-dir: plugins/bifrost-music/vendor/
+          # vendor/ is gitignored, so --all forces upload of untracked files
+          git-ftp-args: --all
+
+      # ── Theme ───────────────────────────────────────────────────────────────
+
+      - name: Install theme dependencies (bifrost-noise)
+        working-directory: themes/bifrost-noise
+        run: composer install --no-dev --optimize-autoloader --no-interaction
+
+      - name: Upload theme vendor folder
+        uses: Automattic/FTP-Deploy-Action@3.1.2
+        with:
+          ftp-server: sftp://sftp.wp.com/htdocs/wp-content/themes/bifrost-noise/
+          ftp-username: ${{ secrets.SFTP_USER }}
+          ftp-password: ${{ secrets.SFTP_PASSWORD }}
+          local-dir: themes/bifrost-noise/vendor/
+          # vendor/ is gitignored, so --all forces upload of untracked files
+          git-ftp-args: --all
