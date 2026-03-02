@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       dry_run:
-        description: 'Dry run — connect and build but do not upload any files'
+        description: 'Dry run — runs composer install but skips all uploads'
         type: boolean
         default: false
 
@@ -35,6 +35,7 @@ jobs:
         run: composer install --no-dev --optimize-autoloader --no-interaction
 
       - name: Upload plugin vendor folder
+        if: ${{ inputs.dry_run != true }}
         uses: Automattic/FTP-Deploy-Action@3.1.2
         with:
           ftp-server: sftp://sftp.wp.com/htdocs/wp-content/plugins/bifrost-music/
@@ -42,7 +43,7 @@ jobs:
           ftp-password: ${{ secrets.SFTP_PASSWORD }}
           local-dir: plugins/bifrost-music/vendor/
           # vendor/ is gitignored, so --all forces upload of untracked files
-          git-ftp-args: ${{ inputs.dry_run == true && '--all --dry-run' || '--all' }}
+          git-ftp-args: --all
 
       # ── Theme ───────────────────────────────────────────────────────────────
 
@@ -51,6 +52,7 @@ jobs:
         run: composer install --no-dev --optimize-autoloader --no-interaction
 
       - name: Upload theme vendor folder
+        if: ${{ inputs.dry_run != true }}
         uses: Automattic/FTP-Deploy-Action@3.1.2
         with:
           ftp-server: sftp://sftp.wp.com/htdocs/wp-content/themes/bifrost-noise/
@@ -58,4 +60,4 @@ jobs:
           ftp-password: ${{ secrets.SFTP_PASSWORD }}
           local-dir: themes/bifrost-noise/vendor/
           # vendor/ is gitignored, so --all forces upload of untracked files
-          git-ftp-args: ${{ inputs.dry_run == true && '--all --dry-run' || '--all' }}
+          git-ftp-args: --all
