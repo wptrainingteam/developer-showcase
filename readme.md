@@ -69,6 +69,7 @@ Under each environment, add the following secrets (same names, different values)
 |---|---|
 | `SFTP_USER` | SFTP username for this environment |
 | `SFTP_PASSWORD` | SFTP password for this environment |
+| `SFTP_KNOWN_HOSTS` | SSH host fingerprint for `sftp.wp.com` — get it by running `ssh-keyscan sftp.wp.com` in your terminal and pasting the full output |
 
 The destination server and paths are hardcoded in the workflow file itself (`sftp://sftp.wp.com/htdocs/wp-content/...`).
 

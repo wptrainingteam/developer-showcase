@@ -44,6 +44,7 @@ jobs:
           local-dir: plugins/bifrost-music/vendor/
           # vendor/ is gitignored, so --all forces upload of untracked files
           git-ftp-args: --all
+          known-hosts: ${{ secrets.SFTP_KNOWN_HOSTS }}
 
       # ── Theme ───────────────────────────────────────────────────────────────
 
@@ -61,3 +62,4 @@ jobs:
           local-dir: themes/bifrost-noise/vendor/
           # vendor/ is gitignored, so --all forces upload of untracked files
           git-ftp-args: --all
+          known-hosts: ${{ secrets.SFTP_KNOWN_HOSTS }}
