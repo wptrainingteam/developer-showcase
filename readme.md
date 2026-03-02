@@ -55,6 +55,16 @@ The workflow uses [GitHub Environments](https://docs.github.com/en/actions/deplo
 | `trunk` | `production` |
 | `staging` | `staging` |
 
+### How vendor folders are managed
+
+Vendor directories follow a **track the folder, not the contents** convention:
+
+- A `vendor/.gitkeep` file is committed for each plugin/theme — this tracks the directory in git without committing any packages
+- The vendor directory contents are gitignored (see [`.gitignore`](.gitignore))
+- [`.git-ftp-include`](.git-ftp-include) tells the deploy action to upload vendor contents even though they are gitignored
+
+The `.gitkeep` file ensures the `vendor/` directory already exists on the server (created on the first git deploy), so the workflow can safely upload to it.
+
 ### GitHub Repository Setup
 
 **1. Create the environments**
@@ -79,7 +89,25 @@ The destination server and paths are hardcoded in the workflow file itself (`sft
 
 To include a new plugin or theme in the automated vendor deployment:
 
-**1. Edit [`.github/workflows/deploy-vendors.yml`](.github/workflows/deploy-vendors.yml)** and add a `composer install` step:
+**1. Create the `vendor/.gitkeep` file** inside the plugin or theme directory and commit it:
+
+```
+plugins/your-package-name/vendor/.gitkeep
+# or
+themes/your-package-name/vendor/.gitkeep
+```
+
+This tracks the vendor directory in git (without committing packages) and ensures the directory exists on the server before the first deploy.
+
+**2. Update [`.git-ftp-include`](.git-ftp-include)** to include the new vendor directory:
+
+```
+!plugins/your-package-name/vendor/
+# or
+!themes/your-package-name/vendor/
+```
+
+**3. Edit [`.github/workflows/deploy-vendors.yml`](.github/workflows/deploy-vendors.yml)** and add a `composer install` step:
 
 ```yaml
 - name: Install dependencies (your-package-name)
