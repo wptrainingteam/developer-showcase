@@ -28,25 +28,6 @@ jobs:
           php-version: '8.2'
           tools: composer
 
-      # ── Pre-create remote vendor directories ───────────────────────────────
-      # Runs once on first deploy when vendor/ doesn't exist yet on the server.
-      # lftp mkdir -fp is silent when the directory already exists.
-
-      - name: Ensure remote vendor directories exist
-        if: ${{ inputs.dry_run != true }}
-        env:
-          SFTP_USER: ${{ secrets.SFTP_USER }}
-          SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
-        run: |
-          sudo apt-get install -y lftp
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SFTP_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
-          lftp -e "
-            mkdir -fp htdocs/wp-content/plugins/bifrost-music/vendor;
-            mkdir -fp htdocs/wp-content/themes/bifrost-noise/vendor;
-            quit
-          " -u "$SFTP_USER,$SFTP_PASSWORD" sftp://sftp.wp.com
-
       # ── Plugin ─────────────────────────────────────────────────────────────
 
       - name: Install plugin dependencies (bifrost-music)
