@@ -1240,16 +1240,6 @@
 								"right": "var(--wp--preset--spacing--40)"
 							}
 						}
-					},
-					"link": {
-						"spacing": {
-							"padding": {
-								"top": "var(--wp--preset--spacing--20)",
-								"bottom": "var(--wp--preset--spacing--20)",
-								"left": "var(--wp--preset--spacing--40)",
-								"right": "var(--wp--preset--spacing--40)"
-							}
-						}
 					}
 				}
 			},

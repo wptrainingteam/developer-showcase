@@ -31,6 +31,7 @@ final class PostTypeModifierRegistrar
 	 * @var array<string, class-string>
 	 */
 	private const MODIFIERS = [
+		'music_album'  => Modifiers\Album::class,
 		'music_artist' => Modifiers\Artist::class
 	];
 
