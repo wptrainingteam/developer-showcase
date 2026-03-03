@@ -3,6 +3,7 @@
 /**
  * Title: Post Meta
  * Slug: bifrost-noise/post-meta-default
+ * Inserter: no
  */
 
 declare(strict_types=1);

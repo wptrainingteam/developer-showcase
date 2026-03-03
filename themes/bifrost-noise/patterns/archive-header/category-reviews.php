@@ -3,6 +3,7 @@
 /**
  * Title: Reviews Category Archive Header
  * Slug: bifrost-noise/archive-header-category-reviews
+ * Inserter: no
  */
 
 declare(strict_types=1);

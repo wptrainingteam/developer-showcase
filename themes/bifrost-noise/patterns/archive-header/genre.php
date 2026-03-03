@@ -3,6 +3,7 @@
 /**
  * Title: Genre Archive Header
  * Slug: bifrost-noise/archive-header-genre
+ * Inserter: no
  */
 
 declare(strict_types=1);

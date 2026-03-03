@@ -3,6 +3,7 @@
 /**
  * Title: Album Archive Header
  * Slug: bifrost-noise/archive-header-album
+ * Inserter: no
  */
 
 declare(strict_types=1);

@@ -3,6 +3,7 @@
 /**
  * Title: Hip Hop Archive Header
  * Slug: bifrost-noise/archive-header-genre-hip-hop
+ * Inserter: no
  */
 
 declare(strict_types=1);

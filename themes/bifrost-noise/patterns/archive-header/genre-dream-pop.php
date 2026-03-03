@@ -3,6 +3,7 @@
 /**
  * Title: Dream Pop Archive Header
  * Slug: bifrost-noise/archive-header-genre-dream-pop
+ * Inserter: no
  */
 
 declare(strict_types=1);

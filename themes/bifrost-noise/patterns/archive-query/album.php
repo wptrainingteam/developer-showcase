@@ -3,6 +3,7 @@
 /**
  * Title: Album Archive Query
  * Slug: bifrost-noise/archive-query-album
+ * Inserter: no
  */
 
 declare(strict_types=1);

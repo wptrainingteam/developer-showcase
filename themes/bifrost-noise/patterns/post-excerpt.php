@@ -3,6 +3,7 @@
 /**
  * Title: Post: Excerpt
  * Slug: bifrost-noise/post-excerpt
+ * Inserter: no
  */
 
 declare(strict_types=1);

@@ -3,6 +3,7 @@
 /**
  * Title: Outlaw Country Archive Header
  * Slug: bifrost-noise/archive-header-genre-outlaw-country
+ * Inserter: no
  */
 
 declare(strict_types=1);

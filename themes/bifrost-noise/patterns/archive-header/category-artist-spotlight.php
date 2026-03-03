@@ -3,6 +3,7 @@
 /**
  * Title: Artist Spotlight Category Archive Header
  * Slug: bifrost-noise/archive-header-category-artist-spotlight
+ * Inserter: no
  */
 
 declare(strict_types=1);

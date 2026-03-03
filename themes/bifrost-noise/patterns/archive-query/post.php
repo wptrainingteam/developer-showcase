@@ -3,6 +3,7 @@
 /**
  * Title: Post Archive Query
  * Slug: bifrost-noise/archive-query-post
+ * Inserter: no
  */
 
 declare(strict_types=1);

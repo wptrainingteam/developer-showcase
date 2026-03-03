@@ -3,6 +3,7 @@
 /**
  * Title: Category Archive Header
  * Slug: bifrost-noise/archive-header-category
+ * Inserter: no
  */
 
 declare(strict_types=1);

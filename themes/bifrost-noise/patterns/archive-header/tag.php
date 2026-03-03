@@ -3,6 +3,7 @@
 /**
  * Title: Tag Archive Header
  * Slug: bifrost-noise/archive-header-tag
+ * Inserter: no
  */
 
 declare(strict_types=1);

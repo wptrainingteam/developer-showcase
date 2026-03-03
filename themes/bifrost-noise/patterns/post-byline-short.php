@@ -3,6 +3,7 @@
 /**
  * Title: Post Byline (Short)
  * Slug: bifrost-noise/post-byline-short
+ * Inserter: no
  */
 
 declare(strict_types=1);

@@ -3,6 +3,7 @@
 /**
  * Title: Post Archive (Blog Home) Header
  * Slug: bifrost-noise/archive-header-post
+ * Inserter: no
  */
 
 declare(strict_types=1);

@@ -3,6 +3,7 @@
 /**
  * Title: Artist Archive Query
  * Slug: bifrost-noise/archive-query-artist
+ * Inserter: no
  */
 
 declare(strict_types=1);

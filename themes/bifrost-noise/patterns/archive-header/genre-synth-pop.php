@@ -3,6 +3,7 @@
 /**
  * Title: Synth Pop Archive Header
  * Slug: bifrost-noise/archive-header-genre-synth-pop
+ * Inserter: no
  */
 
 declare(strict_types=1);
