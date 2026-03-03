@@ -22,7 +22,5 @@ final class Definitions
 
 	public const POST_TYPE_ALBUM = 'music_album';
 
-	public const POST_TYPE_SONG = 'music_song';
-
 	public const TAXONOMY_GENRE = 'music_genre';
 }

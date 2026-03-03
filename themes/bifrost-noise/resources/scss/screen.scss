@@ -1,0 +1,90 @@
+*,
+*::before,
+*::after,
+html body * {
+	cursor: none !important;
+}
+
+#cursor-ring {
+	position: fixed;
+	top: 0; left: 0;
+	width: 18px; height: 18px;
+	border: 1.5px solid #a855f7;
+	border-radius: 50%;
+	pointer-events: none;
+	z-index: 99999;
+	transform: translate(-50%, -50%);
+	transition: width 0.25s cubic-bezier(0.34,1.56,0.64,1),
+	height 0.25s cubic-bezier(0.34,1.56,0.64,1),
+	opacity 0.2s;
+	opacity: 0.85;
+}
+
+#cursor-dot {
+	position: fixed;
+	top: 0; left: 0;
+	width: 5px; height: 5px;
+	background: #a855f7;
+	border-radius: 50%;
+	pointer-events: none;
+	z-index: 100000;
+	transform: translate(-50%, -50%);
+	transition: transform 0.08s;
+	opacity: 0.9;
+}
+
+#cursor-ring.clicked {
+	width: 38px !important;
+	height: 38px !important;
+	opacity: 0.3 !important;
+}
+
+#cursor-ring.hovering {
+	width: 26px;
+	height: 26px;
+	opacity: 1;
+}
+
+.cursor-trail {
+	position: fixed;
+	pointer-events: none;
+	z-index: 99990;
+	border-radius: 50%;
+	animation: cursor-trail-fade 0.6s ease-out forwards;
+}
+
+@keyframes cursor-trail-fade {
+	0%   { opacity: 0.45; transform: translate(-50%, -50%) scale(1); }
+	100% { opacity: 0;    transform: translate(-50%, -50%) scale(0.1); }
+}
+
+.cursor-ripple {
+	position: fixed;
+	pointer-events: none;
+	z-index: 99985;
+	border-radius: 50%;
+	border: 1px solid #a855f7;
+	animation: cursor-ripple-out 0.5s ease-out forwards;
+	transform: translate(-50%, -50%) scale(0);
+}
+
+@keyframes cursor-ripple-out {
+	0%   { opacity: 0.6; transform: translate(-50%, -50%) scale(0); }
+	100% { opacity: 0;   transform: translate(-50%, -50%) scale(4); }
+}
+
+.cursor-glyph {
+	position: fixed;
+	pointer-events: none;
+	z-index: 99992;
+	font-size: 11px;
+	font-family: 'Courier New', monospace;
+	color: #a855f7;
+	animation: cursor-glyph-float 0.9s ease-out forwards;
+	white-space: nowrap;
+}
+
+@keyframes cursor-glyph-float {
+	0%   { opacity: 0.9; transform: translate(-50%, -50%) scale(1); }
+	100% { opacity: 0;   transform: translate(-50%, calc(-50% - 60px)) scale(0.6); }
+}

@@ -1,0 +1,18 @@
+{
+	"name": "bifrost-noise",
+	"version": "1.0.0",
+	"description": "Music theme design.",
+	"scripts": {
+		"start": "wp-scripts start --webpack-src-dir=resources --output-path=public --experimental-modules",
+		"build": "wp-scripts build --webpack-src-dir=resources --output-path=public --experimental-modules"
+	},
+	"dependencies": {
+		"@wordpress/blocks": "^15.12.0",
+		"@wordpress/i18n": "^6.12.0",
+		"@wordpress/scripts": "^31.4.0",
+		"copy-webpack-plugin": "^13.0.1",
+		"glob": "^13.0.3",
+		"path": "^0.12.7",
+		"webpack-remove-empty-scripts": "^1.1.1"
+	}
+}

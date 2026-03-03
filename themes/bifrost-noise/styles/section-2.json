@@ -1,0 +1,34 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/wp/trunk/schemas/json/theme.json",
+	"version": 3,
+	"title": "Style 2",
+	"slug": "section-2",
+	"blockTypes": [
+		"core/column",
+		"core/columns",
+		"core/comment-content",
+		"core/comment-template",
+		"core/comments",
+		"core/group",
+		"core/media-text"
+	],
+	"styles": {
+		"css": "backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); position: relative; overflow: hidden;",
+		"border": {
+			"top": {
+				"color": "color-mix(in oklab, var(--wp--custom--color--neutral-200) 50%, transparent)",
+				"style": "solid",
+				"width": "1px"
+			},
+			"bottom": {
+				"color": "color-mix(in oklab, var(--wp--custom--color--neutral-200) 50%, transparent)",
+				"style": "solid",
+				"width": "1px"
+			}
+		},
+		"color": {
+			"background": "color-mix(in oklab, var(--wp--custom--color--neutral-200) 60%, transparent)",
+			"text": "var(--wp--preset--color--foreground-default)"
+		}
+	}
+}

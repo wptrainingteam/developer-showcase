@@ -1,0 +1,12 @@
+.wp-block-post-featured-image a img {
+	filter: grayscale(100%);
+	transition: filter 0.3s ease;
+}
+
+.wp-block-post-featured-image a:hover img {
+	filter: grayscale(0%);
+}
+
+.wp-block-post-featured-image a:focus img {
+	filter: grayscale(0%);
+}

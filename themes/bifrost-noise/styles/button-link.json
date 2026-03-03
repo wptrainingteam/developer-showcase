@@ -1,0 +1,27 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/wp/trunk/schemas/json/theme.json",
+	"version": 3,
+	"title": "Link",
+	"slug": "button-link",
+	"blockTypes": [ "core/button" ],
+	"styles": {
+		"css": "&:is(:focus, :hover) { color: var(--wp--preset--color--link-primary-foreground-interact); }",
+		"border": {
+			"width": "0",
+			"radius": "0"
+		},
+		"color": {
+			"background": "transparent",
+			"text": "var(--wp--preset--color--link-primary-foreground)"
+		},
+		"shadow": "none",
+		"spacing": {
+			"padding": {
+				"top": "0",
+				"bottom": "0",
+				"left": "0",
+				"right": "0"
+			}
+		}
+	}
+}

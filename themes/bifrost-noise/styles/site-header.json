@@ -1,0 +1,26 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/wp/6.8/schemas/json/theme.json",
+	"version": 3,
+	"title": "Site Header",
+	"slug": "site-header",
+	"blockTypes": [
+		"core/group"
+	],
+	"styles": {
+		"css": "backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);",
+		"background": {
+			"backgroundImage": "var(--wp--custom--image--noise)"
+		},
+		"border": {
+			"bottom": {
+				"color": "color-mix(in oklab, var(--wp--custom--color--neutral-200) 50%, transparent)",
+				"style": "solid",
+				"width": "1px"
+			}
+		},
+		"color": {
+			"background": "color-mix(in oklab, var(--wp--custom--color--neutral-50) 80%, transparent)",
+			"text": "var(--wp--preset--color--foreground-default)"
+		}
+	}
+}
