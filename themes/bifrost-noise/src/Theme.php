@@ -36,6 +36,7 @@ final class Theme extends Application
 		Block\Stylesheet\StylesheetServiceProvider::class,
 		Editor\EditorServiceProvider::class,
 		Frontend\FrontendServiceProvider::class,
+		Gutenberg\GutenbergServiceProvider::class,
 		PostType\PostTypeServiceProvider::class
 	];
 }
