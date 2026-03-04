@@ -1,10 +1,14 @@
 name: Deploy Vendor Folders
 
 on:
-  push:
+  workflow_run:
+    workflows:
+      - "Publish Website"
     branches:
       - trunk
       - staging
+    types:
+      - completed
   workflow_dispatch:
     inputs:
       dry_run:
@@ -16,7 +20,11 @@ jobs:
   deploy-vendors:
     name: Build and Deploy Vendor Folders
     runs-on: ubuntu-latest
-    environment: ${{ github.ref_name == 'trunk' && 'production' || 'staging' }}
+    # For workflow_run events, only proceed if the upstream workflow succeeded.
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    # workflow_run executes in the context of the default branch, so use
+    # head_branch from the event payload to select the right environment.
+    environment: ${{ (github.event.workflow_run.head_branch || github.ref_name) == 'trunk' && 'production' || 'staging' }}
 
     steps:
       - name: Checkout
