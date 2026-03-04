@@ -26,6 +26,21 @@ final class Term extends BindingSource
 {
 	protected const NAME = 'bifrost-music/term';
 
+	private const DEFAULT_IMAGES = [
+		'category'                  => 'category.png',
+		'category-artist-spotlight' => 'category-artist-spotlight.png',
+		'category-editorial'        => 'category-editorial.png',
+		'category-reviews'          => 'category-reviews.png',
+		'genre'                     => 'genre.png',
+		'genre-dream-pop'           => 'genre-dream-pop.png',
+		'genre-hip-hop'             => 'genre-hip-hop.png',
+		'genre-neo-shoegaze'        => 'genre-neo-shoegaze.png',
+		'genre-outlaw-country'      => 'genre-outlaw-country.png',
+		'genre-punk'                => 'genre-punk.png',
+		'genre-synth-pop'           => 'genre-synth-pop.png',
+		'tag'                       => 'tag.png'
+	];
+
 	/**
 	 * @inheritDoc
 	 */
@@ -41,8 +56,18 @@ final class Term extends BindingSource
 	{
 		return match ($args['field'] ?? null) {
 			'count' => $this->renderCount($args),
+			'image' => $this->renderImage($args),
 			default  => null
 		};
+	}
+
+	private function getTerm(array $args): ?WP_Term
+	{
+		$term = isset($args['term'], $args['taxonomy'])
+			? get_term_by('slug', $args['term'], $args['taxonomy'])
+			: get_queried_object();
+
+		return $term instanceof WP_Term ? $term : null;
 	}
 
 	/**
@@ -50,11 +75,7 @@ final class Term extends BindingSource
 	 */
 	private function renderCount(array $args): ?string
 	{
-		$term = isset($args['term'], $args['taxonomy'])
-			? get_term_by('slug', $args['term'], $args['taxonomy'])
-			: get_queried_object();
-
-		if (! $term instanceof WP_Term) {
+		if (! $term = $this->getTerm($args)) {
 			return null;
 		}
 
@@ -72,5 +93,29 @@ final class Term extends BindingSource
 			number_format_i18n($total),
 			$total === 1 ? $postTypeObject->labels->singular_name : $postTypeObject->labels->name
 		);
+	}
+
+	/**
+	 * Returns a term's featured image URL.
+	 */
+	private function renderImage(array $args): ?string
+	{
+		if (! $term = $this->getTerm($args)) {
+			return null;
+		}
+
+		$tax = str_replace(['post_', 'music_'], '', $term->taxonomy);
+
+		if ($imageId = get_term_meta($term->term_id, 'featured_image', true)) {
+			return esc_url(wp_get_attachment_image_url($imageId, 'full'));
+		}
+
+		foreach (["{$tax}-{$term->slug}", $tax] as $key) {
+			if (isset(self::DEFAULT_IMAGES[$key])) {
+				return esc_url(get_theme_file_uri('public/media/images/archive/' . self::DEFAULT_IMAGES[$key]));
+			}
+		}
+
+		return null;
 	}
 }

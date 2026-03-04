@@ -43,6 +43,7 @@ final class BindingServiceProvider extends ServiceProvider implements Bootable
 	 */
 	public function boot(): void
 	{
+		$this->container->get(BindingAttributeSupport::class)->boot();
 		$this->container->get(BindingSourceRegistrar::class)->boot();
 	}
 }
