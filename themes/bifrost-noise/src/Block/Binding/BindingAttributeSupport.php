@@ -28,7 +28,8 @@ final class BindingAttributeSupport implements Bootable
 	 * @todo Type hint with PHP 8.3+ requirement.
 	 */
 	private const SUPPORTED_ATTRIBUTES = [
-		'core/cover' => ['url']
+		'core/cover'           => ['url'],
+		'outermost/icon-block' => ['icon']
 	];
 
 	/**
