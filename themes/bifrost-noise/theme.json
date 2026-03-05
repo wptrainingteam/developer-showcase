@@ -1273,6 +1273,13 @@
 					}
 				}
 			},
+			"core/post-author-biography": {
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--tertiary)",
+					"fontSize": "var(--wp--preset--font-size--sm)",
+					"lineHeight": "var(--wp--custom--line-height--sm)"
+				}
+			},
 			"core/post-comments-form": {
 				"elements": {
 					"h3": {
