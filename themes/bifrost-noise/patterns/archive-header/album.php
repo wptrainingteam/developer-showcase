@@ -11,7 +11,7 @@ declare(strict_types=1);
 # Prevent direct access.
 defined('ABSPATH') || exit;
 
-$image = get_theme_file_uri('public/media/images/archive/album.png');
+$image = get_theme_file_uri('public/media/images/archive/album.webp');
 
 ?>
 <!-- wp:cover {"url":"<?= esc_url($image) ?>","id":93,"hasParallax":true,"dimRatio":80,"overlayColor":"black","isUserOverlayColor":true,"sizeSlug":"large","style":{"spacing":{"padding":{"right":"var:preset|spacing|0","left":"var:preset|spacing|0"}}},"layout":{"type":"constrained","contentSize":"80rem"}} -->

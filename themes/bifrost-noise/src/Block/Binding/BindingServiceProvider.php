@@ -24,7 +24,9 @@ final class BindingServiceProvider extends ServiceProvider implements Bootable
 	private const SOURCES = [
 		Sources\Album::class,
 		Sources\PostType::class,
-		Sources\Term::class
+		Sources\Query::class,
+		Sources\Term::class,
+		Sources\User::class
 	];
 
 	/**
@@ -43,6 +45,7 @@ final class BindingServiceProvider extends ServiceProvider implements Bootable
 	 */
 	public function boot(): void
 	{
+		$this->container->get(BindingAttributeSupport::class)->boot();
 		$this->container->get(BindingSourceRegistrar::class)->boot();
 	}
 }

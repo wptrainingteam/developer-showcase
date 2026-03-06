@@ -32,7 +32,8 @@ final class PostTypeModifierRegistrar
 	 */
 	private const MODIFIERS = [
 		'music_album'  => Modifiers\Album::class,
-		'music_artist' => Modifiers\Artist::class
+		'music_artist' => Modifiers\Artist::class,
+		'post'         => Modifiers\Post::class,
 	];
 
 	/**

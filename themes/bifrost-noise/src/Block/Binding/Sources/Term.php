@@ -26,6 +26,12 @@ final class Term extends BindingSource
 {
 	protected const NAME = 'bifrost-music/term';
 
+	private const DEFAULT_IMAGES = [
+		'category'    => 'public/media/images/archive/category.webp',
+		'music_genre' => 'public/media/images/archive/genre.webp',
+		'post_tag'    => 'public/media/images/archive/tag.webp'
+	];
+
 	/**
 	 * @inheritDoc
 	 */
@@ -41,8 +47,18 @@ final class Term extends BindingSource
 	{
 		return match ($args['field'] ?? null) {
 			'count' => $this->renderCount($args),
+			'image' => $this->renderImage($args),
 			default  => null
 		};
+	}
+
+	private function getTerm(array $args): ?WP_Term
+	{
+		$term = isset($args['term'], $args['taxonomy'])
+			? get_term_by('slug', $args['term'], $args['taxonomy'])
+			: get_queried_object();
+
+		return $term instanceof WP_Term ? $term : null;
 	}
 
 	/**
@@ -50,11 +66,7 @@ final class Term extends BindingSource
 	 */
 	private function renderCount(array $args): ?string
 	{
-		$term = isset($args['term'], $args['taxonomy'])
-			? get_term_by('slug', $args['term'], $args['taxonomy'])
-			: get_queried_object();
-
-		if (! $term instanceof WP_Term) {
+		if (! $term = $this->getTerm($args)) {
 			return null;
 		}
 
@@ -72,5 +84,25 @@ final class Term extends BindingSource
 			number_format_i18n($total),
 			$total === 1 ? $postTypeObject->labels->singular_name : $postTypeObject->labels->name
 		);
+	}
+
+	/**
+	 * Returns a term's featured image URL.
+	 */
+	private function renderImage(array $args): ?string
+	{
+		if (! $term = $this->getTerm($args)) {
+			return null;
+		}
+
+		if ($imageId = get_term_meta($term->term_id, 'image', true)) {
+			return esc_url(wp_get_attachment_image_url($imageId, 'full'));
+		}
+
+		if (isset(self::DEFAULT_IMAGES[$term->taxonomy])) {
+			return esc_url(get_theme_file_uri(self::DEFAULT_IMAGES[$term->taxonomy]));
+		}
+
+		return null;
 	}
 }

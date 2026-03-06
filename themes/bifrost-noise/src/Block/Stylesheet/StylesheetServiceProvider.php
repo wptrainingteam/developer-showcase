@@ -29,7 +29,6 @@ class StylesheetServiceProvider extends ServiceProvider implements Bootable
 			StylesheetIterator::class,
 			fn() => new StylesheetIterator(self::STYLESHEETS_PATH)
 		);
-		$this->container->singleton(StylesheetService::class);
 	}
 
 	/**
@@ -37,6 +36,6 @@ class StylesheetServiceProvider extends ServiceProvider implements Bootable
 	 */
 	public function boot(): void
 	{
-		$this->container->get(StylesheetService::class)->boot();
+		$this->container->get(StylesheetLoader::class)->boot();
 	}
 }

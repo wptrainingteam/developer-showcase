@@ -22,6 +22,8 @@ final class RenderServiceProvider extends ServiceProvider implements Bootable
 	 * Classes that hook into specific block's rendering process.
 	 */
 	private const RENDERERS = [
+		RenderCover::class,
+		RenderIcon::class,
 		RenderQuery::class
 	];
 
