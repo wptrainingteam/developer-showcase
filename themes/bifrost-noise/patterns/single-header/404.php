@@ -11,7 +11,7 @@ declare(strict_types=1);
 # Prevent direct access.
 defined('ABSPATH') || exit;
 
-$image = get_theme_file_uri('public/media/images/error-404.png');
+$image = get_theme_file_uri('public/media/images/error-404.webp');
 
 ?>
 <!-- wp:cover {"url":"<?= esc_url($image) ?>","id":180,"hasParallax":true,"dimRatio":70,"overlayColor":"black","isUserOverlayColor":true,"focalPoint":{"x":0,"y":0.5},"minHeight":100,"minHeightUnit":"vh","sizeSlug":"full","metadata":{"name":"404 Header","patternName":"bifrost-noise/single-header-404"},"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|110","bottom":"var:preset|spacing|110","left":"var:preset|spacing|70","right":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->

@@ -27,18 +27,9 @@ final class Term extends BindingSource
 	protected const NAME = 'bifrost-music/term';
 
 	private const DEFAULT_IMAGES = [
-		'category'                  => 'category.png',
-		'category-artist-spotlight' => 'category-artist-spotlight.png',
-		'category-editorial'        => 'category-editorial.png',
-		'category-reviews'          => 'category-reviews.png',
-		'genre'                     => 'genre.png',
-		'genre-dream-pop'           => 'genre-dream-pop.png',
-		'genre-hip-hop'             => 'genre-hip-hop.png',
-		'genre-neo-shoegaze'        => 'genre-neo-shoegaze.png',
-		'genre-outlaw-country'      => 'genre-outlaw-country.png',
-		'genre-punk'                => 'genre-punk.png',
-		'genre-synth-pop'           => 'genre-synth-pop.png',
-		'tag'                       => 'tag.png'
+		'category'    => 'public/media/images/archive/category.webp',
+		'music_genre' => 'public/media/images/archive/genre.webp',
+		'post_tag'    => 'public/media/images/archive/tag.webp'
 	];
 
 	/**
@@ -104,16 +95,12 @@ final class Term extends BindingSource
 			return null;
 		}
 
-		$tax = str_replace(['post_', 'music_'], '', $term->taxonomy);
-
-		if ($imageId = get_term_meta($term->term_id, 'featured_image', true)) {
+		if ($imageId = get_term_meta($term->term_id, 'image', true)) {
 			return esc_url(wp_get_attachment_image_url($imageId, 'full'));
 		}
 
-		foreach (["{$tax}-{$term->slug}", $tax] as $key) {
-			if (isset(self::DEFAULT_IMAGES[$key])) {
-				return esc_url(get_theme_file_uri('public/media/images/archive/' . self::DEFAULT_IMAGES[$key]));
-			}
+		if (isset(self::DEFAULT_IMAGES[$term->taxonomy])) {
+			return esc_url(get_theme_file_uri(self::DEFAULT_IMAGES[$term->taxonomy]));
 		}
 
 		return null;
