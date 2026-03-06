@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Stylesheet service.
+ * Stylesheet loader.
  *
  * @author    Bifrost
  * @copyright Copyright (c) 2026, WordPress
@@ -22,7 +22,7 @@ use Bifrost\Noise\Contracts\Bootable;
  * using WordPress's block style API. Stylesheets are only loaded when their
  * associated blocks are actually used on a page, improving performance.
  */
-final class StylesheetService implements Bootable
+final class StylesheetLoader implements Bootable
 {
 	/**
 	 * Handle prefix used for registering block styles.

@@ -21,14 +21,6 @@ final class ThemeServiceProvider extends ServiceProvider implements Bootable
 	/**
 	 * @inheritDoc
 	 */
-	public function register(): void
-	{
-		$this->container->singleton(ThemeSetup::class);
-	}
-
-	/**
-	 * @inheritDoc
-	 */
 	public function boot(): void
 	{
 		$this->container->get(ThemeSetup::class)->boot();
