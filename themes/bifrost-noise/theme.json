@@ -1383,14 +1383,16 @@
 			},
 			"core/query-pagination": {
 				"spacing": {
+					"blockGap": "var(--wp--preset--spacing--40)",
 					"margin": {
 						"top": "var(--wp--preset--spacing--70) !important"
 					}
 				},
 				"typography": {
-					"fontSize": "var(--wp--preset--font-size--sm)",
+					"fontFamily": "var(--wp--preset--font-family--mono)",
+					"fontSize": "var(--wp--preset--font-size--xs)",
 					"fontWeight": "500",
-					"lineHeight": "var(--wp--custom--line-height--sm)"
+					"lineHeight": "var(--wp--custom--line-height--xs)"
 				},
 				"elements": {
 					"link": {
@@ -1409,6 +1411,9 @@
 						}
 					}
 				}
+			},
+			"core/query-pagination-numbers": {
+				"css": "display: inherit; gap: inherit;"
 			},
 			"core/quote": {
 				"border": {
