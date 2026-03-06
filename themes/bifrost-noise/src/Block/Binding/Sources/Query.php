@@ -19,12 +19,12 @@ use WP_Query;
 use WP_Term;
 
 /**
- * Handles registering the `bifrost-music/search` block bindings source and
+ * Handles registering the `bifrost-music/query` block bindings source and
  * rendering its output based on the given arguments.
  */
-final class Search extends BindingSource
+final class Query extends BindingSource
 {
-	protected const NAME = 'bifrost-music/search';
+	protected const NAME = 'bifrost-music/query';
 
 	/**
 	 * @inheritDoc
@@ -53,7 +53,7 @@ final class Search extends BindingSource
 		$total = absint($GLOBALS['wp_query']->found_posts);
 
 		return sprintf(
-			// Translators: 1: Number of search results.
+			// Translators: 1: Number of found posts for a query.
 			esc_html(_n('%1$s Result', '%1$s Results', $total, 'bifrost-noise')),
 			number_format_i18n($total)
 		);

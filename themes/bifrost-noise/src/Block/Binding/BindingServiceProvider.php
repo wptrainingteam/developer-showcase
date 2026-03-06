@@ -24,7 +24,7 @@ final class BindingServiceProvider extends ServiceProvider implements Bootable
 	private const SOURCES = [
 		Sources\Album::class,
 		Sources\PostType::class,
-		Sources\Search::class,
+		Sources\Query::class,
 		Sources\Term::class,
 		Sources\User::class
 	];

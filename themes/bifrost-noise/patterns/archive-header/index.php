@@ -32,7 +32,7 @@ $image = get_theme_file_uri('public/media/images/archive/default.png');
 				<p>//</p>
 				<!-- /wp:paragraph -->
 
-				<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"bifrost-music/search","args":{"field":"count"}}}}} -->
+				<!-- wp:paragraph {"metadata":{"bindings":{"content":{"source":"bifrost-music/query","args":{"field":"count"}}}}} -->
 				<p>0</p>
 				<!-- /wp:paragraph --></div>
 			<!-- /wp:group -->
