@@ -1,0 +1,16 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/wp/trunk/schemas/json/theme.json",
+	"version": 3,
+	"title": "Unstyled",
+	"slug": "none",
+	"blockTypes": [ "core/list" ],
+	"styles": {
+		"css": "list-style: none;",
+		"spacing": {
+			"padding": {
+				"left": "0",
+				"right": "0"
+			}
+		}
+	}
+}

@@ -1,0 +1,57 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/wp/trunk/schemas/json/theme.json",
+	"version": 3,
+	"title": "Annotation",
+	"description": "A note or comment added to a text or diagram.",
+	"slug": "text-annotation",
+	"blockTypes": [
+		"core/group",
+		"core/heading",
+		"core/paragraph"
+	],
+	"styles": {
+		"css": "width: fit-content",
+		"border": {
+			"color": "var(--wp--preset--color--border-accent)",
+			"style": "solid",
+			"width": "1px",
+			"left": {
+				"width": "0"
+			},
+			"right": {
+				"width": "0"
+			}
+		},
+		"color": {
+			"background": "var(--wp--preset--color--background-overlay)",
+			"text": "var(--wp--preset--color--foreground-on-overlay)"
+		},
+		"spacing": {
+			"padding": {
+				"top": "var(--wp--preset--spacing--10)",
+				"bottom": "var(--wp--preset--spacing--10)",
+				"left": "var(--wp--preset--spacing--40)",
+				"right": "var(--wp--preset--spacing--40)"
+			}
+		},
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--mono)",
+			"fontSize": "var(--wp--preset--font-size--3-xs)",
+			"fontWeight": "400",
+			"lineHeight": "var(--wp--custom--line-height--3-xs)",
+			"textTransform": "uppercase"
+		},
+		"elements": {
+			"heading": {
+				"typography": {
+					"fontFamily": "inherit !important",
+					"fontWeight": "inherit !important",
+					"fontSize": "inherit !important",
+					"fontStyle": "inherit !important",
+					"lineHeight": "inherit !important",
+					"textTransform": "inherit !important"
+				}
+			}
+		}
+	}
+}

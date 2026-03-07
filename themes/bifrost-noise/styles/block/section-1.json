@@ -1,0 +1,22 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/wp/trunk/schemas/json/theme.json",
+	"version": 3,
+	"title": "Style 1",
+	"slug": "section-1",
+	"blockTypes": [
+		"core/column",
+		"core/columns",
+		"core/comment-content",
+		"core/comment-template",
+		"core/comments",
+		"core/group",
+		"core/media-text"
+	],
+	"styles": {
+		"css": "backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); position: relative;",
+		"color": {
+			"background": "color-mix(in oklab, var(--wp--custom--color--neutral-100) 50%, transparent)",
+			"text": "var(--wp--preset--color--foreground-default)"
+		}
+	}
+}

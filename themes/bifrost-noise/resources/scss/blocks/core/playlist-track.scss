@@ -1,0 +1,68 @@
+
+.wp-block-playlist-track {
+	list-style-type: none;
+	counter-increment: item;
+
+	&:has([aria-current=true]),
+	&:hover {
+		background: none;
+	}
+}
+
+.wp-block-playlist-track .wp-block-playlist-track__button {
+	align-items: center;
+	gap: var(--wp--preset--spacing--40);
+	padding: var(--wp--preset--spacing--40);
+}
+
+.wp-block-playlist-track .wp-block-playlist-track__button:hover,
+.wp-block-playlist-track .wp-block-playlist-track__button:focus,
+.wp-block-playlist-track .wp-block-playlist-track__button[aria-current=true]{
+	cursor: pointer;
+	background: color-mix(
+		in oklab,
+		var(--wp--preset--color--background-level-1) 25%,
+		transparent
+	);
+}
+
+.wp-block-playlist-track .wp-block-playlist-track__button::before {
+	content: counter(item, decimal-leading-zero) " ";
+	font-family: var(--wp--preset--font-family--mono);
+	font-size: var(--wp--preset--font-size--sm);
+	color: var(--wp--preset--color--foreground-subtle);
+}
+
+.wp-block-playlist-track .wp-block-playlist-track__button[aria-current=true] {
+	font-weight: inherit !important;
+	color: var(--wp--preset--color--foreground-accent) !important;
+}
+
+.wp-block-playlist-track .wp-block-playlist-track__button[aria-current=true]::before {
+	color: inherit;
+}
+
+.wp-block-playlist-track .wp-block-playlist-track__button span {
+	margin-right: 0;
+}
+
+.wp-block-playlist-track .wp-block-playlist-track__title {
+	font-size: var(--wp--preset--font-size--sm);
+}
+
+.wp-block-playlist-track .wp-block-playlist-track__length {
+	font-family: var(--wp--preset--font-family--mono);
+	font-size: var(--wp--preset--font-size--3-xs) !important; // overwriting core
+}
+
+.wp-block-playlist-track .wp-block-playlist-track__length .screen-reader-text {
+	display: inline;
+	position: unset;
+	margin: 0;
+	padding: 0;
+	clip-path: unset;
+}
+
+.wp-block-playlist-track__artist {
+	display: none !important;
+}

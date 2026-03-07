@@ -1,0 +1,17 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/wp/trunk/schemas/json/theme.json",
+	"version": 3,
+	"title": "Accent",
+	"description": "Bordered post featured image.",
+	"slug": "post-featured-image-accent",
+	"blockTypes": [
+		"core/post-featured-image"
+	],
+	"styles": {
+		"border": {
+			"color": "#fff",
+			"style": "solid",
+			"width": "1px"
+		}
+	}
+}

@@ -1,0 +1,31 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/wp/trunk/schemas/json/theme.json",
+	"version": 3,
+	"title": "Artist",
+	"slug": "tabs-artist",
+	"blockTypes": [
+		"core/tabs"
+	],
+	"styles": {
+		"css": "gap: 0;",
+		"blocks": {
+			"core/tab-panel": {
+				"spacing": {
+					"margin": {
+						"top": "0"
+					}
+				}
+			},
+			"core/tab": {
+				"spacing": {
+					"padding": {
+						"top": "var(--wp--preset--spacing--70)",
+						"bottom": "var(--wp--preset--spacing--70)",
+						"left": "var(--wp--preset--spacing--70)",
+						"right": "var(--wp--preset--spacing--70)"
+					}
+				}
+			}
+		}
+	}
+}

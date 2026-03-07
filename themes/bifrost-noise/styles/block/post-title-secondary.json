@@ -1,0 +1,15 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/wp/trunk/schemas/json/theme.json",
+	"version": 3,
+	"title": "Secondary",
+	"slug": "post-title-secondary",
+	"blockTypes": [ "core/post-title" ],
+	"styles": {
+		"typography": {
+			"fontSize": "var(--wp--preset--font-size--md)",
+			"fontWeight": "500",
+			"lineHeight": "var(--wp--custom--line-height--md)",
+			"textTransform": "uppercase"
+		}
+	}
+}

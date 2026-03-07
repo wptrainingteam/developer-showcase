@@ -1,0 +1,62 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/wp/trunk/schemas/json/theme.json",
+	"version": 3,
+	"title": "Site Footer",
+	"slug": "site-footer",
+	"blockTypes": [
+		"core/group"
+	],
+	"styles": {
+		"css": "backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); position: relative;",
+		"border": {
+			"top": {
+				"color": "color-mix(in oklab, var(--wp--custom--color--neutral-200) 50%, transparent)",
+				"style": "solid",
+				"width": "1px"
+			}
+		},
+		"color": {
+			"background": "color-mix(in oklab, var(--wp--custom--color--neutral-50) 40%, transparent)",
+			"text": "var(--wp--preset--color--foreground-default)"
+		},
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--mono)",
+			"fontSize": "var(--wp--preset--font-size--xs)",
+			"lineHeight": "var(--wp--preset-line-height--xs)"
+		},
+		"elements": {
+			"h3": {
+				"typography": {
+					"fontSize": "var(--wp--preset--font-size--xs)",
+					"fontWeight": "400",
+					"lineHeight": "var(--wp--custom--font-size--xs)",
+					"textTransform": "uppercase"
+				}
+			},
+			"link": {
+				"color": {
+					"text": "var(--wp--preset--color--foreground-subtle)"
+				},
+				"typography": {
+					"textDecoration": "none"
+				},
+				":focus": {
+					"color": {
+						"text": "var(--wp--preset--color--link-primary-foreground)"
+					},
+					"typography": {
+						"textDecoration": "underline"
+					}
+				},
+				":hover": {
+					"color": {
+						"text": "var(--wp--preset--color--link-primary-foreground)"
+					},
+					"typography": {
+						"textDecoration": "underline"
+					}
+				}
+			}
+		}
+	}
+}

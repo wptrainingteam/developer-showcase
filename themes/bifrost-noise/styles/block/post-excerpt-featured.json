@@ -1,0 +1,21 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/wp/trunk/schemas/json/theme.json",
+	"version": 3,
+	"title": "Featured",
+	"description": "Big post excerpt",
+	"slug": "post-excerpt-featured",
+	"blockTypes": [
+		"core/post-excerpt"
+	],
+	"styles": {
+		"color": {
+			"text": "var(--wp--preset--color--foreground-subtle)"
+		},
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--mono)",
+			"fontSize": "var(--wp--preset--font-size--sm)",
+			"fontStyle": "italic",
+			"lineHeight": "var(--wp--custom--line-height--sm)"
+		}
+	}
+}

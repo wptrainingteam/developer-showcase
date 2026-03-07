@@ -5,10 +5,17 @@
 /themes/twenty*
 /uploads
 /db.php
+/plugins/akismet
+/plugins/gutenberg
+/plugins/icon-block
+/plugins/wp-term-images
 
 # Dependencies
 node_modules/
-vendor/
+plugins/**/vendor/*
+!plugins/**/vendor/.gitkeep
+themes/**/vendor/*
+!themes/**/vendor/.gitkeep
 composer.lock
 
 # Environment
@@ -35,3 +42,6 @@ Thumbs.db
 # Build artifacts
 dist/
 build/
+
+# AI
+.mcp.json

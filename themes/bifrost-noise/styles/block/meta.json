@@ -1,0 +1,44 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/wp/trunk/schemas/json/theme.json",
+	"version": 3,
+	"title": "Meta",
+	"slug": "meta",
+	"blockTypes": [ "core/group" ],
+	"styles": {
+		"color": {
+			"text": "var(--wp--preset--color--foreground-subtle)"
+		},
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--mono)",
+			"fontSize": "var(--wp--preset--font-size--xs)",
+			"fontWeight": "400",
+			"lineHeight": "var(--wp--custom--line-height--xs)"
+		},
+		"elements": {
+			"link": {
+				"color": {
+					"text": "currentColor"
+				},
+				"typography": {
+					"textDecoration": "none"
+				},
+				":focus": {
+					"color": {
+						"text": "var(--wp--preset--color--link-secondary-foreground-interact)"
+					},
+					"typography": {
+						"textDecoration": "underline"
+					}
+				},
+				":hover": {
+					"color": {
+						"text": "var(--wp--preset--color--link-secondary-foreground-interact)"
+					},
+					"typography": {
+						"textDecoration": "underline"
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/wp/trunk/schemas/json/theme.json",
+	"version": 3,
+	"title": "Section Subheading",
+	"description": "Section Subheading",
+	"slug": "text-section-subheading",
+	"blockTypes": [
+		"core/heading",
+		"core/paragraph"
+	],
+	"styles": {
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--mono)",
+			"fontSize": "var(--wp--preset--font-size--sm)",
+			"fontWeight": "300",
+			"lineHeight": "var(--wp--custom--line-height--sm)",
+			"textTransform": "uppercase"
+		}
+	}
+}
