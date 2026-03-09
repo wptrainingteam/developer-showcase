@@ -8,6 +8,7 @@
 /plugins/akismet
 /plugins/gutenberg
 /plugins/icon-block
+/plugins/view-transitions
 /plugins/wp-term-images
 
 # Dependencies
