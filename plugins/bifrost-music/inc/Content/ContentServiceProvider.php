@@ -21,16 +21,6 @@ final class ContentServiceProvider extends ServiceProvider implements Bootable
 	/**
 	 * @inheritDoc
 	 */
-	public function register(): void
-	{
-		$this->container->singleton(Album::class);
-		$this->container->singleton(Artist::class);
-		$this->container->singleton(Genre::class);
-	}
-
-	/**
-	 * @inheritDoc
-	 */
 	public function boot(): void
 	{
 		$this->container->get(Album::class)->boot();
