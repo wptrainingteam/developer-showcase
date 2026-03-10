@@ -24,6 +24,7 @@ final class RenderServiceProvider extends ServiceProvider implements Bootable
 	private const RENDERERS = [
 		RenderCover::class,
 		RenderIcon::class,
+		RenderPlaylistTrack::class,
 		RenderQuery::class
 	];
 
