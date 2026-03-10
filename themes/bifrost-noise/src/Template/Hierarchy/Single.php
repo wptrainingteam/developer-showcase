@@ -5,7 +5,7 @@
  *
  * @author    Bifrost
  * @copyright Copyright (c) 2026, WordPress
- * @license   https://www.gnu.org/licenses/gpl-3.0.php GPL-3.0-or-later
+ * @license   https://www.gnu.org/licenses/gpl-3.0 GPL-3.0-or-later
  * @link      https://github.com/wptrainingteam/developer-showcase
  */
 
@@ -57,18 +57,18 @@ class Single implements Bootable
 		}
 
 		// Post-specific slug template takes priority over category templates.
-		$hierarchy[] = sprintf('single-post-%s.php', $name);
+		$hierarchy[] = sprintf('single-post-%s', $name);
 
 		// Category-specific templates.
 		foreach ($categories as $category) {
-			$hierarchy[] = sprintf('single-post-%s.php', $category->slug);
+			$hierarchy[] = sprintf('single-post-%s', $category->slug);
 		}
 
 		// Standard fallbacks.
-		$hierarchy[] = 'single-post.php';
-		$hierarchy[] = 'single.php';
-		$hierarchy[] = 'singular.php';
-		$hierarchy[] = 'index.php';
+		$hierarchy[] = 'single-post';
+		$hierarchy[] = 'single';
+		$hierarchy[] = 'singular';
+		$hierarchy[] = 'index';
 
 		return $hierarchy;
 	}
