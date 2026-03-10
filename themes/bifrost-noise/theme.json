@@ -1649,6 +1649,22 @@
 			}
 		}
 	},
+	"customTemplates": [
+		{
+			"name": "single-post-album-reviews",
+			"title": "Post: Album Review",
+			"postTypes": [
+				"post"
+			]
+		},
+		{
+			"name": "single-post-artist-spotlight",
+			"title": "Post: Artist Spotlight",
+			"postTypes": [
+				"post"
+			]
+		}
+	],
 	"templateParts": [
 		{
 			"area": "header",

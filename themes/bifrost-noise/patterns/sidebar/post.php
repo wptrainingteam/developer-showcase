@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * Title: Single Post Sidebar
+ * Slug: bifrost-noise/sidebar-post
+ * Inserter: no
+ */
+
+declare(strict_types=1);
+
+# Prevent direct access.
+defined('ABSPATH') || exit;
+
+?>
+<!-- wp:group {"style":{"layout":{"selfStretch":"fit","flexSize":null}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->
+<div class="wp-block-group"><!-- wp:group {"className":"is-style-section-3","style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"flex","orientation":"vertical"}} -->
+	<div class="wp-block-group is-style-section-3"><!-- wp:heading {"level":3,"className":"is-style-text-widget-heading"} -->
+		<h3 class="wp-block-heading is-style-text-widget-heading">Latest Posts</h3>
+		<!-- /wp:heading -->
+
+		<!-- wp:query {"queryId":3,"query":{"perPage":3,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"ignore","inherit":false,"taxQuery":null,"parents":[],"format":[]},"className":"is-style-query-numbered"} -->
+		<div class="wp-block-query is-style-query-numbered"><!-- wp:post-template {"style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"layout":{"type":"default"}} -->
+			<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"constrained"}} -->
+			<div class="wp-block-group"><!-- wp:post-title {"level":3,"isLink":true} /-->
+
+				<!-- wp:group {"className":"is-style-meta","style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"fontSize":"3-xs","layout":{"type":"flex","flexWrap":"nowrap"}} -->
+				<div class="wp-block-group is-style-meta has-3-xs-font-size">
+					<!-- wp:post-date {"format":"human-diff","metadata":{"bindings":{"datetime":{"source":"core/post-data","args":{"field":"date"}}}}} /--></div>
+				<!-- /wp:group --></div>
+			<!-- /wp:group -->
+			<!-- /wp:post-template --></div>
+		<!-- /wp:query --></div>
+	<!-- /wp:group -->
+
+	<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|30"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->
+	<div class="wp-block-group"><!-- wp:paragraph {"className":"is-style-default","style":{"typography":{"textAlign":"center"}},"fontSize":"3-xs","fontFamily":"mono"} -->
+		<p class="has-text-align-center is-style-default has-mono-font-family has-3-xs-font-size">Join 12K Subscribers</p>
+		<!-- /wp:paragraph -->
+
+		<!-- wp:buttons -->
+		<div class="wp-block-buttons"><!-- wp:button {"width":100} -->
+			<div class="wp-block-button has-custom-width wp-block-button__width-100"><a class="wp-block-button__link wp-element-button">Subscribe</a></div>
+			<!-- /wp:button --></div>
+		<!-- /wp:buttons --></div>
+	<!-- /wp:group --></div>
+<!-- /wp:group -->

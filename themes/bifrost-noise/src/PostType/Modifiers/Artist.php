@@ -17,6 +17,13 @@ use Bifrost\Noise\PostType\PostTypeModifier;
 
 final class Artist implements PostTypeModifier
 {
+	/**
+	 * References a synced pattern in the database for the Albums tab
+	 * content. Until WordPress supports synced theme patterns, we need to
+	 * store these on the site itself.
+	 */
+	private const PATTERN_ID_ARTIST_ALBUMS = 269;
+
 	public function modify(array $args): array
 	{
 		$args['template'] = $this->getTemplate();
@@ -47,46 +54,7 @@ final class Artist implements PostTypeModifier
 						'layout' => ['type' => 'constrained', 'contentSize' => '80rem'],
 						'anchor' => 'albums',
 					], [
-						['core/group', [
-							'layout' => ['type' => 'constrained'],
-						], [
-							['core/query', [
-								'queryId'   => 0,
-								'query'     => ['postType' => 'music_album', 'perPage' => 32, 'offset' => 0],
-								'namespace' => 'bifrost-noise/query-artist-albums',
-								'metadata'  => ['name' => 'Posts Query'],
-								'align'     => 'full',
-							], [
-								['core/post-template', [
-									'align'  => 'full',
-									'style'  => ['spacing' => ['blockGap' => 'var:preset|spacing|70']],
-									'layout' => ['type' => 'grid', 'columnCount' => 4],
-								], [
-									['core/group', [
-										'tagName'  => 'article',
-										'metadata' => ['name' => 'Post'],
-										'style'    => ['spacing' => ['blockGap' => 'var:preset|spacing|40']],
-										'layout'   => ['type' => 'default'],
-									], [
-										['core/post-featured-image', ['isLink' => true, 'aspectRatio' => '1'], []],
-										['core/group', [
-											'style'  => ['spacing' => ['blockGap' => 'var:preset|spacing|10']],
-											'layout' => ['type' => 'constrained'],
-										], [
-											['core/post-title', ['isLink' => true, 'className' => 'is-style-post-title-secondary'], []],
-											['core/group', [
-												'metadata'  => ['name' => 'Post Byline'],
-												'className' => 'is-style-meta',
-												'style'     => ['spacing' => ['blockGap' => 'var:preset|spacing|40']],
-												'layout'    => ['type' => 'flex', 'flexWrap' => 'wrap'],
-											], [
-												['core/post-date', ['format' => 'Y'], []],
-											]],
-										]],
-									]],
-								]],
-							]],
-						]],
+						['core/block', ['ref' => self::PATTERN_ID_ARTIST_ALBUMS], []]
 					]],
 					['core/tab', [
 						'label'  => 'Biography',
