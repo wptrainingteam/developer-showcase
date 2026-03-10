@@ -34,7 +34,7 @@ final class RenderQuery implements Bootable
 	}
 
 	/**
-	 * Hooks into the pre-rending cycle for the Query block and determines
+	 * Hooks into the pre-rendering cycle for the Query block and determines
 	 * whether it has a specific namespace. If that namespace matches, we
 	 * run a filter on `query_loop_block_query_vars` to change the query.
 	 */
