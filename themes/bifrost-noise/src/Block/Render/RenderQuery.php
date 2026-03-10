@@ -22,8 +22,10 @@ use Bifrost\Noise\Contracts\Bootable;
 final class RenderQuery implements Bootable
 {
 	private const NAMESPACE_ARTIST_ALBUMS = 'bifrost-noise/query-artist-albums';
-	private const NAMESPACE_POST_ALBUM   = 'bifrost-noise/query-post-album';
+	private const NAMESPACE_POST_ALBUM    = 'bifrost-noise/query-post-album';
 	private const NAMESPACE_POST_ARTIST   = 'bifrost-noise/query-post-artist';
+
+	private const HOOK = 'query_loop_block_query_vars';
 
 	/**
 	 * @inheritDoc
@@ -31,26 +33,55 @@ final class RenderQuery implements Bootable
 	public function boot(): void
 	{
 		add_filter('pre_render_block', $this->preRender(...), 999, 2);
+		add_filter('render_block_core/query', $this->postRender(...), 10, 2);
 	}
 
 	/**
 	 * Hooks into the pre-rendering cycle for the Query block and determines
 	 * whether it has a specific namespace. If that namespace matches, we
-	 * run a filter on `query_loop_block_query_vars` to change the query.
+	 * add a filter on `query_loop_block_query_vars` to modify the query.
 	 */
 	private function preRender(string|null $pre_render, array $parsed_block): string|null
 	{
-		$namespace = $parsed_block['attrs']['namespace'] ?? null;
-		$hook      = 'query_loop_block_query_vars';
+		$callback = $this->resolveCallback($parsed_block);
 
-		match ($namespace) {
-			self::NAMESPACE_ARTIST_ALBUMS => add_filter($hook, $this->artistAlbumsQueryVars(...)),
-			self::NAMESPACE_POST_ALBUM    => add_filter($hook, $this->postAlbumQueryVars(...)),
-			self::NAMESPACE_POST_ARTIST   => add_filter($hook, $this->postArtistQueryVars(...)),
-			default                       => null
-		};
+		if ($callback !== null) {
+			add_filter(self::HOOK, $callback);
+		}
 
 		return $pre_render;
+	}
+
+	/**
+	 * Hooks into the post-rendering cycle for the Query block and removes
+	 * any `query_loop_block_query_vars` filter that was added during pre-render,
+	 * preventing it from bleeding into subsequent Query blocks on the page.
+	 */
+	private function postRender(string $content, array $parsed_block): string
+	{
+		$callback = $this->resolveCallback($parsed_block);
+
+		if ($callback !== null) {
+			remove_filter(self::HOOK, $callback);
+		}
+
+		return $content;
+	}
+
+	/**
+	 * Resolves the appropriate query vars callback for a given parsed block,
+	 * based on its namespace attribute. Returns null if no match is found.
+	 */
+	private function resolveCallback(array $parsed_block): callable|null
+	{
+		$namespace = $parsed_block['attrs']['namespace'] ?? null;
+
+		return match ($namespace) {
+			self::NAMESPACE_ARTIST_ALBUMS => fn(array $query) => $this->artistAlbumsQueryVars($query),
+			self::NAMESPACE_POST_ALBUM    => fn(array $query) => $this->postAlbumQueryVars($query),
+			self::NAMESPACE_POST_ARTIST   => fn(array $query) => $this->postArtistQueryVars($query),
+			default                       => null
+		};
 	}
 
 	/**
@@ -74,8 +105,8 @@ final class RenderQuery implements Bootable
 	 */
 	private function postAlbumQueryVars(array $query): array
 	{
-		$postId   = get_the_ID();
-		$albumId  = $postId ? get_post_meta($postId, Definitions::POST_META_ALBUM, true) : null;
+		$postId  = get_the_ID();
+		$albumId = $postId ? get_post_meta($postId, Definitions::POST_META_ALBUM, true) : null;
 
 		if ($albumId) {
 			$query['post_type'] = Definitions::POST_TYPE_ALBUM;
