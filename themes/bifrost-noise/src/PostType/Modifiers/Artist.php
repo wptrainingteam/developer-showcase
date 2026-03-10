@@ -80,7 +80,19 @@ final class Artist implements PostTypeModifier
 												'style'     => ['spacing' => ['blockGap' => 'var:preset|spacing|40']],
 												'layout'    => ['type' => 'flex', 'flexWrap' => 'wrap'],
 											], [
-												['core/post-date', ['format' => 'Y'], []],
+												['core/post-date', [
+													'format' => 'Y',
+													'metadata' => [
+														'bindings' => [
+															'datetime' => [
+																'source' => 'core/post-data',
+																'args' => [
+																	'field' => 'date'
+																]
+															]
+														]
+													]
+												], []]
 											]],
 										]],
 									]],
