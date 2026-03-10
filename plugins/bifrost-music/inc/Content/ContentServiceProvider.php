@@ -26,5 +26,6 @@ final class ContentServiceProvider extends ServiceProvider implements Bootable
 		$this->container->get(Album::class)->boot();
 		$this->container->get(Artist::class)->boot();
 		$this->container->get(Genre::class)->boot();
+		$this->container->get(Post::class)->boot();
 	}
 }

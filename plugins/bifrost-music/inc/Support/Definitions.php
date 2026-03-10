@@ -23,4 +23,8 @@ final class Definitions
 	public const POST_TYPE_ALBUM = 'music_album';
 
 	public const TAXONOMY_GENRE = 'music_genre';
+
+	public const POST_META_ARTIST = 'music_artist';
+
+	public const POST_META_ALBUM  = 'music_album';
 }
