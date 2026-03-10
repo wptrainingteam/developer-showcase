@@ -45,8 +45,8 @@ final class RenderQuery implements Bootable
 
 		match ($namespace) {
 			self::NAMESPACE_ARTIST_ALBUMS => add_filter($hook, $this->artistAlbumsQueryVars(...)),
-			self::NAMESPACE_POST_ALBUM    => add_filter($hook, $this->postAlbumQuery(...)),
-			self::NAMESPACE_POST_ARTIST   => add_filter($hook, $this->postArtistQuery(...)),
+			self::NAMESPACE_POST_ALBUM    => add_filter($hook, $this->postAlbumQueryVars(...)),
+			self::NAMESPACE_POST_ARTIST   => add_filter($hook, $this->postArtistQueryVars(...)),
 			default                       => null
 		};
 
@@ -72,7 +72,7 @@ final class RenderQuery implements Bootable
 	 * Queries an album associated with the current blog post, which is
 	 * stored under the `music_album` meta key.
 	 */
-	private function postAlbumQuery(array $query): array
+	private function postAlbumQueryVars(array $query): array
 	{
 		$postId   = get_the_ID();
 		$albumId  = $postId ? get_post_meta($postId, Definitions::POST_META_ALBUM, true) : null;
@@ -89,7 +89,7 @@ final class RenderQuery implements Bootable
 	 * Queries an artist associated with the current blog post, which is
 	 * stored under the `music_artist` meta key.
 	 */
-	private function postArtistQuery(array $query): array
+	private function postArtistQueryVars(array $query): array
 	{
 		$postId   = get_the_ID();
 		$artistId = $postId ? get_post_meta($postId, Definitions::POST_META_ARTIST, true) : null;
