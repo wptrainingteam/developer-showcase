@@ -1610,7 +1610,6 @@
 				}
 			},
 			"core/tabs-menu-item": {
-				"css": "--custom-tab-active-color: var(--wp--custom--color--neutral-800); --custom-tab-hover-color: var(--wp--custom--color--neutral-800); --custom-tab-hover-text-color: var(--wp--custom--color--neutral-50);",
 				"spacing": {
 					"padding": {
 						"top": "var(--wp--preset--spacing--40)",
