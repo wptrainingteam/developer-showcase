@@ -1,7 +1,7 @@
 
 .wp-block-playlist-track {
 	list-style-type: none;
-	counter-increment: item;
+	counter-increment: item !important;
 
 	&:has([aria-current=true]),
 	&:hover {
@@ -26,11 +26,13 @@
 	);
 }
 
-.wp-block-playlist-track .wp-block-playlist-track__button::before {
+.wp-block-playlist__tracklist-show-numbers .wp-block-playlist-track .wp-block-playlist-track__button::before {
 	content: counter(item, decimal-leading-zero) " ";
 	font-family: var(--wp--preset--font-family--mono);
 	font-size: var(--wp--preset--font-size--sm);
 	color: var(--wp--preset--color--foreground-subtle);
+	width: auto;
+	margin: 0;
 }
 
 .wp-block-playlist-track .wp-block-playlist-track__button[aria-current=true] {

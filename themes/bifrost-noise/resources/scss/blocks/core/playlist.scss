@@ -1,22 +1,72 @@
 
-.wp-block-playlist .wp-block-playlist__current-item {
-	gap: var(--wp--preset--spacing--40);
-	border-bottom-color: var(--wp--preset--color--border-bounds);
+.wp-block-playlist {
+	contain: paint;
+	border-radius: var(--wp--preset--border-radius--sm);
+	backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); position: relative;
+	background: color-mix(in oklab, var(--wp--custom--color--neutral-200) 50%, transparent);
 }
 
+// Note: `.waveform-*` classes added in Gutenberg 22.7.0 and changed the markup.
+.wp-block-playlist .waveform-body {
+	gap: var(--wp--preset--spacing--40);
+}
+
+.wp-block-playlist .wp-block-playlist__waveform-player {
+	margin: 0;
+}
+
+.wp-block-playlist .waveform-btn {
+	background-color: var(--wp--custom--color--neutral-950);
+	border: none;
+
+	&:hover,
+	&:focus {
+		background-color: var(--wp--custom--color--neutral-800);
+	}
+}
+
+.wp-block-playlist .waveform-info,
+.wp-block-playlist .wp-block-playlist__current-item {
+	gap: var(--wp--preset--spacing--40);
+	padding: 0 var(--wp--preset--spacing--40);
+	border-bottom-color: var(--wp--preset--color--border-bounds);
+	font-size: inherit;
+	font-family: inherit;
+	font-weight: inherit;
+}
+
+.wp-block-playlist .waveform-artwork {
+	width: 48px !important;
+	height: 48px !important;
+	border-radius: 0 !important;
+}
+
+.wp-block-playlist .waveform-text,
 .wp-block-playlist .wp-block-playlist__current-item > div {
 	gap: 0;
 }
 
+.wp-block-playlist .waveform-title,
 .wp-block-playlist .wp-block-playlist__item-title {
 	font-family: var(--wp--preset--font-family--mono);
 	font-weight: 400;
 	font-size: var(--wp--preset--font-size--sm);
 }
 
+.waveform-subtitle,
 .wp-block-playlist .wp-block-playlist__current-item-artist-album {
 	gap: var(--wp--preset--spacing--20);
-	color: var(--wp--preset--color--foreground-subtle)
+	color: var(--wp--preset--color--foreground-subtle);
+	font-size: var(--wp--preset--font-size--xs);
+	font-family: inherit;
+	font-weight: inherit;
+	opacity: 1;
+}
+
+.wp-block-playlist .waveform-time {
+	font-family: var(--wp--preset--font-family--mono);
+	font-size: var(--wp--preset--font-size--3-xs);
+	color: inherit !important;
 }
 
 .wp-block-playlist ol.wp-block-playlist__tracklist {
