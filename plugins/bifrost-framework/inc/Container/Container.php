@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Bifrost\Music\Container;
+namespace Bifrost\Framework\Container;
 
 /**
  * Defines the dependency injection container interface, which allows for

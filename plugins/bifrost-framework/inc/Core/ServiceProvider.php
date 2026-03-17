@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace Bifrost\Music\Core;
+namespace Bifrost\Framework\Core;
 
-use Bifrost\Music\Container\Container;
+use Bifrost\Framework\Container\Container;
 
 /**
  * Service providers allow you to connect services to the application container.

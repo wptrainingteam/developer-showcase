@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Bifrost\Music\Container;
+namespace Bifrost\Framework\Container;
 
 use Closure;
 use Exception;

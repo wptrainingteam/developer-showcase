@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace Bifrost\Music\Core;
+namespace Bifrost\Framework\Core;
 
 use InvalidArgumentException;
-use Bifrost\Music\Container\Container;
-use Bifrost\Music\Contracts\Bootable;
+use Bifrost\Framework\Container\Container;
+use Bifrost\Framework\Contracts\Bootable;
 
 /**
  * Base class that does the heavy lifting of bootstrapping an application while

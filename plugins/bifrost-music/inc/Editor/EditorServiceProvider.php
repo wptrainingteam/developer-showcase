@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Bifrost\Music\Editor;
 
-use Bifrost\Music\Contracts\Bootable;
-use Bifrost\Music\Core\ServiceProvider;
+use Bifrost\Framework\Contracts\Bootable;
+use Bifrost\Framework\Core\ServiceProvider;
 
 final class EditorServiceProvider extends ServiceProvider implements Bootable
 {
