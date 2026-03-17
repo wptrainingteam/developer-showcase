@@ -69,14 +69,13 @@ final class StylesheetLoader implements Bootable
 	{
 		$namespace = $stylesheet->getNamespace();
 		$slug      = $stylesheet->getSlug();
-		$asset     = $stylesheet->getAssetData();
 
 		wp_enqueue_block_style($stylesheet->getBlockName(), [
 			'handle' => self::HANDLE_PREFIX . "-{$namespace}-{$slug}",
 			'src'    => $stylesheet->getFileUrl(),
 			'path'   => $stylesheet->getFilePath(),
-			'deps'   => $asset['dependencies'],
-			'ver'    => $asset['version']
+			'deps'   => $stylesheet->getDependencies(),
+			'ver'    => $stylesheet->getVersion()
 		]);
 	}
 }
