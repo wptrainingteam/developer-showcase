@@ -26,7 +26,7 @@ const PLUGIN_DIR  = __DIR__;
 const PLUGIN_FILE = __FILE__;
 
 # Load the autoloader.
-if (! class_exists(Plugin::class) && is_file(__DIR__ . '/vendor/autoload.php')) {
+if (! class_exists(Lifecycle::class) && is_file(__DIR__ . '/vendor/autoload.php')) {
 	require_once PLUGIN_DIR . '/vendor/autoload.php';
 }
 
@@ -36,8 +36,5 @@ register_activation_hook(PLUGIN_FILE, [Lifecycle::class, 'activate']);
 # Register uninstall hook.
 register_uninstall_hook(PLUGIN_FILE, [Lifecycle::class, 'uninstall']);
 
-# Initialize the plugin.
-add_action('plugins_loaded', [Lifecycle::class, 'init'], 999);
-
-# Boot registered services.
-add_action('plugins_loaded', [Lifecycle::class, 'boot'], 999999);
+# Register service providers with the framework application.
+add_action('bifrost-framework/register', [Lifecycle::class, 'register']);

@@ -13,6 +13,10 @@ declare(strict_types=1);
 
 namespace Bifrost\Music;
 
+use Bifrost\Framework\Core\Application;
+use Bifrost\Music\Content\ContentServiceProvider;
+use Bifrost\Music\Editor\EditorServiceProvider;
+
 /**
  * A static class that handles the various duties during the plugin's lifecycle.
  * This class includes static methods for activating, deactivating, uninstalling,
@@ -21,21 +25,13 @@ namespace Bifrost\Music;
 final class Lifecycle
 {
 	/**
-	 * Initializes the plugin and should be used as a callback on the
-	 * `plugins_loaded` action hook.
+	 * Registers the plugin's service providers with the framework application.
+	 * Should be used as a callback on the `bifrost/register` action hook.
 	 */
-	public static function init(): void
+	public static function register(Application $app): void
 	{
-		plugin();
-	}
-
-	/**
-	 * Bootstraps the plugin and should be used as a callback on the
-	 * `plugins_loaded` action hook.
-	 */
-	public static function boot(): void
-	{
-		plugin()->boot();
+		$app->register(ContentServiceProvider::class);
+		$app->register(EditorServiceProvider::class);
 	}
 
 	/**

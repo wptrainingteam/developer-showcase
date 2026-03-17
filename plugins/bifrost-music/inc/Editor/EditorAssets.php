@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Bifrost\Music\Editor;
 
-use Bifrost\Music\Contracts\Bootable;
+use Bifrost\Framework\Contracts\Bootable;
 use const Bifrost\Music\PLUGIN_DIR;
 use const Bifrost\Music\PLUGIN_FILE;
 
