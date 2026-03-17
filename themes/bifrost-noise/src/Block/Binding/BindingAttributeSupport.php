@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Bifrost\Noise\Block\Binding;
 
-use Bifrost\Noise\Contracts\Bootable;
+use Bifrost\Framework\Contracts\Bootable;
 
 /**
  * Adds supported attributes to blocks for connecting to block binding sources.

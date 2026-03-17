@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Bifrost\Noise\Block\Binding;
 
 use TypeError;
-use Bifrost\Noise\Contracts\Bootable;
+use Bifrost\Framework\Contracts\Bootable;
 
 /**
  * Registers custom binding sources via the WordPress Block Bindings API.
