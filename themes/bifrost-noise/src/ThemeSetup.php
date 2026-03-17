@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Bifrost\Noise;
 
-use Bifrost\Noise\Contracts\Bootable;
+use Bifrost\Framework\Contracts\Bootable;
 
 /**
  * Handles theme setup and feature registration.

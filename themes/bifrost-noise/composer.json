@@ -17,10 +17,7 @@
 	"autoload": {
 		"psr-4": {
 			"Bifrost\\Noise\\": "src/"
-		},
-		"files" : [
-			"src/functions-helpers.php"
-		]
+		}
 	},
 	"require": {
                 "php": ">=8.1"

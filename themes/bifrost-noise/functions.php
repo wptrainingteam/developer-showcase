@@ -14,16 +14,25 @@ declare(strict_types=1);
 
 namespace Bifrost\Noise;
 
+use Bifrost\Framework\Core\Application;
+
 # Prevent direct access.
 defined('ABSPATH') || exit;
 
 # Load the autoloader.
-if (! class_exists(Theme::class) && is_file(__DIR__ . '/vendor/autoload.php')) {
+if (! class_exists(ThemeServiceProvider::class) && is_file(__DIR__ . '/vendor/autoload.php')) {
 	require_once __DIR__ . '/vendor/autoload.php';
 }
 
-# Initialize the theme.
-add_action('after_setup_theme', theme(...), 999);
-
-# Boot registered services.
-add_action('after_setup_theme', fn() => theme()->boot(), 999999);
+# Register the theme's service providers with the framework application.
+add_action('bifrost/framework/theme/register', function (Application $app): void {
+	$app->register(ThemeServiceProvider::class);
+	$app->register(Block\Binding\BindingServiceProvider::class);
+	$app->register(Block\Render\RenderServiceProvider::class);
+	$app->register(Block\Stylesheet\StylesheetServiceProvider::class);
+	$app->register(Editor\EditorServiceProvider::class);
+	$app->register(Frontend\FrontendServiceProvider::class);
+	$app->register(Gutenberg\GutenbergServiceProvider::class);
+	$app->register(PostType\PostTypeServiceProvider::class);
+	$app->register(Template\TemplateServiceProvider::class);
+});

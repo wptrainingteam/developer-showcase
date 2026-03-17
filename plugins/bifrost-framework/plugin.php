@@ -21,17 +21,19 @@ namespace Bifrost\Framework;
 # Prevent direct access.
 defined('ABSPATH') || exit;
 
-# Define the plugin constants.
-const PLUGIN_DIR  = __DIR__;
-const PLUGIN_FILE = __FILE__;
-
 # Load the autoloader.
-if (! class_exists(Lifecycle::class) && is_file(__DIR__ . '/vendor/autoload.php')) {
-	require_once PLUGIN_DIR . '/vendor/autoload.php';
+if (! class_exists(Plugin::class) && is_file(__DIR__ . '/vendor/autoload.php')) {
+	require_once __DIR__ . '/vendor/autoload.php';
 }
 
-# Initialize the application.
-add_action('plugins_loaded', app(...), 999);
+# Initialize the application and register plugin-phase service providers.
+add_action('plugins_loaded', fn() => do_action('bifrost/framework/plugin/register', app()), 999);
 
-# Boot registered services.
+# Boot any services registered during the plugin registration phase.
 add_action('plugins_loaded', fn() => app()->boot(), 999999);
+
+# Provide a theme registration opportunity on after_setup_theme.
+add_action('after_setup_theme', fn() => do_action('bifrost/framework/theme/register', app()), 999);
+
+# Boot any services registered during the theme registration phase.
+add_action('after_setup_theme', fn() => app()->boot(), 999999);

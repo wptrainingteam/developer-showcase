@@ -25,8 +25,8 @@ function app(): Application
 {
 	static $app;
 
-	if (! $app instanceof Plugin) {
-		$app = new Plugin(new ServiceContainer());
+	if (! $app instanceof Application) {
+		$app = new Application(new ServiceContainer());
 	}
 
 	return $app;

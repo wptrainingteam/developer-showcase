@@ -22,7 +22,7 @@ use Bifrost\Music\Editor\EditorServiceProvider;
  * This class includes static methods for activating, deactivating, uninstalling,
  * and bootstrapping the plugin.
  */
-final class Lifecycle
+final class Plugin
 {
 	/**
 	 * Registers the plugin's service providers with the framework application.

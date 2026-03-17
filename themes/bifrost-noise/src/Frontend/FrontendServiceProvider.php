@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Bifrost\Noise\Frontend;
 
-use Bifrost\Noise\Contracts\Bootable;
-use Bifrost\Noise\Core\ServiceProvider;
+use Bifrost\Framework\Contracts\Bootable;
+use Bifrost\Framework\Core\ServiceProvider;
 
 final class FrontendServiceProvider extends ServiceProvider implements Bootable
 {
