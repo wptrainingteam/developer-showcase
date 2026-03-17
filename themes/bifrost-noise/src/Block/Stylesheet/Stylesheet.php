@@ -41,6 +41,12 @@ final class Stylesheet
 	private readonly string $path;
 
 	/**
+	 * The data returned from the associated `*.asset.php` file generated
+	 * from WP scripts.
+	 */
+	private array $assetData = [];
+
+	/**
 	 * Creates a new stylesheet instance from a discovered CSS file.
 	 *
 	 * Extracts the namespace from the parent directory name and the slug
@@ -50,8 +56,8 @@ final class Stylesheet
 	public function __construct(SplFileInfo $file, string $path)
 	{
 		$this->namespace = $file->getPathInfo()->getBasename();
-		$this->slug      = $file->getBasename('.css');
-		$this->path      = "{$path}/{$this->namespace}/{$this->slug}";
+		$this->slug = $file->getBasename('.css');
+		$this->path = "{$path}/{$this->namespace}/{$this->slug}";
 	}
 
 	/**
@@ -118,13 +124,35 @@ final class Stylesheet
 	 */
 	public function getAssetData(): array
 	{
-		if (! $this->hasAssetFile()) {
-			return [
-				'dependencies' => [],
-				'version'      => wp_get_theme()->get('Version'),
-			];
+		if ([] !== $this->assetData) {
+			return $this->assetData;
 		}
 
-		return include get_parent_theme_file_path("{$this->path}.asset.php");
+		$this->assetData = $this->hasAssetFile()
+			? include get_parent_theme_file_path("{$this->path}.asset.php")
+			: [
+				'dependencies' => [],
+				'version'      => wp_get_theme()->get('Version')
+			];
+
+		return $this->assetData;
+	}
+
+	/**
+	 * Returns the stylesheet dependencies.
+	 */
+	public function getDependencies(): array
+	{
+		$data = $this->getAssetData();
+		return $data['dependencies'] ?? [];
+	}
+
+	/**
+	 * Returns the stylesheet version.
+	 */
+	public function getVersion(): string
+	{
+		$data = $this->getAssetData();
+		return $data['version'] ?? '';
 	}
 }
