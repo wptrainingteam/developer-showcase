@@ -21,8 +21,10 @@ namespace Bifrost\Framework;
 # Prevent direct access.
 defined('ABSPATH') || exit;
 
+use Bifrost\Framework\Core\Application;
+
 # Load the autoloader.
-if (! class_exists(Plugin::class) && is_file(__DIR__ . '/vendor/autoload.php')) {
+if (! class_exists(Application::class) && is_file(__DIR__ . '/vendor/autoload.php')) {
 	require_once __DIR__ . '/vendor/autoload.php';
 }
 
