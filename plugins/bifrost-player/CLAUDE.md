@@ -1,5 +1,13 @@
 # Bifrost Player — Development Notes
 
+Resources to take into account:
+- https://developer.wordpress.org/block-editor/reference-guides/interactivity-api/core-concepts/client-side-navigation/
+- https://make.wordpress.org/core/2026/02/23/changes-to-the-interactivity-api-in-wordpress-7-0/
+- https://make.wordpress.org/core/2025/11/12/changes-to-the-interactivity-api-in-wordpress-6-9/
+- https://make.wordpress.org/core/2025/11/12/interactivity-apis-client-navigation-improvements-in-wordpress-6-9/
+- https://make.wordpress.org/core/2025/03/24/interactivity-api-best-practices-in-6-8/
+
+
 ## Build toolchain
 
 - **`--experimental-modules`** is required in `wp-scripts build` and `wp-scripts start` for `viewScriptModule` support (script modules / iAPI).
@@ -25,14 +33,15 @@
 - **Import map timing**: Blocks rendered during `wp_footer` (like our audio-player) have their `viewScriptModule` processed AFTER the import map is printed. This means `yield import('@wordpress/interactivity-router')` fails with `Failed to resolve module specifier`. Fix: enqueue the block's view script module early via `wp_enqueue_script_module('bifrost-player-audio-player-view-script-module')` in `wp_enqueue_scripts`. This forces WordPress to process the asset file (including dynamic dependencies) before the import map is printed.
 - **Script module handle naming**: WordPress auto-generates handles from `block.json`. For non-core blocks: `str_replace('/', '-', blockName) . '-view-script-module'`. Example: `bifrost-player/audio-player` → `bifrost-player-audio-player-view-script-module`.
 - **Do NOT use `wp_enqueue_script_module('@wordpress/interactivity-router')` directly** — enqueue the block's own view module instead, which declares the router as a dynamic dependency in its asset file. This matches how blocks normally work (the reference example at `block-development-examples/interactivity-router-2f43f8` doesn't enqueue the router directly either — it works because the block renders in page content, before the import map).
-- Navigation links are NOT automatically intercepted. You must add `data-wp-on--click="actions.navigate"` on the router region element and implement an action that calls `actions.navigate(href)` from the router module.
-- `data-wp-router-region` marks which sections are replaced during navigation. Elements **outside** router regions (header, footer, audio player via `wp_footer`) persist completely.
+- **Navigation directives go on each `<a>` tag, NOT on a parent container**. The documented pattern (`withSyncEvent` + generator using `e.target.href`) assumes `e.target` IS the `<a>` element. Event delegation from a parent (e.g., `<main>`) breaks because `e.target` is whatever nested element was clicked (image, span), not the link. Use a `render_block` filter with `WP_HTML_Tag_Processor` to add `data-wp-on--click="actions.navigate"` and `data-wp-on--mouseenter="actions.prefetch"` to each `<a>` tag individually. Reference: `block-development-examples/interactivity-router-2f43f8/plugin.php`.
+- `data-wp-router-region` marks which sections are replaced during navigation.
+- **Block style variation suffix mismatch**: WordPress generates unique numbered class suffixes per page render (e.g., `is-style-site-footer--50` on page A, `--8` on page B). During client-side navigation, the router swaps stylesheets (new CSS targets `--8`) but elements outside router regions keep their old HTML (`--50`). Fix: add router regions to `core/template-part` blocks (header/footer) so their HTML is also updated, keeping suffixes in sync with the new CSS. The persistent audio player (injected via `wp_footer`, outside all regions) is unaffected because it uses custom classes, not block style variations.
 
 ## Plugin architecture
 
 - Follows bifrost-music patterns: Application > ServiceProvider > Bootable. Namespace: `Bifrost\Player`.
 - The audio player block is injected via `wp_footer` action in `BlockServiceProvider` — no theme template modification needed.
-- The router region is injected via `render_block` filter on `core/group` blocks with `tagName: "main"`.
+- Router regions are injected via `render_block` filter on `core/group` (tagName "main") and `core/template-part` (header/footer). Navigation directives are added to every `<a>` tag inside these regions.
 - The playlist bridge is injected via `render_block` filter on `core/playlist` — adds `data-wp-init` for waveform event bridging.
 
 ## Core/playlist integration

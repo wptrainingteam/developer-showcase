@@ -8,16 +8,6 @@ import {
 	withSyncEvent,
 } from '@wordpress/interactivity';
 
-/**
- * Checks whether an element is a valid same-origin link suitable
- * for client-side navigation.
- */
-const isValidLink = ( el ) =>
-	el instanceof window.HTMLAnchorElement &&
-	el.href &&
-	( ! el.target || el.target === '_self' ) &&
-	el.origin === window.location.origin;
-
 const { state } = store( 'bifrost-player', {
 	state: {
 		get isPlayerVisible() {
@@ -49,37 +39,26 @@ const { state } = store( 'bifrost-player', {
 		},
 
 		/**
-		 * Intercepts link clicks inside the router region and navigates
-		 * via the Interactivity Router instead of a full page reload.
-		 *
-		 * Uses withSyncEvent so e.preventDefault() runs synchronously
-		 * before the generator yields to the dynamic import.
+		 * Intercepts a link click and navigates via the Interactivity
+		 * Router instead of a full page reload. Placed directly on
+		 * <a> tags by InteractiveRouter::addRegionAndLinks().
 		 */
 		navigate: withSyncEvent( function* ( e ) {
-			const anchor = e.target.closest( 'a' );
-			if ( ! isValidLink( anchor ) ) {
-				return;
-			}
-
 			e.preventDefault();
 			const { actions } = yield import(
 				'@wordpress/interactivity-router'
 			);
-			yield actions.navigate( anchor.href );
+			yield actions.navigate( e.target.href );
 		} ),
 
 		/**
 		 * Prefetches a link on hover for faster client-side navigation.
 		 */
 		*prefetch() {
-			const { ref } = getElement();
-			const anchor = ref.closest( 'a' ) || ref;
-			if ( isValidLink( anchor ) ) {
-				const { actions } = yield import(
-					'@wordpress/interactivity-router'
-				);
-				yield actions.prefetch( anchor.href );
-			}
+			const { actions } = yield import(
+				'@wordpress/interactivity-router'
+			);
+			yield actions.prefetch( getElement().ref.href );
 		},
 	},
 	callbacks: {
