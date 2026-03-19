@@ -21,7 +21,21 @@ namespace Bifrost\Framework;
 # Prevent direct access.
 defined('ABSPATH') || exit;
 
+use Bifrost\Framework\Core\Application;
+
 # Load the autoloader.
-if (is_file(__DIR__ . '/vendor/autoload.php')) {
+if (! class_exists(Application::class) && is_file(__DIR__ . '/vendor/autoload.php')) {
 	require_once __DIR__ . '/vendor/autoload.php';
 }
+
+# Plugin phase: allow consumers to register providers, then boot.
+add_action('plugins_loaded', function (): void {
+	do_action('bifrost/framework/register/plugin', app());
+	app()->boot();
+}, 999);
+
+# Theme phase: allow consumers to register providers, then boot.
+add_action('after_setup_theme', function (): void {
+	do_action('bifrost/framework/register/theme', app());
+	app()->boot();
+}, 999);
