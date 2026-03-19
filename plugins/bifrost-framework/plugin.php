@@ -27,8 +27,8 @@ use Bifrost\Framework\Core\Application;
 if (! class_exists(Application::class)) {
 	if (is_file(__DIR__ . '/vendor/autoload.php')) {
 		require_once __DIR__ . '/vendor/autoload.php';
-	} elseif (is_file(__DIR__ . '/inc/autoload.php')) {
-		require_once __DIR__ . '/inc/autoload.php';
+	} elseif (is_file(__DIR__ . '/inc/Autoload.php')) {
+		require_once __DIR__ . '/inc/Autoload.php';
 		require_once __DIR__ . '/inc/functions-helpers.php';
 		Autoload::register();
 	}
