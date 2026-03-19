@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Bifrost\Noise\Template\Hierarchy;
 
-use Bifrost\Noise\Contracts\Bootable;
+use Bifrost\Framework\Contracts\Bootable;
 use WP_Post;
 
 /**

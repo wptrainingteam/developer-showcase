@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Plugin application class.
+ * Plugin lifecycle helper.
  *
  * @author    Bifrost
- * @copyright Copyright (c) 2026
+ * @copyright Copyright (c) 2026, WordPress
  * @license   https://www.gnu.org/licenses/gpl-3.0.html GPL-3.0-or-later
  * @link      https://github.com/wptrainingteam/developer-showcase
  */
@@ -13,26 +13,134 @@ declare(strict_types=1);
 
 namespace Bifrost\Music;
 
+use Bifrost\Framework\Core\Application;
 use Bifrost\Music\Content\ContentServiceProvider;
-use Bifrost\Music\Core\Application;
 use Bifrost\Music\Editor\EditorServiceProvider;
 
 /**
- * The Plugin class is an implementation of the Application contract. It's used
- * to register the default service providers, bootstrapping the plugin.
+ * A static class that handles the various duties during the plugin's lifecycle.
+ * This class includes static methods for activating, deactivating, uninstalling,
+ * and bootstrapping the plugin.
  */
-final class Plugin extends Application
+final class Plugin
 {
 	/**
-	 * Defines the plugin's namespace, which is used as a hook prefix.
+	 * Service providers to register with the framework application.
+	 *
+	 * @var  array<class-string>
+	 * @todo Type hint with PHP 8.3+ requirement.
 	 */
-	protected const NAMESPACE = 'bifrost/music';
-
-	/**
-	 * Defines the plugin's default service providers.
-	 */
-	protected const PROVIDERS = [
+	private const PROVIDERS = [
 		ContentServiceProvider::class,
 		EditorServiceProvider::class
 	];
+
+	/**
+	 * Registers the plugin's service providers.
+	 */
+	public static function register(Application $app): void
+	{
+		foreach (self::PROVIDERS as $provider) {
+			$app->register($provider);
+		}
+	}
+
+	/**
+	 * Runs when the plugin is activated and should be called via the
+	 * `register_activation_hook()` function.
+	 */
+	public static function activate(): void
+	{
+		if ($role = get_role('administrator')) {
+			// Taxonomy caps.
+			$role->add_cap('manage_music_genres');
+			$role->add_cap('edit_music_genres');
+			$role->add_cap('delete_music_genres');
+			$role->add_cap('assign_music_genres');
+
+			// Album caps.
+			$role->add_cap('create_music_albums');
+			$role->add_cap('edit_music_albums');
+			$role->add_cap('edit_others_music_albums');
+			$role->add_cap('publish_music_albums');
+			$role->add_cap('read_private_music_albums');
+			$role->add_cap('delete_music_albums');
+			$role->add_cap('delete_private_music_albums');
+			$role->add_cap('delete_published_music_albums');
+			$role->add_cap('delete_others_music_albums');
+			$role->add_cap('edit_private_music_albums');
+			$role->add_cap('edit_published_music_albums');
+
+			// Artist caps.
+			$role->add_cap('create_music_artists');
+			$role->add_cap('edit_music_artists');
+			$role->add_cap('edit_others_music_artists');
+			$role->add_cap('publish_music_artists');
+			$role->add_cap('read_private_music_artists');
+			$role->add_cap('delete_music_artists');
+			$role->add_cap('delete_private_music_artists');
+			$role->add_cap('delete_published_music_artists');
+			$role->add_cap('delete_others_music_artists');
+			$role->add_cap('edit_private_music_artists');
+			$role->add_cap('edit_published_music_artists');
+		}
+	}
+
+	/**
+	 * Runs when the plugin is deactivated and should be called via the
+	 * `register_deactivation_hook()` function.
+	 */
+	public static function deactivate(): void
+	{}
+
+	/**
+	 * Runs when the plugin is uninstalled and should be called via the
+	 * `register_uninstall_hook()` function.
+	 */
+	public static function uninstall(): void
+	{
+		if (! defined('WP_UNINSTALL_PLUGIN')) {
+			wp_die(sprintf(
+				__('%s should only be called when uninstalling the plugin.', 'bifrost-music'),
+				'<code>' . __METHOD__ . '</code>'
+			));
+		}
+
+		// If the administrator role exists, remove added capabilities
+		// that the plugin added.
+		if ($role = get_role('administrator')) {
+
+			// Genre caps.
+			$role->remove_cap('manage_music_genres');
+			$role->remove_cap('edit_music_genres');
+			$role->remove_cap('delete_music_genres');
+			$role->remove_cap('assign_music_genres');
+
+			// Album caps.
+			$role->remove_cap('create_music_albums');
+			$role->remove_cap('edit_music_albums');
+			$role->remove_cap('edit_others_music_albums');
+			$role->remove_cap('publish_music_albums');
+			$role->remove_cap('read_private_music_albums');
+			$role->remove_cap('delete_music_albums');
+			$role->remove_cap('delete_private_music_albums');
+			$role->remove_cap('delete_published_music_albums');
+			$role->remove_cap('delete_others_music_albums');
+			$role->remove_cap('edit_private_music_albums');
+			$role->remove_cap('edit_published_music_albums');
+
+			// Artist caps.
+			$role->remove_cap('create_music_artists');
+			$role->remove_cap('edit_music_artists');
+			$role->remove_cap('edit_others_music_artists');
+			$role->remove_cap('publish_music_artists');
+			$role->remove_cap('read_private_music_artists');
+			$role->remove_cap('delete_music_artists');
+			$role->remove_cap('delete_private_music_artists');
+			$role->remove_cap('delete_published_music_artists');
+			$role->remove_cap('delete_others_music_artists');
+			$role->remove_cap('edit_private_music_artists');
+			$role->remove_cap('edit_published_music_artists');
+		}
+	}
 }

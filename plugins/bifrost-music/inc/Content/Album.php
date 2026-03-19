@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Bifrost\Music\Content;
 
 use WP_Post;
-use Bifrost\Music\Contracts\Bootable;
+use Bifrost\Framework\Contracts\Bootable;
 use Bifrost\Music\Support\Definitions;
 
 final class Album implements Bootable

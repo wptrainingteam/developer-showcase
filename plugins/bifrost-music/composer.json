@@ -17,10 +17,7 @@
 	"autoload": {
 		"psr-4": {
 			"Bifrost\\Music\\": "inc/"
-		},
-		"files" : [
-			"inc/functions-helpers.php"
-		]
+		}
 	},
 	"require": {
                 "php": ">=8.1"

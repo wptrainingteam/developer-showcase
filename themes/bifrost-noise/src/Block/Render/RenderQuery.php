@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Bifrost\Noise\Block\Render;
 
 use Bifrost\Music\Support\Definitions;
-use Bifrost\Noise\Contracts\Bootable;
+use Bifrost\Framework\Contracts\Bootable;
 
 /**
  * Filters rendered output for the `core/query` block.

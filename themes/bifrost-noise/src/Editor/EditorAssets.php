@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Bifrost\Noise\Editor;
 
-use Bifrost\Noise\Contracts\Bootable;
+use Bifrost\Framework\Contracts\Bootable;
 
 /**
  * Loads editor assets.

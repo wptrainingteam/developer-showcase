@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Bifrost\Noise\PostType;
 
-use Bifrost\Noise\Contracts\Bootable;
+use Bifrost\Framework\Contracts\Bootable;
 
 /**
  * Manages the modification of post type settings during WordPress registration.

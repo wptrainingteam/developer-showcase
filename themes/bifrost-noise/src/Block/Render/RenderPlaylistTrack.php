@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Bifrost\Noise\Block\Render;
 
 use Bifrost\Music\Support\Definitions;
-use Bifrost\Noise\Contracts\Bootable;
+use Bifrost\Framework\Contracts\Bootable;
 use WP_Post;
 
 /**
