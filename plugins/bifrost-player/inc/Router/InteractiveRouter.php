@@ -93,8 +93,8 @@ final class InteractiveRouter implements Bootable {
 				continue; // Don't override existing click handlers.
 			}
 
-			$tags->set_attribute( 'data-wp-on--click', 'actions.navigate' );
-			$tags->set_attribute( 'data-wp-on--mouseenter', 'actions.prefetch' );
+			$tags->set_attribute( 'data-wp-on--click', 'bifrost-player::actions.navigate' );
+			$tags->set_attribute( 'data-wp-on--mouseenter', 'bifrost-player::actions.prefetch' );
 		}
 
 		return $tags->get_updated_html();
