@@ -1684,6 +1684,21 @@
 			"area": "loop",
 			"name": "loop",
 			"title": "Posts"
+		},
+		{
+			"area": "sidebar",
+			"name": "sidebar-post",
+			"title": "Post Sidebar"
+		},
+		{
+			"area": "sidebar",
+			"name": "sidebar-post-album-reviews",
+			"title": "Post Sidebar: Album Reviews"
+		},
+		{
+			"area": "sidebar",
+			"name": "sidebar-post-artist-spotlight",
+			"title": "Post Sidebar: Artist Spotlight"
 		}
 	]
 }

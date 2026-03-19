@@ -3,10 +3,10 @@
 /**
  * Template service provider.
  *
- * @author    Justin Tadlock <justintadlock@gmail.com>
- * @copyright Copyright (c) 2023-2025, Justin Tadlock
+ * @author    Bifrost
+ * @copyright Copyright (c) 2026, WordPress
  * @license   https://www.gnu.org/licenses/gpl-3.0.html GPL-3.0-or-later
- * @link      https://github.com/x3p0-dev/bifrost-noise
+ * @link      https://github.com/wptrainingteam/developer-showcase
  */
 
 declare(strict_types=1);
@@ -23,6 +23,6 @@ final class TemplateServiceProvider extends ServiceProvider implements Bootable
 	 */
 	public function boot(): void
 	{
-		$this->container->get(Hierarchy\Single::class)->boot();
+		$this->container->get(TemplatePart::class)->boot();
 	}
 }

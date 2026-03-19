@@ -25,7 +25,8 @@ final class RenderServiceProvider extends ServiceProvider implements Bootable
 		RenderCover::class,
 		RenderIcon::class,
 		RenderPlaylistTrack::class,
-		RenderQuery::class
+		RenderQuery::class,
+		RenderTemplatePart::class
 	];
 
 	/**
