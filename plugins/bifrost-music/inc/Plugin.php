@@ -25,13 +25,24 @@ use Bifrost\Music\Editor\EditorServiceProvider;
 final class Plugin
 {
 	/**
-	 * Registers the plugin's service providers with the framework application.
-	 * Should be used as a callback on the `bifrost/register` action hook.
+	 * Service providers to register with the framework application.
+	 *
+	 * @var  array<class-string>
+	 * @todo Type hint with PHP 8.3+ requirement.
+	 */
+	private const PROVIDERS = [
+		ContentServiceProvider::class,
+		EditorServiceProvider::class
+	];
+
+	/**
+	 * Registers the plugin's service providers.
 	 */
 	public static function register(Application $app): void
 	{
-		$app->register(ContentServiceProvider::class);
-		$app->register(EditorServiceProvider::class);
+		foreach (self::PROVIDERS as $provider) {
+			$app->register($provider);
+		}
 	}
 
 	/**
