@@ -31,6 +31,7 @@ final class BlockServiceProvider extends ServiceProvider implements Bootable {
 		add_action( 'wp_footer', $this->renderPlayer( ... ) );
 
 		$this->container->get( RenderPlaylist::class )->boot();
+		$this->container->get( RenderPlaylistTrack::class )->boot();
 	}
 
 	/**

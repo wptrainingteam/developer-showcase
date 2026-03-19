@@ -3,9 +3,8 @@
 /**
  * Playlist block render filter.
  *
- * Injects a bridge callback on core/playlist blocks so that clicking
- * the waveform play button or a track in the playlist triggers the
- * persistent audio player.
+ * Hides the core/playlist waveform player so that track clicks
+ * go directly to the persistent audio player (via RenderPlaylistTrack).
  *
  * @author    Bifrost
  * @copyright Copyright (c) 2026
@@ -21,9 +20,8 @@ use Bifrost\Player\Contracts\Bootable;
 use WP_HTML_Tag_Processor;
 
 /**
- * Filters the rendered output of core/playlist to inject a
- * data-wp-init callback that bridges waveform player events
- * to the persistent bifrost-player store.
+ * Filters the rendered output of core/playlist to hide the waveform
+ * player. Playback is handled by the persistent bifrost-player instead.
  */
 final class RenderPlaylist implements Bootable {
 
@@ -37,7 +35,7 @@ final class RenderPlaylist implements Bootable {
 	}
 
 	/**
-	 * Injects the playlist bridge init callback on the playlist wrapper.
+	 * Hides the waveform player inside core/playlist.
 	 */
 	private function renderBlock( string $blockContent, array $block ): string {
 		if ( ( $block['blockName'] ?? '' ) !== self::BLOCK_NAME ) {
@@ -46,14 +44,16 @@ final class RenderPlaylist implements Bootable {
 
 		$tags = new WP_HTML_Tag_Processor( $blockContent );
 
-		if ( ! $tags->next_tag( 'figure' ) ) {
-			return $blockContent;
-		}
+		// Find the waveform player container and hide it.
+		while ( $tags->next_tag( 'div' ) ) {
+			$class = $tags->get_attribute( 'class' ) ?? '';
 
-		$tags->set_attribute(
-			'data-wp-init',
-			'bifrost-player::callbacks.initPlaylistBridge'
-		);
+			if ( str_contains( $class, 'wp-block-playlist__waveform-player' ) ) {
+				$tags->set_attribute( 'hidden', true );
+				$tags->set_attribute( 'style', 'display:none' );
+				break;
+			}
+		}
 
 		return $tags->get_updated_html();
 	}

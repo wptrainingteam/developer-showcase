@@ -61,7 +61,7 @@ final class RenderPlaylistTrack implements Bootable {
 		if ( ! $tags->next_tag() ) {
 			return $blockContent;
 		}
-		x
+
 		$tags->set_attribute( 'data-wp-interactive', 'bifrost-player' );
 		$tags->set_attribute(
 			'data-wp-context',

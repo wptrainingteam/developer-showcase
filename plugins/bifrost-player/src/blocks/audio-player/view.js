@@ -77,36 +77,5 @@ const { state } = store( 'bifrost-player', {
 				audio.pause();
 			}
 		},
-
-		/**
-		 * Bridges the core/playlist waveform player events to the
-		 * persistent bifrost-player store.
-		 *
-		 * Placed via data-wp-init on the core/playlist <figure> element.
-		 * Listens for waveformplayer:play events (fired by both the
-		 * waveform play button and track list clicks), pauses the
-		 * waveform's own audio, and hands playback to the persistent player.
-		 */
-		initPlaylistBridge() {
-			const { ref } = getElement();
-
-			ref.addEventListener( 'waveformplayer:play', ( event ) => {
-				const player = event.detail?.player;
-				if ( ! player ) {
-					return;
-				}
-
-				// Pause the waveform player so we don't have two audios.
-				player.pause();
-
-				// Hand off to the persistent player.
-				state.currentTrackUrl =
-					player.options?.url || player.audio?.src || '';
-				state.currentTrackTitle = player.options?.title || '';
-				state.currentTrackArtist = player.options?.subtitle || '';
-				state.currentTrackImage = player.options?.artwork || '';
-				state.isAudioPlaying = true;
-			} );
-		},
 	},
 } );
