@@ -28,14 +28,14 @@ if (! class_exists(Application::class) && is_file(__DIR__ . '/vendor/autoload.ph
 	require_once __DIR__ . '/vendor/autoload.php';
 }
 
-# Initialize the application and register plugin-phase service providers.
-add_action('plugins_loaded', fn() => do_action('bifrost/framework/plugin/register', app()), 999);
+# Plugin phase: allow consumers to register providers, then boot.
+add_action('plugins_loaded', function (): void {
+	do_action('bifrost/framework/register/plugin', app());
+	app()->boot();
+}, 999);
 
-# Boot any services registered during the plugin registration phase.
-add_action('plugins_loaded', fn() => app()->boot(), 999999);
-
-# Provide a theme registration opportunity on after_setup_theme.
-add_action('after_setup_theme', fn() => do_action('bifrost/framework/theme/register', app()), 999);
-
-# Boot any services registered during the theme registration phase.
-add_action('after_setup_theme', fn() => app()->boot(), 999999);
+# Theme phase: allow consumers to register providers, then boot.
+add_action('after_setup_theme', function (): void {
+	do_action('bifrost/framework/register/theme', app());
+	app()->boot();
+}, 999);

@@ -111,8 +111,5 @@ class Application implements Bootable
 				$this->bootedProviders[] = $provider;
 			}
 		}
-
-		// Allow third-party devs access to hook in after booting.
-		do_action('bifrost/framework/booted', $this);
 	}
 }

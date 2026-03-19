@@ -37,4 +37,4 @@ register_activation_hook(PLUGIN_FILE, [Plugin::class, 'activate']);
 register_uninstall_hook(PLUGIN_FILE, [Plugin::class, 'uninstall']);
 
 # Register service providers with the framework application.
-add_action('bifrost/framework/plugin/register', [Plugin::class, 'register']);
+add_action('bifrost/framework/register/plugin', [Plugin::class, 'register']);
