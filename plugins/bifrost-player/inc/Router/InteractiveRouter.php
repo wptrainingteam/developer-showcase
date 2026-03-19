@@ -32,11 +32,30 @@ use WP_HTML_Tag_Processor;
 final class InteractiveRouter implements Bootable {
 
 	/**
+	 * Script modules that must be marked for client-side navigation.
+	 *
+	 * The Gutenberg plugin's `gutenberg_define_interactivity_modules_support()`
+	 * requires `build/modules/index.php` (an auto-generated registry) to mark
+	 * block-library modules for client navigation. That file is missing from
+	 * the current Gutenberg build, so no block-library module gets the
+	 * `data-wp-router-options` attribute and the Interactivity Router never
+	 * loads them during CSR.
+	 *
+	 * We work around this by explicitly marking the modules we depend on.
+	 *
+	 * @see https://github.com/WordPress/gutenberg/blob/trunk/lib/client-assets.php
+	 */
+	private const CLIENT_NAV_MODULES = array(
+		'@wordpress/block-library/tabs/view',
+	);
+
+	/**
 	 * Registers the WordPress hooks.
 	 */
 	public function boot(): void {
 		add_filter( 'render_block', $this->injectRouterRegions( ... ), 10, 2 );
 		add_action( 'wp_enqueue_scripts', $this->enqueueRouterModule( ... ) );
+		add_action( 'wp_enqueue_scripts', $this->markModulesForClientNav( ... ) );
 	}
 
 	/**
@@ -107,5 +126,19 @@ final class InteractiveRouter implements Bootable {
 	 */
 	private function enqueueRouterModule(): void {
 		wp_enqueue_script_module( 'bifrost-player-audio-player-view-script-module' );
+	}
+
+	/**
+	 * Marks interactive block-library script modules for client-side
+	 * navigation so the router loads them on the destination page.
+	 */
+	private function markModulesForClientNav(): void {
+		if ( ! method_exists( 'WP_Interactivity_API', 'add_client_navigation_support_to_script_module' ) ) {
+			return;
+		}
+
+		foreach ( self::CLIENT_NAV_MODULES as $module_id ) {
+			wp_interactivity()->add_client_navigation_support_to_script_module( $module_id );
+		}
 	}
 }
