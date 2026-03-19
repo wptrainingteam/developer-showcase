@@ -45,10 +45,11 @@ const { state } = store( 'bifrost-player', {
 		 */
 		navigate: withSyncEvent( function* ( e ) {
 			e.preventDefault();
+			const href = getElement().ref.href;
 			const { actions } = yield import(
 				'@wordpress/interactivity-router'
 			);
-			yield actions.navigate( e.target.href );
+			yield actions.navigate( href );
 		} ),
 
 		/**
