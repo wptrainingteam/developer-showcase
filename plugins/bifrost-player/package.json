@@ -1,0 +1,15 @@
+{
+  "name": "bifrost-player",
+  "version": "1.0.0",
+  "description": "Persistent audio player for the Developer Showcase.",
+  "scripts": {
+    "build": "wp-scripts build --experimental-modules",
+    "start": "wp-scripts start --experimental-modules"
+  },
+  "dependencies": {
+    "@wordpress/interactivity": "^6.0.0"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^31.4.0"
+  }
+}

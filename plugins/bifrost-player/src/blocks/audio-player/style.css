@@ -1,0 +1,88 @@
+.wp-block-bifrost-player-audio-player {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	background: var(--wp--preset--color--base, #111);
+	color: var(--wp--preset--color--contrast, #fff);
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	font-family: var(--wp--preset--font-family--system, sans-serif);
+}
+
+.wp-block-bifrost-player-audio-player[hidden] {
+	display: none;
+}
+
+.bifrost-audio-player__inner {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	max-width: 80rem;
+	margin: 0 auto;
+	padding: 0.75rem 1.5rem;
+}
+
+.bifrost-audio-player__artwork img {
+	width: 48px;
+	height: 48px;
+	border-radius: 4px;
+	object-fit: cover;
+}
+
+.bifrost-audio-player__artwork img[src=""] {
+	display: none;
+}
+
+.bifrost-audio-player__info {
+	display: flex;
+	flex-direction: column;
+	gap: 0.125rem;
+	flex: 1;
+	min-width: 0;
+}
+
+.bifrost-audio-player__title {
+	font-size: 0.875rem;
+	font-weight: 600;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.bifrost-audio-player__artist {
+	font-size: 0.75rem;
+	opacity: 0.7;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.bifrost-audio-player__controls {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	flex-shrink: 0;
+}
+
+.bifrost-audio-player__play-pause,
+.bifrost-audio-player__close {
+	background: none;
+	border: none;
+	color: inherit;
+	cursor: pointer;
+	padding: 0.5rem;
+	font-size: 1.25rem;
+	line-height: 1;
+	opacity: 0.8;
+	transition: opacity 0.15s ease;
+}
+
+.bifrost-audio-player__play-pause:hover,
+.bifrost-audio-player__close:hover {
+	opacity: 1;
+}
+
+.bifrost-audio-player__audio {
+	display: none;
+}

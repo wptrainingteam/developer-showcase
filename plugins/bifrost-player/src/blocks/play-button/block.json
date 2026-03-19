@@ -1,0 +1,45 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "bifrost-player/play-button",
+	"title": "Play Button",
+	"category": "media",
+	"icon": "controls-play",
+	"description": "A button that triggers the persistent audio player.",
+	"textdomain": "bifrost-player",
+	"supports": {
+		"interactivity": true,
+		"html": false
+	},
+	"attributes": {
+		"trackUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"trackTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"trackArtist": {
+			"type": "string",
+			"default": ""
+		},
+		"trackImage": {
+			"type": "string",
+			"default": ""
+		},
+		"label": {
+			"type": "string",
+			"default": "Listen Now"
+		},
+		"width": {
+			"type": "integer",
+			"default": 0
+		},
+		"className": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"render": "file:./render.php"
+}
