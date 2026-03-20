@@ -1,5 +1,7 @@
 # Bifrost Player — Development Notes
 
+Production site: https://developershowcase3.wpcomstaging.com/
+
 Resources to take into account:
 - https://developer.wordpress.org/block-editor/reference-guides/interactivity-api/core-concepts/client-side-navigation/
 - https://make.wordpress.org/core/2026/02/23/changes-to-the-interactivity-api-in-wordpress-7-0/
