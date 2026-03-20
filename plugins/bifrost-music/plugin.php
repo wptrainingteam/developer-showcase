@@ -31,10 +31,10 @@ if (! class_exists(Plugin::class) && is_file(__DIR__ . '/vendor/autoload.php')) 
 }
 
 # Register activation hook.
-register_activation_hook(PLUGIN_FILE, [Plugin::class, 'activate']);
+register_activation_hook(PLUGIN_FILE, [Lifecycle\Activate::class, 'run']);
 
 # Register uninstall hook.
-register_uninstall_hook(PLUGIN_FILE, [Plugin::class, 'uninstall']);
+register_uninstall_hook(PLUGIN_FILE, [Lifecycle\Uninstall::class, 'run']);
 
 # Register service providers with the framework application.
 add_action('bifrost/framework/register/plugin', [Plugin::class, 'register']);

@@ -20,6 +20,33 @@ use Bifrost\Music\Support\Definitions;
 final class Album implements Bootable
 {
 	/**
+	 * Primitive capabilities assigned to roles.
+	 */
+	public const PRIMITIVE_CAPS = [
+		'create_posts'           => 'create_music_albums',
+		'edit_posts'             => 'edit_music_albums',
+		'edit_others_posts'      => 'edit_others_music_albums',
+		'publish_posts'          => 'publish_music_albums',
+		'read_private_posts'     => 'read_private_music_albums',
+		'read'                   => 'read',
+		'delete_posts'           => 'delete_music_albums',
+		'delete_private_posts'   => 'delete_private_music_albums',
+		'delete_published_posts' => 'delete_published_music_albums',
+		'delete_others_posts'    => 'delete_others_music_albums',
+		'edit_private_posts'     => 'edit_private_music_albums',
+		'edit_published_posts'   => 'edit_published_music_albums'
+	];
+
+	/**
+	 * Meta capabilities resolved via map_meta_cap(). Not assigned to roles.
+	 */
+	private const META_CAPS = [
+		'edit_post'   => 'edit_music_album',
+		'read_post'   => 'read_music_album',
+		'delete_post' => 'delete_music_album',
+	];
+
+	/**
 	 * {@inheritdoc}
 	 */
 	public function boot(): void
@@ -69,30 +96,7 @@ final class Album implements Bootable
 			'map_meta_cap'        => true,
 
 			// Post type capabilities.
-			'capabilities' => [
-				// meta caps (don't assign these to roles)
-				'edit_post'              => 'edit_music_album',
-				'read_post'              => 'read_music_album',
-				'delete_post'            => 'delete_music_album',
-
-				// primitive/meta caps
-				'create_posts'           => 'create_music_albums',
-
-				// primitive caps used outside of map_meta_cap()
-				'edit_posts'             => 'edit_music_albums',
-				'edit_others_posts'      => 'edit_others_music_albums',
-				'publish_posts'          => 'publish_music_albums',
-				'read_private_posts'     => 'read_private_music_albums',
-
-				// primitive caps used inside of map_meta_cap()
-				'read'                   => 'read',
-				'delete_posts'           => 'delete_music_albums',
-				'delete_private_posts'   => 'delete_private_music_albums',
-				'delete_published_posts' => 'delete_published_music_albums',
-				'delete_others_posts'    => 'delete_others_music_albums',
-				'edit_private_posts'     => 'edit_private_music_albums',
-				'edit_published_posts'   => 'edit_published_music_albums'
-			],
+			'capabilities' => self::META_CAPS + self::PRIMITIVE_CAPS,
 
 			// Post type labels
 			'labels' => [

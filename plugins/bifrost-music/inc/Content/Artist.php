@@ -20,6 +20,33 @@ use Bifrost\Music\Support\Definitions;
 final class Artist implements Bootable
 {
 	/**
+	 * Meta capabilities resolved via map_meta_cap(). Not assigned to roles.
+	 */
+	private const META_CAPS = [
+		'edit_post'   => 'edit_music_artist',
+		'read_post'   => 'read_music_artist',
+		'delete_post' => 'delete_music_artist'
+	];
+
+	/**
+	 * Primitive capabilities assigned to roles.
+	 */
+	public const PRIMITIVE_CAPS = [
+		'create_posts'           => 'create_music_artists',
+		'edit_posts'             => 'edit_music_artists',
+		'edit_others_posts'      => 'edit_others_music_artists',
+		'publish_posts'          => 'publish_music_artists',
+		'read_private_posts'     => 'read_private_music_artists',
+		'read'                   => 'read',
+		'delete_posts'           => 'delete_music_artists',
+		'delete_private_posts'   => 'delete_private_music_artists',
+		'delete_published_posts' => 'delete_published_music_artists',
+		'delete_others_posts'    => 'delete_others_music_artists',
+		'edit_private_posts'     => 'edit_private_music_artists',
+		'edit_published_posts'   => 'edit_published_music_artists',
+	];
+
+	/**
 	 * {@inheritdoc}
 	 */
 	public function boot(): void
@@ -61,30 +88,7 @@ final class Artist implements Bootable
 			'map_meta_cap'        => true,
 
 			// Post type capabilities.
-			'capabilities' => [
-				// meta caps (don't assign these to roles)
-				'edit_post'              => 'edit_music_artist',
-				'read_post'              => 'read_music_artist',
-				'delete_post'            => 'delete_music_artist',
-
-				// primitive/meta caps
-				'create_posts'           => 'create_music_artists',
-
-				// primitive caps used outside of map_meta_cap()
-				'edit_posts'             => 'edit_music_artists',
-				'edit_others_posts'      => 'edit_others_music_artists',
-				'publish_posts'          => 'publish_music_artists',
-				'read_private_posts'     => 'read_private_music_artists',
-
-				// primitive caps used inside of map_meta_cap()
-				'read'                   => 'read',
-				'delete_posts'           => 'delete_music_artists',
-				'delete_private_posts'   => 'delete_private_music_artists',
-				'delete_published_posts' => 'delete_published_music_artists',
-				'delete_others_posts'    => 'delete_others_music_artists',
-				'edit_private_posts'     => 'edit_private_music_artists',
-				'edit_published_posts'   => 'edit_published_music_artists'
-			],
+			'capabilities' => self::META_CAPS + self::PRIMITIVE_CAPS,
 
 			// Post type labels
 			'labels' => [
