@@ -8,12 +8,12 @@ A persistent audio player for the Developer Showcase. Music keeps playing as use
 ### Plugin lifecycle
 
 ```
-plugin.php
-  → Lifecycle::init()      (plugins_loaded @ 999)
-    → Plugin (extends Application)
+bifrost-framework (plugins_loaded @ 999)
+  → do_action('bifrost/framework/register/plugin', $app)
+    → Plugin::register($app)
       → registers BlockServiceProvider
       → registers RouterServiceProvider
-  → Lifecycle::boot()      (plugins_loaded @ 999999)
+  → $app->boot()
     → boots all providers that implement Bootable
 ```
 
@@ -22,7 +22,7 @@ plugin.php
 [See diagram on Excalidraw](https://excalidraw.com/#json=LCmJ2hJ4-Mk2tj5DAcNz6,xlcksiP4EmioIPvGwiFRJw)
 
 
-The plugin follows a **service container pattern** (`Application > ServiceProvider > Bootable`) matching the conventions from `bifrost-music`. The `Plugin` class declares two providers in its `PROVIDERS` constant:
+The plugin uses **bifrost-framework** for its service container and provider lifecycle (same as `bifrost-music`). The `Plugin` class registers two providers into the framework's shared `Application`:
 
 | Provider | Responsibility |
 |---|---|
@@ -102,18 +102,9 @@ core/playlist (waveform player)
 
 ```
 bifrost-player/
-├── plugin.php                          # Entry point, constants, lifecycle hooks
+├── plugin.php                          # Entry point, constants, framework hook
 ├── inc/
-│   ├── Plugin.php                      # Application subclass (declares providers)
-│   ├── Lifecycle.php                   # Static init/boot/activate/uninstall
-│   ├── functions-helpers.php           # plugin() singleton helper
-│   ├── Contracts/Bootable.php          # boot() interface
-│   ├── Container/
-│   │   ├── Container.php               # Container interface
-│   │   └── ServiceContainer.php        # PSR-11-like container implementation
-│   ├── Core/
-│   │   ├── Application.php             # Base app: registers + boots providers
-│   │   └── ServiceProvider.php         # Abstract provider with container access
+│   ├── Plugin.php                      # Static registrar (registers providers with framework)
 │   ├── Block/
 │   │   ├── BlockServiceProvider.php    # Registers blocks, renders player in footer
 │   │   ├── RenderPlaylist.php          # Injects bridge init on core/playlist
@@ -132,6 +123,8 @@ bifrost-player/
         ├── block.json                  # Block metadata + attributes
         └── render.php                  # Server render with track resolution
 ```
+
+Container, Application, ServiceProvider, and Bootable are provided by `bifrost-framework` — no local copies.
 
 ### Data flow
 

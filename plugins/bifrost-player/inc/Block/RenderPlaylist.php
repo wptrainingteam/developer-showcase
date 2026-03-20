@@ -16,7 +16,7 @@ declare( strict_types=1 );
 
 namespace Bifrost\Player\Block;
 
-use Bifrost\Player\Contracts\Bootable;
+use Bifrost\Framework\Contracts\Bootable;
 use WP_HTML_Tag_Processor;
 
 /**

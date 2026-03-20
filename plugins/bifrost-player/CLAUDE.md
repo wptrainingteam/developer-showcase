@@ -39,7 +39,9 @@ Resources to take into account:
 
 ## Plugin architecture
 
-- Follows bifrost-music patterns: Application > ServiceProvider > Bootable. Namespace: `Bifrost\Player`.
+- Uses **bifrost-framework** for DI container and service provider lifecycle (same as bifrost-music). No local Container/Application/ServiceProvider copies.
+- Registers providers via `add_action('bifrost/framework/register/plugin', [Plugin::class, 'register'])`. Requires bifrost-framework to be active.
+- Namespace: `Bifrost\Player` (service providers and bootable classes import from `Bifrost\Framework`).
 - The audio player block is injected via `wp_footer` action in `BlockServiceProvider` — no theme template modification needed.
 - Router regions are injected via `render_block` filter on `core/group` (tagName "main") and `core/template-part` (header/footer). Navigation directives are added to every `<a>` tag inside these regions.
 

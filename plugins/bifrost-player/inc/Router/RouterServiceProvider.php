@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Bifrost\Player\Router;
 
-use Bifrost\Player\Contracts\Bootable;
-use Bifrost\Player\Core\ServiceProvider;
+use Bifrost\Framework\Contracts\Bootable;
+use Bifrost\Framework\Core\ServiceProvider;
 
 /**
  * Boots the interactive router for client-side navigation.

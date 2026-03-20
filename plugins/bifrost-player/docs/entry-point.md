@@ -1,6 +1,6 @@
 # Entry Point
 
-The plugin bootstrap chain: `plugin.php` → `Lifecycle` → `Plugin` → service providers.
+The plugin bootstrap chain: `plugin.php` → `bifrost/framework/register/plugin` hook → `Plugin::register()` → service providers.
 
 ## `plugin.php`
 
@@ -12,54 +12,28 @@ The WordPress plugin header file and single entry point. Responsibilities:
 - Declares the plugin metadata (name, version, requirements, license).
 - Defines two constants: `PLUGIN_DIR` (directory path) and `PLUGIN_FILE` (file path).
 - Loads the Composer autoloader from `vendor/autoload.php`.
-- Registers activation and uninstall hooks via `Lifecycle`.
-- Hooks `Lifecycle::init()` at `plugins_loaded` priority 999 and `Lifecycle::boot()` at priority 999999.
+- Registers activation and uninstall hooks via `Plugin`.
+- Hooks `Plugin::register()` into `bifrost/framework/register/plugin`, which fires at `plugins_loaded` priority 999.
 
-The two-phase `plugins_loaded` approach (init then boot) ensures all service providers are registered before any of them are booted, so cross-provider dependencies resolve correctly.
+The framework handles the register → boot lifecycle: it fires the hook (passing its shared `Application` instance), then calls `boot()` on all registered providers. This replaces the previous two-phase approach with `Lifecycle::init()` and `Lifecycle::boot()`.
 
-## `inc/Lifecycle.php`
-
-**Path:** `inc/Lifecycle.php`
-**Class:** `Bifrost\Player\Lifecycle`
-
-A static helper class that maps WordPress lifecycle hooks to the plugin application. All methods are static because they are used as direct callbacks in `plugin.php`.
-
-| Method | Hook | Purpose |
-|---|---|---|
-| `init()` | `plugins_loaded` @ 999 | Calls `plugin()` to create the `Plugin` singleton (triggers provider registration) |
-| `boot()` | `plugins_loaded` @ 999999 | Calls `plugin()->boot()` to boot all registered providers |
-| `activate()` | `register_activation_hook` | Placeholder for activation logic (currently empty) |
-| `uninstall()` | `register_uninstall_hook` | Guards against direct invocation outside the uninstall context |
+**Requires:** `bifrost-framework` must be active. If it's not, the hook never fires and the plugin silently does nothing.
 
 ## `inc/Plugin.php`
 
 **Path:** `inc/Plugin.php`
 **Class:** `Bifrost\Player\Plugin`
 
-The concrete application class. Extends `Application` and declares:
+A static registration class (following the same pattern as `Bifrost\Music\Plugin`). Declares:
 
-- `NAMESPACE = 'bifrost/player'` — used as a prefix for WordPress action hooks (`bifrost/player/register`, `bifrost/player/booted`), allowing external code to hook into the plugin's lifecycle.
 - `PROVIDERS` — the two service providers that compose the plugin:
   - `BlockServiceProvider` — block registration, player rendering, playlist integration.
   - `RouterServiceProvider` — client-side navigation.
 
-This class has no methods of its own; all behavior is inherited from `Application`.
+### `register(Application $app)`
 
-## `inc/functions-helpers.php`
+Receives the framework's shared `Application` instance and registers each provider. The framework's container auto-wires constructor dependencies (service providers receive the container via their parent class constructor).
 
-**Path:** `inc/functions-helpers.php`
-**Namespace:** `Bifrost\Player`
+### `activate()` / `uninstall()`
 
-Two namespaced helper functions:
-
-### `plugin(): Application`
-
-Returns the `Plugin` singleton. Uses a `static` variable to ensure only one instance exists. On first call, creates `new Plugin(new ServiceContainer())`, which triggers the full registration chain (default bindings → default providers → `register()` on each provider).
-
-Called by `Lifecycle::init()` and `Lifecycle::boot()`.
-
-### `container(): Container`
-
-Shortcut to `plugin()->container()`. Provides quick access to the DI container from anywhere in the plugin without needing to pass the container around.
-
-This file is autoloaded by Composer via the `files` directive in `composer.json`.
+Static lifecycle hooks called directly from `plugin.php`. `activate()` is a placeholder. `uninstall()` guards against direct invocation outside the uninstall context.

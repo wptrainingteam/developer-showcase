@@ -6,7 +6,7 @@ Enables client-side navigation (SPA-like page transitions) so the persistent aud
 
 **Path:** `inc/Router/RouterServiceProvider.php`
 **Class:** `Bifrost\Player\Router\RouterServiceProvider`
-**Extends:** `ServiceProvider` **Implements:** `Bootable`
+**Extends:** `Bifrost\Framework\Core\ServiceProvider` **Implements:** `Bifrost\Framework\Contracts\Bootable`
 
 A thin provider that resolves `InteractiveRouter` from the container and calls its `boot()` method. Exists to keep the provider pattern consistent — the actual logic lives in `InteractiveRouter`.
 
@@ -14,7 +14,7 @@ A thin provider that resolves `InteractiveRouter` from the container and calls i
 
 **Path:** `inc/Router/InteractiveRouter.php`
 **Class:** `Bifrost\Player\Router\InteractiveRouter`
-**Implements:** `Bootable`
+**Implements:** `Bifrost\Framework\Contracts\Bootable`
 
 The core of the client-side navigation system. Hooks into the WordPress render pipeline to transform a traditional multi-page site into an SPA-like experience.
 

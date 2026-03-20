@@ -49,8 +49,7 @@ Note: `@wordpress/interactivity-router` is not listed as a dependency because it
 ```json
 {
   "autoload": {
-    "psr-4": { "Bifrost\\Player\\": "inc/" },
-    "files": ["inc/functions-helpers.php"]
+    "psr-4": { "Bifrost\\Player\\": "inc/" }
   },
   "require": { "php": ">=8.1" },
   "require-dev": {
@@ -64,7 +63,7 @@ Note: `@wordpress/interactivity-router` is not listed as a dependency because it
 ### Autoloading
 
 - **PSR-4** — maps `Bifrost\Player\` to `inc/`, so `Bifrost\Player\Block\RenderPlaylist` resolves to `inc/Block/RenderPlaylist.php`.
-- **Files** — `inc/functions-helpers.php` is always loaded (contains the `plugin()` and `container()` helper functions).
+- Container, Application, ServiceProvider, and Bootable are provided by `bifrost-framework` at runtime (no Composer dependency needed since all plugins share the same WordPress installation).
 
 ### Scripts
 

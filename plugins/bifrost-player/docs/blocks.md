@@ -6,7 +6,7 @@ The PHP layer that registers blocks, renders the persistent player, and integrat
 
 **Path:** `inc/Block/BlockServiceProvider.php`
 **Class:** `Bifrost\Player\Block\BlockServiceProvider`
-**Extends:** `ServiceProvider` **Implements:** `Bootable`
+**Extends:** `Bifrost\Framework\Core\ServiceProvider` **Implements:** `Bifrost\Framework\Contracts\Bootable`
 
 The main block orchestrator. On `boot()`:
 
@@ -22,7 +22,7 @@ Rendering the audio player in `wp_footer` places it outside all router regions. 
 
 **Path:** `inc/Block/RenderPlaylist.php`
 **Class:** `Bifrost\Player\Block\RenderPlaylist`
-**Implements:** `Bootable`
+**Implements:** `Bifrost\Framework\Contracts\Bootable`
 
 Filters the rendered output of `core/playlist` blocks to inject the playlist-to-player bridge.
 
@@ -43,7 +43,7 @@ The `core/playlist` block sets `data-wp-interactive="core/playlist"` on its elem
 
 **Path:** `inc/Block/RenderPlaylistTrack.php`
 **Class:** `Bifrost\Player\Block\RenderPlaylistTrack`
-**Implements:** `Bootable`
+**Implements:** `Bifrost\Framework\Contracts\Bootable`
 
 Filters the rendered output of `core/playlist-track` blocks to make individual tracks clickable via the persistent player.
 
