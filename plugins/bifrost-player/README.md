@@ -2,8 +2,6 @@
 
 A persistent audio player for the Developer Showcase. Music keeps playing as users navigate between pages using the WordPress Interactivity Router for SPA-like client-side navigation.
 
-![Service container pattern](./assets/services-pattern.png)
-[See diagram on Excalidraw](https://excalidraw.com/#json=LCmJ2hJ4-Mk2tj5DAcNz6,xlcksiP4EmioIPvGwiFRJw)
 
 ## Architecture
 
@@ -18,6 +16,11 @@ plugin.php
   → Lifecycle::boot()      (plugins_loaded @ 999999)
     → boots all providers that implement Bootable
 ```
+
+<img src="./assets/services-pattern.png" width="75%"/>
+
+[See diagram on Excalidraw](https://excalidraw.com/#json=LCmJ2hJ4-Mk2tj5DAcNz6,xlcksiP4EmioIPvGwiFRJw)
+
 
 The plugin follows a **service container pattern** (`Application > ServiceProvider > Bootable`) matching the conventions from `bifrost-music`. The `Plugin` class declares two providers in its `PROVIDERS` constant:
 
