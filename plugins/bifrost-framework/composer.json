@@ -1,5 +1,5 @@
 {
-	"name": "bifrost/music",
+	"name": "bifrost/framework",
 	"type": "wordpress-plugin",
 	"license": "GPL-3.0-or-later",
 	"scripts": {
@@ -12,15 +12,18 @@
 			"composer dump-autoload"
 		],
 		"lint:php": "./vendor/bin/phpcs -d error_reporting=E_ALL^E_DEPRECATED -s --colors .",
-		"zip": "composer archive --file=noise"
+		"zip": "composer archive --file=bifrost-framework"
 	},
 	"autoload": {
 		"psr-4": {
-			"Bifrost\\Music\\": "inc/"
-		}
+			"Bifrost\\Framework\\": "inc/"
+		},
+		"files": [
+			"inc/functions-helpers.php"
+		]
 	},
 	"require": {
-                "php": ">=8.1"
+		"php": ">=8.1"
 	},
 	"require-dev": {
 		"wp-coding-standards/wpcs": "^3.0",

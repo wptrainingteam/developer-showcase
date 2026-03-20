@@ -11,27 +11,17 @@
 
 declare(strict_types=1);
 
-namespace Bifrost\Music\Core;
+namespace Bifrost\Framework\Core;
 
 use InvalidArgumentException;
-use Bifrost\Music\Container\Container;
-use Bifrost\Music\Contracts\Bootable;
+use Bifrost\Framework\Container\Container;
+use Bifrost\Framework\Contracts\Bootable;
 
 /**
- * Base class that does the heavy lifting of bootstrapping an application while
- * letting subclasses handle the registration aspects specific to them.
+ * Application class that handles bootstrapping the framework.
  */
-abstract class Application implements Bootable
+class Application implements Bootable
 {
-	/**
-	 * Custom namespace/prefix for WordPress hooks that can be defined in a
-	 * subclass. If left undefined, hooks will not fire.
-	 *
-	 * @var  string
-	 * @todo Type hint with PHP 8.3+ requirement.
-	 */
-	protected const NAMESPACE = '';
-
 	/**
 	 * An array of service provider classnames to automatically register if
 	 * defined in a subclass.
@@ -47,6 +37,12 @@ abstract class Application implements Bootable
 	private array $serviceProviders = [];
 
 	/**
+	 * Tracks which providers have already been booted to support multiple
+	 * boot phases (e.g., plugins_loaded and after_setup_theme).
+	 */
+	private array $bootedProviders = [];
+
+	/**
 	 * Sets up the initial object state.
 	 */
 	public function __construct(protected readonly Container $container)
@@ -54,11 +50,6 @@ abstract class Application implements Bootable
 		// Register default bindings and service providers.
 		$this->registerDefaultBindings();
 		$this->registerDefaultProviders();
-
-		// Allow third-party devs to register service providers.
-		if (static::NAMESPACE !== '') {
-			do_action(static::NAMESPACE . '/register', $this);
-		}
 	}
 
 	/**
@@ -109,18 +100,16 @@ abstract class Application implements Bootable
 
 	/**
 	 * Boots all service providers that implement the `Bootable` interface.
+	 * Providers that have already been booted are skipped, making it safe to
+	 * call multiple times across different load phases.
 	 */
 	public function boot(): void
 	{
 		foreach ($this->serviceProviders as $provider) {
-			if ($provider instanceof Bootable) {
+			if ($provider instanceof Bootable && ! in_array($provider, $this->bootedProviders, true)) {
 				$provider->boot();
+				$this->bootedProviders[] = $provider;
 			}
-		}
-
-		// Allow third-party devs access to hook in after booting.
-		if (static::NAMESPACE !== '') {
-			do_action(static::NAMESPACE . '/booted', $this);
 		}
 	}
 }

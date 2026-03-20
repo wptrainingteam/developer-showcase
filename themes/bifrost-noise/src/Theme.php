@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Theme application class.
+ * Theme lifecycle helper.
  *
  * @author    Bifrost
  * @copyright Copyright (c) 2026, WordPress
@@ -13,23 +13,20 @@ declare(strict_types=1);
 
 namespace Bifrost\Noise;
 
-use Bifrost\Noise\Core\Application;
+use Bifrost\Framework\Core\Application;
 
 /**
- * The Theme class is an implementation of the Application contract. It's used
- * to register the default service providers, bootstrapping the theme.
+ * A static class that handles the various duties during the theme's lifecycle.
  */
-final class Theme extends Application
+final class Theme
 {
 	/**
-	 * Defines the theme's namespace, which is used as a hook prefix.
+	 * Service providers to register with the framework application.
+	 *
+	 * @var  array<class-string>
+	 * @todo Type hint with PHP 8.3+ requirement.
 	 */
-	protected const NAMESPACE = 'bifrost/noise';
-
-	/**
-	 * Defines the theme's default service providers.
-	 */
-	protected const PROVIDERS = [
+	private const PROVIDERS = [
 		ThemeServiceProvider::class,
 		Block\Binding\BindingServiceProvider::class,
 		Block\Render\RenderServiceProvider::class,
@@ -40,4 +37,14 @@ final class Theme extends Application
 		PostType\PostTypeServiceProvider::class,
 		Template\TemplateServiceProvider::class
 	];
+
+	/**
+	 * Registers the theme's service providers.
+	 */
+	public static function register(Application $app): void
+	{
+		foreach (self::PROVIDERS as $provider) {
+			$app->register($provider);
+		}
+	}
 }

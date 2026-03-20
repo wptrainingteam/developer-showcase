@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Bifrost\Noise\Block\Stylesheet;
 
-use Bifrost\Noise\Contracts\Bootable;
+use Bifrost\Framework\Contracts\Bootable;
 
 /**
  * Handles registering and enqueueing block stylesheets.
@@ -69,14 +69,13 @@ final class StylesheetLoader implements Bootable
 	{
 		$namespace = $stylesheet->getNamespace();
 		$slug      = $stylesheet->getSlug();
-		$asset     = $stylesheet->getAssetData();
 
 		wp_enqueue_block_style($stylesheet->getBlockName(), [
 			'handle' => self::HANDLE_PREFIX . "-{$namespace}-{$slug}",
 			'src'    => $stylesheet->getFileUrl(),
 			'path'   => $stylesheet->getFilePath(),
-			'deps'   => $asset['dependencies'],
-			'ver'    => $asset['version']
+			'deps'   => $stylesheet->getDependencies(),
+			'ver'    => $stylesheet->getVersion()
 		]);
 	}
 }

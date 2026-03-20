@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Bifrost\Music\Content;
 
-use Bifrost\Music\Contracts\Bootable;
+use Bifrost\Framework\Contracts\Bootable;
 use Bifrost\Music\Support\Definitions;
 
 final class Post implements Bootable

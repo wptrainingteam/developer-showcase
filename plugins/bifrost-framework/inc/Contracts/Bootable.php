@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Bifrost\Music\Contracts;
+namespace Bifrost\Framework\Contracts;
 
 /**
  * Defines the contract that bootable classes should utilize. Bootable classes

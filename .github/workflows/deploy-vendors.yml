@@ -38,6 +38,20 @@ jobs:
 
       # ── Plugin ─────────────────────────────────────────────────────────────
 
+      - name: Install plugin dependencies (bifrost-framework)
+        working-directory: plugins/bifrost-framework
+        run: composer install --no-dev --optimize-autoloader --no-interaction
+
+      - name: Upload plugin vendor folder
+        if: ${{ inputs.dry_run != true && hashFiles('plugins/bifrost-framework/vendor/**') != '' }}
+        uses: Automattic/FTP-Deploy-Action@3.1.2
+        with:
+          ftp-server: sftp://sftp.wp.com/htdocs/wp-content/plugins/bifrost-framework/vendor/
+          ftp-username: ${{ secrets.SFTP_USER }}
+          ftp-password: ${{ secrets.SFTP_PASSWORD }}
+          local-dir: plugins/bifrost-framework/vendor/
+          known-hosts: ${{ secrets.SFTP_KNOWN_HOSTS }}
+
       - name: Install plugin dependencies (bifrost-music)
         working-directory: plugins/bifrost-music
         run: composer install --no-dev --optimize-autoloader --no-interaction
@@ -50,7 +64,6 @@ jobs:
           ftp-username: ${{ secrets.SFTP_USER }}
           ftp-password: ${{ secrets.SFTP_PASSWORD }}
           local-dir: plugins/bifrost-music/vendor/
-          git-ftp-args: --all
           known-hosts: ${{ secrets.SFTP_KNOWN_HOSTS }}
 
       # ── Theme ───────────────────────────────────────────────────────────────
@@ -67,5 +80,4 @@ jobs:
           ftp-username: ${{ secrets.SFTP_USER }}
           ftp-password: ${{ secrets.SFTP_PASSWORD }}
           local-dir: themes/bifrost-noise/vendor/
-          git-ftp-args: --all
           known-hosts: ${{ secrets.SFTP_KNOWN_HOSTS }}
