@@ -14,10 +14,14 @@ declare(strict_types=1);
 namespace Bifrost\Music\Content;
 
 use Bifrost\Framework\Contracts\Bootable;
-use Bifrost\Music\Support\Definitions;
 
 final class Genre implements Bootable
 {
+	/**
+	 * The taxonomy name.
+	 */
+	public const TAXONOMY = 'music_genre';
+
 	/**
 	 * Primitive capabilities assigned to roles.
 	 */
@@ -43,52 +47,48 @@ final class Genre implements Bootable
 	 */
 	private function register(): void
 	{
-		register_taxonomy(
-			Definitions::TAXONOMY_GENRE,
-			[ Definitions::POST_TYPE_ALBUM ],
-			[
-				'public'            => true,
-				'show_ui'           => true,
-				'show_in_nav_menus' => true,
-				'show_in_rest'      => true,
-				'show_tagcloud'     => true,
-				'show_admin_column' => true,
-				'hierarchical'      => false,
-				'query_var'         => Definitions::TAXONOMY_GENRE,
-				'capabilities'      => self::PRIMITIVE_CAPS,
-				'labels' => [
-					'name'                  => __('Genres',                 'bifrost-music'),
-					'singular_name'         => __('Genre',                  'bifrost-music'),
-					'menu_name'             => __('Genres',                 'bifrost-music'),
-					'name_admin_bar'        => __('Genre',                  'bifrost-music'),
-					'search_items'          => __('Search Genres',          'bifrost-music'),
-					'popular_items'         => __('Popular Genres',         'bifrost-music'),
-					'all_items'             => __('All Genres',             'bifrost-music'),
-					'edit_item'             => __('Edit Genre',             'bifrost-music'),
-					'view_item'             => __('View Genre',             'bifrost-music'),
-					'update_item'           => __('Update Genre',           'bifrost-music'),
-					'add_new_item'          => __('Add New Genre',          'bifrost-music'),
-					'new_item_name'         => __('New Genre Name',         'bifrost-music'),
-					'not_found'             => __('No genres found.',       'bifrost-music'),
-					'no_terms'              => __('No genres',              'bifrost-music'),
-					'items_list_navigation' => __('Genres list navigation', 'bifrost-music'),
-					'items_list'            => __('Genres list',            'bifrost-music'),
+		register_taxonomy(self::TAXONOMY, [ Album::POST_TYPE ], [
+			'public'            => true,
+			'show_ui'           => true,
+			'show_in_nav_menus' => true,
+			'show_in_rest'      => true,
+			'show_tagcloud'     => true,
+			'show_admin_column' => true,
+			'hierarchical'      => false,
+			'query_var'         => self::TAXONOMY,
+			'capabilities'      => self::PRIMITIVE_CAPS,
+			'labels' => [
+				'name'                  => __('Genres',                 'bifrost-music'),
+				'singular_name'         => __('Genre',                  'bifrost-music'),
+				'menu_name'             => __('Genres',                 'bifrost-music'),
+				'name_admin_bar'        => __('Genre',                  'bifrost-music'),
+				'search_items'          => __('Search Genres',          'bifrost-music'),
+				'popular_items'         => __('Popular Genres',         'bifrost-music'),
+				'all_items'             => __('All Genres',             'bifrost-music'),
+				'edit_item'             => __('Edit Genre',             'bifrost-music'),
+				'view_item'             => __('View Genre',             'bifrost-music'),
+				'update_item'           => __('Update Genre',           'bifrost-music'),
+				'add_new_item'          => __('Add New Genre',          'bifrost-music'),
+				'new_item_name'         => __('New Genre Name',         'bifrost-music'),
+				'not_found'             => __('No genres found.',       'bifrost-music'),
+				'no_terms'              => __('No genres',              'bifrost-music'),
+				'items_list_navigation' => __('Genres list navigation', 'bifrost-music'),
+				'items_list'            => __('Genres list',            'bifrost-music'),
 
-					// Non-hierarchical only.
-					'separate_items_with_commas' => __('Separate genres with commas',      'bifrost-music'),
-					'add_or_remove_items'        => __('Add or remove genres',             'bifrost-music'),
-					'choose_from_most_used'      => __('Choose from the most used genres', 'bifrost-music')
-				],
+				// Non-hierarchical only.
+				'separate_items_with_commas' => __('Separate genres with commas',      'bifrost-music'),
+				'add_or_remove_items'        => __('Add or remove genres',             'bifrost-music'),
+				'choose_from_most_used'      => __('Choose from the most used genres', 'bifrost-music')
+			],
 
-				// The rewrite handles the URL structure.
-				'rewrite' => [
-					'slug'         => 'genres',
-					'with_front'   => false,
-					'hierarchical' => false,
-					'ep_mask'      => EP_NONE
-				]
+			// The rewrite handles the URL structure.
+			'rewrite' => [
+				'slug'         => 'genres',
+				'with_front'   => false,
+				'hierarchical' => false,
+				'ep_mask'      => EP_NONE
 			]
-		);
+		]);
 	}
 
 	/**
@@ -97,7 +97,7 @@ final class Genre implements Bootable
 	private function termUpdatedMessages(array $messages): array
 	{
 		// Add the music genre messages.
-		$messages[Definitions::TAXONOMY_GENRE] = [
+		$messages[self::TAXONOMY] = [
 			0 => '',
 			1 => __('Genre added.',       'bifrost-music'),
 			2 => __('Genre deleted.',     'bifrost-music'),

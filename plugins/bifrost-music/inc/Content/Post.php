@@ -14,10 +14,13 @@ declare(strict_types=1);
 namespace Bifrost\Music\Content;
 
 use Bifrost\Framework\Contracts\Bootable;
-use Bifrost\Music\Support\Definitions;
 
 final class Post implements Bootable
 {
+	public const META_KEY_ARTIST = 'music_artist';
+
+	public const META_KEY_ALBUM = 'music_album';
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -31,7 +34,7 @@ final class Post implements Bootable
 	 */
 	private function register(): void
 	{
-		register_post_meta('post', Definitions::POST_META_ARTIST, [
+		register_post_meta('post', self::META_KEY_ARTIST, [
 			'show_in_rest'  => true,
 			'single'        => true,
 			'type'          => 'integer',
@@ -40,7 +43,7 @@ final class Post implements Bootable
 			'auth_callback' => fn() => current_user_can('edit_posts')
 		]);
 
-		register_post_meta('post', Definitions::POST_META_ALBUM, [
+		register_post_meta('post', self::META_KEY_ALBUM, [
 			'show_in_rest'  => true,
 			'single'        => true,
 			'type'          => 'integer',

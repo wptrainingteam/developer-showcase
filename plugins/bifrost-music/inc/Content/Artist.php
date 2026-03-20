@@ -15,10 +15,14 @@ namespace Bifrost\Music\Content;
 
 use WP_Post;
 use Bifrost\Framework\Contracts\Bootable;
-use Bifrost\Music\Support\Definitions;
 
 final class Artist implements Bootable
 {
+	/**
+	 * The post type name.
+	 */
+	public const POST_TYPE = 'music_artist';
+
 	/**
 	 * Meta capabilities resolved via map_meta_cap(). Not assigned to roles.
 	 */
@@ -67,7 +71,7 @@ final class Artist implements Bootable
 	 */
 	private function register(): void
 	{
-		register_post_type(Definitions::POST_TYPE_ARTIST, [
+		register_post_type(self::POST_TYPE, [
 			'description'         => '',
 			'public'              => true,
 			'publicly_queryable'  => true,
@@ -83,8 +87,8 @@ final class Artist implements Bootable
 			'delete_with_user'    => false,
 			'hierarchical'        => false,
 			'has_archive'         => 'artists',
-			'query_var'           => Definitions::POST_TYPE_ARTIST,
-			'capability_type'     => Definitions::POST_TYPE_ARTIST,
+			'query_var'           => self::POST_TYPE,
+			'capability_type'     => self::POST_TYPE,
 			'map_meta_cap'        => true,
 
 			// Post type capabilities.
@@ -144,7 +148,7 @@ final class Artist implements Bootable
 	 */
 	private function enterTitleHere(string $title, WP_Post $post): string
 	{
-		return Definitions::POST_TYPE_ARTIST === $post->post_type
+		return self::POST_TYPE === $post->post_type
 			? esc_html__('Enter artist title', 'bifrost-music')
 			: $title;
 	}
@@ -154,7 +158,7 @@ final class Artist implements Bootable
 	 */
 	private function bulkPostUpdatedMessages(array $messages, array $counts): array
 	{
-		$type = Definitions::POST_TYPE_ARTIST;
+		$type = self::POST_TYPE;
 
 		$messages[$type]['updated']   = _n('%s artist updated.',                             '%s artists updated.',                               $counts['updated'],   'bifrost-music');
 		$messages[$type]['locked']    = _n('%s artist not updated, somebody is editing it.', '%s artists not updated, somebody is editing them.', $counts['locked'],    'bifrost-music');
@@ -172,7 +176,7 @@ final class Artist implements Bootable
 	{
 		global $post, $post_ID;
 
-		$artist_type = Definitions::POST_TYPE_ARTIST;
+		$artist_type = self::POST_TYPE;
 
 		if ($artist_type !== $post->post_type) {
 			return $messages;
