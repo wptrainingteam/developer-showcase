@@ -42,10 +42,37 @@ Resources to take into account:
 - Follows bifrost-music patterns: Application > ServiceProvider > Bootable. Namespace: `Bifrost\Player`.
 - The audio player block is injected via `wp_footer` action in `BlockServiceProvider` — no theme template modification needed.
 - Router regions are injected via `render_block` filter on `core/group` (tagName "main") and `core/template-part` (header/footer). Navigation directives are added to every `<a>` tag inside these regions.
-- The playlist bridge is injected via `render_block` filter on `core/playlist` — adds `data-wp-init` for waveform event bridging.
 
 ## Core/playlist integration
 
 - `core/playlist` uses a **locked** store (`{ lock: true }`). External stores cannot call its actions directly.
-- The waveform player (`WaveformPlayer` class) manages its own `<audio>` element imperatively and dispatches custom events: `waveformplayer:play`, `waveformplayer:pause`, `waveformplayer:ended`.
-- Our bridge listens for `waveformplayer:play` on the playlist `<figure>`, pauses the waveform's audio, and transfers playback to the persistent player. This avoids two `<audio>` elements playing simultaneously.
+- The core/playlist waveform is hidden via `RenderPlaylist` (`render_block` filter on `core/playlist`). It finds `.wp-block-playlist__waveform-player` and sets `hidden` + `display:none`.
+- Track clicks are intercepted by `RenderPlaylistTrack` (`render_block` filter on `core/playlist-track`). It sets `data-wp-interactive="bifrost-player"` and `data-wp-on--click="actions.playTrack"` on each track `<li>`, with track data in `data-wp-context`. This overrides the `core/playlist` namespace for that subtree, so core's `actions.changeTrack` silently no-ops (which is what we want since the in-page waveform is hidden).
+
+## Persistent WaveformPlayer (`@arraypress/waveform-player`)
+
+The persistent audio player embeds its own `WaveformPlayer` instance for seekable playback with waveform visualization. The `<audio>` element in `render.php` is kept as a fallback — `syncPlayback` skips when the waveform is active.
+
+### Initialization
+
+- **Initialize via JS constructor** (`new WaveformPlayer(div, options)`), NOT via `data-waveform-player` attribute. The library's auto-init scans the DOM for `[data-waveform-player]` elements — after CSR navigation, this can re-initialize and corrupt an existing instance.
+- **First-time init must be deferred** via `requestAnimationFrame`. The persistent player starts with `hidden` attribute (`display: none`). The Interactivity API removes `hidden` and fires `data-wp-watch` in the same reactive cycle, but the browser hasn't painted yet — the canvas would get 0 dimensions.
+- **`syncPlayback` must also check `initPending`**. During the `requestAnimationFrame` delay, the fallback `<audio>` would otherwise start playing, causing dual audio.
+
+### Colors and styling
+
+- **Pass all colors explicitly** in the options object (`waveformColor`, `progressColor`, `buttonColor`, `textColor`, `backgroundColor`). Do NOT use `colorPreset: "dark"` — it reads computed styles which change when the router swaps stylesheets during navigation.
+- **Set `singlePlay: false`** to prevent the library from pausing our instance when other WaveformPlayer instances (e.g., core/playlist) exist on the page.
+
+### Surviving client-side navigation
+
+The persistent player lives outside router regions (injected via `wp_footer`), so its DOM is preserved during CSR navigation. However, the router swaps stylesheets — the core/playlist stylesheet (which provides ALL `.waveform-*` layout styles: `.waveform-player`, `.waveform-body`, `.waveform-track`, `.waveform-btn`, `.waveform-container`, `.waveform-container canvas`) is removed when navigating away from album pages. Without those styles, the waveform canvas collapses and the layout breaks.
+
+- **All `.waveform-*` layout styles must be duplicated** in our own `style.css`, scoped under `.bifrost-audio-player__waveform`. This includes `box-sizing`, flex layout on `.waveform-track`, button sizing on `.waveform-btn`, canvas sizing on `.waveform-container canvas`, etc. Copy them from `plugins/gutenberg/build/styles/block-library/playlist/style.css`.
+- **Track the loaded URL** (`currentLoadedUrl`) and skip `loadTrack()` when the URL hasn't changed. Without this, `syncWaveform` re-fires after CSR navigation and re-loads the same track, destroying the canvas.
+- **The `navigate` action must NOT touch the waveform** — don't destroy, recreate, or pause it. Just let it keep playing.
+- **Interactivity state is NOT reset during navigation.** The router calls `populateServerData` with the new page's `wp_interactivity_state` values, but uses `deepMerge(state, newState, false)` — the third arg `false` means it only sets NEW keys, never overwrites existing ones.
+
+### Code style
+
+- **Do NOT remove existing comments** in `view.js` when making changes.

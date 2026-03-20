@@ -48,14 +48,12 @@ $wrapper_attributes = get_block_wrapper_attributes([
 			></span>
 		</div>
 
-		<div class="bifrost-audio-player__controls">
-			<button
-				class="bifrost-audio-player__play-pause"
-				data-wp-on--click="actions.togglePlay"
-				data-wp-text="state.playPauseLabel"
-				aria-label="<?php esc_attr_e('Toggle playback', 'bifrost-player'); ?>"
-			></button>
+		<div
+			class="bifrost-audio-player__waveform"
+			data-wp-watch="callbacks.syncWaveform"
+		></div>
 
+		<div class="bifrost-audio-player__controls">
 			<button
 				class="bifrost-audio-player__close"
 				data-wp-on--click="actions.closePlayer"

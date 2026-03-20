@@ -38,8 +38,9 @@
 	display: flex;
 	flex-direction: column;
 	gap: 0.125rem;
-	flex: 1;
+	flex-shrink: 1;
 	min-width: 0;
+	max-width: 200px;
 }
 
 .bifrost-audio-player__title {
@@ -58,6 +59,109 @@
 	text-overflow: ellipsis;
 }
 
+/* Waveform container — takes remaining space. */
+.bifrost-audio-player__waveform {
+	flex: 1;
+	min-width: 0;
+	overflow: hidden;
+}
+
+/*
+ * Self-contained WaveformPlayer styles so the persistent player
+ * never depends on core/playlist's stylesheet (which the router
+ * removes when navigating away from album pages).
+ */
+.bifrost-audio-player__waveform .waveform-player {
+	font-family: inherit;
+	color: inherit;
+	line-height: 1.4;
+	background: transparent;
+	border: none;
+	padding: 0;
+}
+
+.bifrost-audio-player__waveform .waveform-player * {
+	box-sizing: border-box;
+}
+
+.bifrost-audio-player__waveform .waveform-body {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+
+.bifrost-audio-player__waveform .waveform-track {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	position: relative;
+}
+
+.bifrost-audio-player__waveform .waveform-btn {
+	width: 36px;
+	height: 36px;
+	min-width: 36px;
+	border-radius: 50%;
+	border: 2px solid currentColor;
+	background: transparent;
+	color: inherit;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.2s ease;
+	padding: 0;
+	opacity: 0.9;
+	flex-shrink: 0;
+}
+
+.bifrost-audio-player__waveform .waveform-btn:hover:not(:disabled) {
+	opacity: 1;
+	transform: scale(1.05);
+}
+
+.bifrost-audio-player__waveform .waveform-btn > * {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+.bifrost-audio-player__waveform .waveform-btn svg {
+	width: 16px;
+	height: 16px;
+	fill: currentColor;
+	display: block;
+}
+
+.bifrost-audio-player__waveform .waveform-icon-play svg {
+	margin-left: 1px;
+}
+
+.bifrost-audio-player__waveform .waveform-container {
+	flex: 1;
+	position: relative;
+	min-height: 40px;
+	cursor: pointer;
+	min-width: 0;
+	width: 100%;
+}
+
+.bifrost-audio-player__waveform .waveform-container canvas {
+	display: block;
+	width: 100%;
+	height: 100%;
+	max-width: 100%;
+	position: relative;
+	z-index: 1;
+}
+
+/* Hide the info bar — we show our own artwork/title/artist. */
+.bifrost-audio-player__waveform .waveform-info {
+	display: none;
+}
+
 .bifrost-audio-player__controls {
 	display: flex;
 	align-items: center;
@@ -65,7 +169,6 @@
 	flex-shrink: 0;
 }
 
-.bifrost-audio-player__play-pause,
 .bifrost-audio-player__close {
 	background: none;
 	border: none;
@@ -78,7 +181,6 @@
 	transition: opacity 0.15s ease;
 }
 
-.bifrost-audio-player__play-pause:hover,
 .bifrost-audio-player__close:hover {
 	opacity: 1;
 }
