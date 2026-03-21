@@ -1,0 +1,20 @@
+{
+	"name": "wptrainingteam/developer-showcase",
+	"description": "PHP development tooling for the Developer Showcase project",
+	"license": "GPL-3.0-or-later",
+	"scripts": {
+		"lint:php": "./vendor/bin/phpcs -d error_reporting=E_ALL^E_DEPRECATED -s --colors ."
+	},
+	"require-dev": {
+		"wp-coding-standards/wpcs": "^3.0",
+		"phpcompatibility/phpcompatibility-wp": "*",
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.0"
+	},
+	"minimum-stability": "stable",
+	"prefer-stable": true,
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	}
+}
