@@ -30,6 +30,7 @@ final class BlockServiceProvider extends ServiceProvider implements Bootable {
 		add_action( 'init', $this->registerBlocks( ... ) );
 		add_action( 'wp_footer', $this->renderPlayer( ... ) );
 
+		$this->container->get( RenderPlayButton::class )->boot();
 		$this->container->get( RenderPlaylist::class )->boot();
 		$this->container->get( RenderPlaylistTrack::class )->boot();
 	}
@@ -39,7 +40,6 @@ final class BlockServiceProvider extends ServiceProvider implements Bootable {
 	 */
 	private function registerBlocks(): void {
 		register_block_type( PLUGIN_DIR . '/build/blocks/audio-player' );
-		register_block_type( PLUGIN_DIR . '/build/blocks/play-button' );
 	}
 
 	/**
