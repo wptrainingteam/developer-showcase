@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name:       Bifrost: Player
  * Plugin URI:        https://github.com/wptrainingteam/developer-showcase
@@ -18,22 +19,22 @@ declare(strict_types=1);
 namespace Bifrost\Player;
 
 // Prevent direct access.
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 // Define the plugin constants.
 const PLUGIN_DIR  = __DIR__;
 const PLUGIN_FILE = __FILE__;
 
 // Load the autoloader.
-if ( ! class_exists( Plugin::class ) && is_file( __DIR__ . '/vendor/autoload.php' ) ) {
+if ( ! class_exists(Plugin::class) && is_file(__DIR__ . '/vendor/autoload.php') ) {
 	require_once PLUGIN_DIR . '/vendor/autoload.php';
 }
 
 // Register activation hook.
-register_activation_hook( PLUGIN_FILE, array( Plugin::class, 'activate' ) );
+register_activation_hook(PLUGIN_FILE, array( Plugin::class, 'activate' ));
 
 // Register uninstall hook.
-register_uninstall_hook( PLUGIN_FILE, array( Plugin::class, 'uninstall' ) );
+register_uninstall_hook(PLUGIN_FILE, array( Plugin::class, 'uninstall' ));
 
 // Register providers with the framework.
-add_action( 'bifrost/framework/register/plugin', array( Plugin::class, 'register' ) );
+add_action('bifrost/framework/register/plugin', array( Plugin::class, 'register' ));
