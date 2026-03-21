@@ -29,33 +29,35 @@ use WP_Post;
  * persistent audio player. Track data is resolved from the current post's
  * first audio attachment.
  */
-final class RenderPlayButton implements Bootable {
-
+final class RenderPlayButton implements Bootable
+{
 	private const BLOCK_NAME = 'core/button';
 
 	/**
 	 * Registers the WordPress filter hooks.
 	 */
-	public function boot(): void {
-		add_filter( 'render_block', $this->renderBlock( ... ), 10, 2 );
+	public function boot(): void
+	{
+		add_filter('render_block', $this->renderBlock(...), 10, 2);
 	}
 
 	/**
 	 * Injects iAPI directives on the primary button when on an album page.
 	 */
-	private function renderBlock( string $blockContent, array $block ): string {
+	private function renderBlock(string $blockContent, array $block): string
+	{
 		if ( ( $block['blockName'] ?? '' ) !== self::BLOCK_NAME ) {
 			return $blockContent;
 		}
 
 		// Only enhance on album pages.
-		if ( ! class_exists( Definitions::class ) || get_post_type() !== Definitions::POST_TYPE_ALBUM ) {
+		if ( ! class_exists(Definitions::class) || get_post_type() !== Definitions::POST_TYPE_ALBUM ) {
 			return $blockContent;
 		}
 
 		// Skip outline/secondary buttons.
 		$className = $block['attrs']['className'] ?? '';
-		if ( str_contains( $className, 'is-style-outline' ) ) {
+		if ( str_contains($className, 'is-style-outline') ) {
 			return $blockContent;
 		}
 
@@ -65,25 +67,25 @@ final class RenderPlayButton implements Bootable {
 			return $blockContent;
 		}
 
-		$tags = new WP_HTML_Tag_Processor( $blockContent );
+		$tags = new WP_HTML_Tag_Processor($blockContent);
 
 		// Add context and interactive namespace to the wrapper div.
-		if ( ! $tags->next_tag( 'div' ) ) {
+		if ( ! $tags->next_tag('div') ) {
 			return $blockContent;
 		}
 
-		$tags->set_attribute( 'data-wp-interactive', 'bifrost-player' );
+		$tags->set_attribute('data-wp-interactive', 'bifrost-player');
 		$tags->set_attribute(
 			'data-wp-context',
-			wp_json_encode( $trackData, JSON_HEX_TAG | JSON_HEX_AMP )
+			wp_json_encode($trackData, JSON_HEX_TAG | JSON_HEX_AMP)
 		);
 
 		// Add click handler to the <a> tag.
-		if ( ! $tags->next_tag( 'a' ) ) {
+		if ( ! $tags->next_tag('a') ) {
 			return $blockContent;
 		}
 
-		$tags->set_attribute( 'data-wp-on--click', 'actions.playTrack' );
+		$tags->set_attribute('data-wp-on--click', 'actions.playTrack');
 
 		return $tags->get_updated_html();
 	}
@@ -93,7 +95,8 @@ final class RenderPlayButton implements Bootable {
 	 *
 	 * @return array{trackUrl: string, trackTitle: string, trackArtist: string, trackImage: string}|null
 	 */
-	private function resolveTrackData(): ?array {
+	private function resolveTrackData(): ?array
+	{
 		$postId = get_the_ID();
 
 		if ( ! $postId ) {
@@ -111,26 +114,26 @@ final class RenderPlayButton implements Bootable {
 			)
 		);
 
-		if ( empty( $attachments ) ) {
+		if ( empty($attachments) ) {
 			return null;
 		}
 
-		$attachment = reset( $attachments );
-		$trackUrl   = wp_get_attachment_url( $attachment->ID );
+		$attachment = reset($attachments);
+		$trackUrl   = wp_get_attachment_url($attachment->ID);
 
 		if ( ! $trackUrl ) {
 			return null;
 		}
 
-		$trackTitle  = $attachment->post_title ?: get_the_title( $postId );
+		$trackTitle  = $attachment->post_title ?: get_the_title($postId);
 		$trackArtist = '';
 		$trackImage  = '';
 
 		// Resolve artist from parent (album → artist post).
-		$post = get_post( $postId );
+		$post = get_post($postId);
 
-		if ( $post instanceof WP_Post && ! empty( $post->post_parent ) ) {
-			$artist = get_post( $post->post_parent );
+		if ( $post instanceof WP_Post && ! empty($post->post_parent) ) {
+			$artist = get_post($post->post_parent);
 
 			if ( $artist instanceof WP_Post ) {
 				$trackArtist = $artist->post_title;
@@ -138,10 +141,10 @@ final class RenderPlayButton implements Bootable {
 		}
 
 		// Resolve album art from featured image.
-		$thumbnailId = get_post_thumbnail_id( $postId );
+		$thumbnailId = get_post_thumbnail_id($postId);
 
 		if ( $thumbnailId ) {
-			$trackImage = wp_get_attachment_image_url( $thumbnailId, 'medium' ) ?: '';
+			$trackImage = wp_get_attachment_image_url($thumbnailId, 'medium') ?: '';
 		}
 
 		return array(

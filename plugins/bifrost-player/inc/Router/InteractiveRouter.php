@@ -12,7 +12,7 @@
  * @link      https://github.com/wptrainingteam/developer-showcase
  */
 
-declare( strict_types=1 );
+declare(strict_types=1);
 
 namespace Bifrost\Player\Router;
 
@@ -29,8 +29,8 @@ use WP_HTML_Tag_Processor;
  *    <a> tag inside router-region blocks, following the documented
  *    pattern from @wordpress/interactivity-router.
  */
-final class InteractiveRouter implements Bootable {
-
+final class InteractiveRouter implements Bootable
+{
 	/**
 	 * Script modules that must be marked for client-side navigation.
 	 *
@@ -52,23 +52,25 @@ final class InteractiveRouter implements Bootable {
 	/**
 	 * Registers the WordPress hooks.
 	 */
-	public function boot(): void {
-		add_filter( 'render_block', $this->injectRouterRegions( ... ), 10, 2 );
-		add_action( 'wp_enqueue_scripts', $this->enqueueRouterModule( ... ) );
-		add_action( 'wp_enqueue_scripts', $this->markModulesForClientNav( ... ) );
+	public function boot(): void
+	{
+		add_filter('render_block', $this->injectRouterRegions(...), 10, 2);
+		add_action('wp_enqueue_scripts', $this->enqueueRouterModule(...));
+		add_action('wp_enqueue_scripts', $this->markModulesForClientNav(...));
 	}
 
 	/**
 	 * Dispatches to the appropriate injector based on block type.
 	 */
-	private function injectRouterRegions( string $blockContent, array $block ): string {
+	private function injectRouterRegions(string $blockContent, array $block): string
+	{
 		$blockName = $block['blockName'] ?? '';
 
 		if ( $blockName === 'core/group' ) {
 			$tagName = $block['attrs']['tagName'] ?? '';
 
 			if ( $tagName === 'main' ) {
-				return $this->addRegionAndLinks( $blockContent, 'main', 'main' );
+				return $this->addRegionAndLinks($blockContent, 'main', 'main');
 			}
 
 			return $blockContent;
@@ -78,7 +80,7 @@ final class InteractiveRouter implements Bootable {
 			$slug = $block['attrs']['slug'] ?? '';
 
 			if ( $slug === 'header' || $slug === 'footer' ) {
-				return $this->addRegionAndLinks( $blockContent, null, $slug );
+				return $this->addRegionAndLinks($blockContent, null, $slug);
 			}
 		}
 
@@ -93,27 +95,28 @@ final class InteractiveRouter implements Bootable {
 	 * @param string|null $htmlTag      HTML tag to target for the region (null = first tag).
 	 * @param string      $regionSlug   Unique slug for the router region ID.
 	 */
-	private function addRegionAndLinks( string $blockContent, ?string $htmlTag, string $regionSlug ): string {
-		$tags = new WP_HTML_Tag_Processor( $blockContent );
+	private function addRegionAndLinks(string $blockContent, ?string $htmlTag, string $regionSlug): string
+	{
+		$tags = new WP_HTML_Tag_Processor($blockContent);
 
 		// Set router region on the wrapper element.
-		$found = $htmlTag ? $tags->next_tag( $htmlTag ) : $tags->next_tag();
+		$found = $htmlTag ? $tags->next_tag($htmlTag) : $tags->next_tag();
 
 		if ( ! $found ) {
 			return $blockContent;
 		}
 
-		$tags->set_attribute( 'data-wp-interactive', 'bifrost-player' );
-		$tags->set_attribute( 'data-wp-router-region', 'bifrost-player/' . $regionSlug );
+		$tags->set_attribute('data-wp-interactive', 'bifrost-player');
+		$tags->set_attribute('data-wp-router-region', 'bifrost-player/' . $regionSlug);
 
 		// Inject navigation directives on every <a> tag.
-		while ( $tags->next_tag( 'a' ) ) {
-			if ( $tags->get_attribute( 'data-wp-on--click' ) ) {
+		while ( $tags->next_tag('a') ) {
+			if ( $tags->get_attribute('data-wp-on--click') ) {
 				continue; // Don't override existing click handlers.
 			}
 
-			$tags->set_attribute( 'data-wp-on--click', 'bifrost-player::actions.navigate' );
-			$tags->set_attribute( 'data-wp-on--mouseenter', 'bifrost-player::actions.prefetch' );
+			$tags->set_attribute('data-wp-on--click', 'bifrost-player::actions.navigate');
+			$tags->set_attribute('data-wp-on--mouseenter', 'bifrost-player::actions.prefetch');
 		}
 
 		return $tags->get_updated_html();
@@ -124,21 +127,23 @@ final class InteractiveRouter implements Bootable {
 	 * dynamic dependency on @wordpress/interactivity-router is
 	 * processed before the import map is printed.
 	 */
-	private function enqueueRouterModule(): void {
-		wp_enqueue_script_module( 'bifrost-player-audio-player-view-script-module' );
+	private function enqueueRouterModule(): void
+	{
+		wp_enqueue_script_module('bifrost-player-audio-player-view-script-module');
 	}
 
 	/**
 	 * Marks interactive block-library script modules for client-side
 	 * navigation so the router loads them on the destination page.
 	 */
-	private function markModulesForClientNav(): void {
-		if ( ! method_exists( 'WP_Interactivity_API', 'add_client_navigation_support_to_script_module' ) ) {
+	private function markModulesForClientNav(): void
+	{
+		if ( ! method_exists('WP_Interactivity_API', 'add_client_navigation_support_to_script_module') ) {
 			return;
 		}
 
 		foreach ( self::CLIENT_NAV_MODULES as $module_id ) {
-			wp_interactivity()->add_client_navigation_support_to_script_module( $module_id );
+			wp_interactivity()->add_client_navigation_support_to_script_module($module_id);
 		}
 	}
 }

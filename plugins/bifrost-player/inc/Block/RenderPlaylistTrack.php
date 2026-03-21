@@ -25,21 +25,23 @@ use WP_Post;
  * Filters the rendered output of core/playlist-track to add interactive
  * directives that connect each track to the persistent audio player.
  */
-final class RenderPlaylistTrack implements Bootable {
-
+final class RenderPlaylistTrack implements Bootable
+{
 	private const BLOCK_NAME = 'core/playlist-track';
 
 	/**
 	 * Registers the WordPress filter hooks.
 	 */
-	public function boot(): void {
-		add_filter( 'render_block', $this->renderBlock( ... ), 10, 2 );
+	public function boot(): void
+	{
+		add_filter('render_block', $this->renderBlock(...), 10, 2);
 	}
 
 	/**
 	 * Injects iAPI directives on the playlist track wrapper element.
 	 */
-	private function renderBlock( string $blockContent, array $block ): string {
+	private function renderBlock(string $blockContent, array $block): string
+	{
 		if ( ( $block['blockName'] ?? '' ) !== self::BLOCK_NAME ) {
 			return $blockContent;
 		}
@@ -50,25 +52,25 @@ final class RenderPlaylistTrack implements Bootable {
 			return $blockContent;
 		}
 
-		$trackData = $this->resolveTrackData( $attachmentId );
+		$trackData = $this->resolveTrackData($attachmentId);
 
 		if ( $trackData === null ) {
 			return $blockContent;
 		}
 
-		$tags = new WP_HTML_Tag_Processor( $blockContent );
+		$tags = new WP_HTML_Tag_Processor($blockContent);
 
 		if ( ! $tags->next_tag() ) {
 			return $blockContent;
 		}
 
-		$tags->set_attribute( 'data-wp-interactive', 'bifrost-player' );
+		$tags->set_attribute('data-wp-interactive', 'bifrost-player');
 		$tags->set_attribute(
 			'data-wp-context',
-			wp_json_encode( $trackData, JSON_HEX_TAG | JSON_HEX_AMP )
+			wp_json_encode($trackData, JSON_HEX_TAG | JSON_HEX_AMP)
 		);
-		$tags->set_attribute( 'data-wp-on--click', 'actions.playTrack' );
-		$tags->set_attribute( 'style', 'cursor: pointer;' );
+		$tags->set_attribute('data-wp-on--click', 'actions.playTrack');
+		$tags->set_attribute('style', 'cursor: pointer;');
 
 		return $tags->get_updated_html();
 	}
@@ -78,14 +80,15 @@ final class RenderPlaylistTrack implements Bootable {
 	 *
 	 * @return array{trackUrl: string, trackTitle: string, trackArtist: string, trackImage: string}|null
 	 */
-	private function resolveTrackData( int $attachmentId ): ?array {
-		$attachment = get_post( $attachmentId );
+	private function resolveTrackData(int $attachmentId): ?array
+	{
+		$attachment = get_post($attachmentId);
 
 		if ( ! $attachment instanceof WP_Post ) {
 			return null;
 		}
 
-		$trackUrl = wp_get_attachment_url( $attachmentId );
+		$trackUrl = wp_get_attachment_url($attachmentId);
 
 		if ( ! $trackUrl ) {
 			return null;
@@ -96,17 +99,17 @@ final class RenderPlaylistTrack implements Bootable {
 		$trackImage  = '';
 
 		// Resolve artist and image from parent album.
-		if ( ! empty( $attachment->post_parent ) ) {
-			$album = get_post( $attachment->post_parent );
+		if ( ! empty($attachment->post_parent) ) {
+			$album = get_post($attachment->post_parent);
 
 			if (
 				$album instanceof WP_Post
-				&& class_exists( Definitions::class )
+				&& class_exists(Definitions::class)
 				&& $album->post_type === Definitions::POST_TYPE_ALBUM
 			) {
 				// Get artist from album's parent (artist post).
-				if ( ! empty( $album->post_parent ) ) {
-					$artist = get_post( $album->post_parent );
+				if ( ! empty($album->post_parent) ) {
+					$artist = get_post($album->post_parent);
 
 					if ( $artist instanceof WP_Post ) {
 						$trackArtist = $artist->post_title;
@@ -114,10 +117,10 @@ final class RenderPlaylistTrack implements Bootable {
 				}
 
 				// Get album artwork from featured image.
-				$thumbnailId = get_post_thumbnail_id( $album->ID );
+				$thumbnailId = get_post_thumbnail_id($album->ID);
 
 				if ( $thumbnailId ) {
-					$trackImage = wp_get_attachment_image_url( $thumbnailId, 'medium' ) ?: '';
+					$trackImage = wp_get_attachment_image_url($thumbnailId, 'medium') ?: '';
 				}
 			}
 		}

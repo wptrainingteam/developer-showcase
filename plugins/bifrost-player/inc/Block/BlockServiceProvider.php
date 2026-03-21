@@ -21,31 +21,34 @@ use const Bifrost\Player\PLUGIN_DIR;
 /**
  * Registers interactive blocks and the playlist track render filter.
  */
-final class BlockServiceProvider extends ServiceProvider implements Bootable {
-
+final class BlockServiceProvider extends ServiceProvider implements Bootable
+{
 	/**
 	 * Boots the block service provider.
 	 */
-	public function boot(): void {
-		add_action( 'init', $this->registerBlocks( ... ) );
-		add_action( 'wp_footer', $this->renderPlayer( ... ) );
+	public function boot(): void
+	{
+		add_action('init', $this->registerBlocks(...));
+		add_action('wp_footer', $this->renderPlayer(...));
 
-		$this->container->get( RenderPlayButton::class )->boot();
-		$this->container->get( RenderPlaylist::class )->boot();
-		$this->container->get( RenderPlaylistTrack::class )->boot();
+		$this->container->get(RenderPlayButton::class)->boot();
+		$this->container->get(RenderPlaylist::class)->boot();
+		$this->container->get(RenderPlaylistTrack::class)->boot();
 	}
 
 	/**
 	 * Registers the plugin's interactive blocks.
 	 */
-	private function registerBlocks(): void {
-		register_block_type( PLUGIN_DIR . '/build/blocks/audio-player' );
+	private function registerBlocks(): void
+	{
+		register_block_type(PLUGIN_DIR . '/build/blocks/audio-player');
 	}
 
 	/**
 	 * Renders the persistent audio player in the footer.
 	 */
-	private function renderPlayer(): void {
-		echo do_blocks( '<!-- wp:bifrost-player/audio-player /-->' );
+	private function renderPlayer(): void
+	{
+		echo do_blocks('<!-- wp:bifrost-player/audio-player /-->');
 	}
 }
