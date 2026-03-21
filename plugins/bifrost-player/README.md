@@ -19,7 +19,7 @@ bifrost-framework (plugins_loaded @ 999)
 
 <img src="./assets/services-pattern.png" width="75%"/>
 
-[See diagram on Excalidraw](https://excalidraw.com/#json=LCmJ2hJ4-Mk2tj5DAcNz6,xlcksiP4EmioIPvGwiFRJw)
+[See diagram on Excalidraw](https://excalidraw.com/#json=Fe_KgC1pYL6HhLlTetBc4,UV7E_u_8MX0dPxMY-4G48g)
 
 
 The plugin uses **bifrost-framework** for its service container and provider lifecycle (same as `bifrost-music`). The `Plugin` class registers two providers into the framework's shared `Application`:
