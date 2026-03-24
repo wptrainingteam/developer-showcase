@@ -49,7 +49,7 @@ final class Artist implements PostTypeModifier
 					'lock' => ['remove' => true],
 				], [
 					['core/tab', [
-						'label'  => 'Albums',
+						'label'  => __('Albums', 'bifrost-noise'),
 						'lock'   => ['move' => true, 'remove' => true],
 						'layout' => ['type' => 'constrained', 'contentSize' => '80rem'],
 						'anchor' => 'albums',
@@ -57,7 +57,7 @@ final class Artist implements PostTypeModifier
 						['core/block', ['ref' => self::PATTERN_ID_ARTIST_ALBUMS], []]
 					]],
 					['core/tab', [
-						'label'  => 'Biography',
+						'label'  => __('Biography', 'bifrost-noise'),
 						'lock'   => ['move' => true, 'remove' => true],
 						'layout' => ['type' => 'constrained', 'contentSize' => '80rem', 'justifyContent' => 'center'],
 						'anchor' => 'biography',
@@ -69,7 +69,7 @@ final class Artist implements PostTypeModifier
 						]],
 					]],
 					['core/tab', [
-						'label'  => 'Gallery',
+						'label'  => __('Gallery', 'bifrost-noise'),
 						'lock'   => ['move' => true, 'remove' => true],
 						'layout' => ['type' => 'constrained', 'contentSize' => '80rem', 'wideSize' => '80rem'],
 						'anchor' => 'gallery',

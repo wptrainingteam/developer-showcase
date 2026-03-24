@@ -53,13 +53,12 @@ final class RenderTemplatePart implements Bootable
 			return $parsedBlock;
 		}
 
-		$folders  = get_block_theme_folders();
-		$partsDir = $folders['wp_template_part'];
+		$partsDir = get_block_theme_folders()['wp_template_part'];
 
 		foreach (get_the_category($post->ID) as $category) {
 			$slug = self::SIDEBAR_SLUG . '-' . $category->slug;
 
-			if (file_exists(get_theme_file_path("{$partsDir}/{$slug}.html"))) {
+			if (locate_template("{$partsDir}/{$slug}.html")) {
 				$parsedBlock['attrs']['slug'] = $slug;
 				return $parsedBlock;
 			}

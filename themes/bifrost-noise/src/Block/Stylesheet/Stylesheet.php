@@ -51,7 +51,7 @@ final class Stylesheet
 	 *
 	 * Extracts the namespace from the parent directory name and the slug
 	 * from the filename, then constructs the relative path for locating
-	 * the stylesheet and its assets within the theme.]
+	 * the stylesheet and its assets within the theme.
 	 */
 	public function __construct(SplFileInfo $file, string $path)
 	{

@@ -21,10 +21,24 @@ use Bifrost\Framework\Contracts\Bootable;
  */
 final class RenderQuery implements Bootable
 {
+	/**
+	 * Variation namespace for querying an artist's albums.
+	 */
 	private const NAMESPACE_ARTIST_ALBUMS = 'bifrost-noise/query-artist-albums';
-	private const NAMESPACE_POST_ALBUM    = 'bifrost-noise/query-post-album';
+
+	/**
+	 * Variation namespace for querying a post's album by metadata.
+	 */
+	private const NAMESPACE_POST_ALBUM = 'bifrost-noise/query-post-album';
+
+	/**
+	 * Variation namespace for querying a post's artist by metadata.
+	 */
 	private const NAMESPACE_POST_ARTIST   = 'bifrost-noise/query-post-artist';
 
+	/**
+	 * The hook to use when filtering query vars.
+	 */
 	private const HOOK = 'query_loop_block_query_vars';
 
 	/**
