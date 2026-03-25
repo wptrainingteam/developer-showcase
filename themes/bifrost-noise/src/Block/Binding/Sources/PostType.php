@@ -67,7 +67,7 @@ final class PostType extends BindingSource
 	{
 		$postId = $block->context['postId'] ?? get_the_ID();
 
-		return get_post_type_object($args['postType'] ?? get_post_type());
+		return get_post_type_object($args['postType'] ?? get_post_type($postId));
 	}
 
 	/**

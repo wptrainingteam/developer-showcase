@@ -14,10 +14,24 @@ declare(strict_types=1);
 namespace Bifrost\Music\Content;
 
 use Bifrost\Framework\Contracts\Bootable;
-use Bifrost\Music\Support\Definitions;
 
 final class Genre implements Bootable
 {
+	/**
+	 * The taxonomy name.
+	 */
+	public const TAXONOMY = 'music_genre';
+
+	/**
+	 * Primitive capabilities assigned to roles.
+	 */
+	public const PRIMITIVE_CAPS = [
+		'manage_terms' => 'manage_music_genres',
+		'edit_terms'   => 'edit_music_genres',
+		'delete_terms' => 'delete_music_genres',
+		'assign_terms' => 'assign_music_genres'
+	];
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -33,12 +47,7 @@ final class Genre implements Bootable
 	 */
 	private function register(): void
 	{
-		register_taxonomy(
-			Definitions::TAXONOMY_GENRE,
-			[
-				Definitions::POST_TYPE_ALBUM
-			],
-			[
+		register_taxonomy(self::TAXONOMY, [ Album::POST_TYPE ], [
 			'public'            => true,
 			'show_ui'           => true,
 			'show_in_nav_menus' => true,
@@ -46,13 +55,8 @@ final class Genre implements Bootable
 			'show_tagcloud'     => true,
 			'show_admin_column' => true,
 			'hierarchical'      => false,
-			'query_var'         => Definitions::TAXONOMY_GENRE,
-			'capabilities'      => [
-				'manage_terms' => 'manage_music_genres',
-				'edit_terms'   => 'edit_music_genres',
-				'delete_terms' => 'delete_music_genres',
-				'assign_terms' => 'assign_music_genres'
-			],
+			'query_var'         => self::TAXONOMY,
+			'capabilities'      => self::PRIMITIVE_CAPS,
 			'labels' => [
 				'name'                  => __('Genres',                 'bifrost-music'),
 				'singular_name'         => __('Genre',                  'bifrost-music'),
@@ -93,7 +97,7 @@ final class Genre implements Bootable
 	private function termUpdatedMessages(array $messages): array
 	{
 		// Add the music genre messages.
-		$messages[Definitions::TAXONOMY_GENRE] = [
+		$messages[self::TAXONOMY] = [
 			0 => '',
 			1 => __('Genre added.',       'bifrost-music'),
 			2 => __('Genre deleted.',     'bifrost-music'),
