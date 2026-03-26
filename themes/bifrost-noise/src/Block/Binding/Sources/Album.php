@@ -17,8 +17,8 @@ use WP_Block;
 use Bifrost\Noise\Block\Binding\BindingSource;
 
 /**
- * Handles registering the `bifrost-music/album` block bindings source and rendering its
- * output based on the given arguments.
+ * Handles registering the `bifrost-music/album` block bindings source and
+ * rendering its output based on the given arguments.
  */
 final class Album extends BindingSource
 {

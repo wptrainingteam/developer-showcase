@@ -17,6 +17,9 @@ use Bifrost\Noise\PostType\PostTypeModifier;
 
 final class Album implements PostTypeModifier
 {
+	/**
+	 * @inheritDoc
+	 */
 	public function modify(array $args): array
 	{
 		$args['template'] = $this->getTemplate();
@@ -24,6 +27,10 @@ final class Album implements PostTypeModifier
 		return $args;
 	}
 
+	/**
+	 * Returns the post type's content template that's shown when a user
+	 * first loads the editor.
+	 */
 	private function getTemplate(): array
 	{
 		return [

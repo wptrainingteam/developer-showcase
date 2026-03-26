@@ -17,6 +17,9 @@ use Bifrost\Noise\PostType\PostTypeModifier;
 
 final class Post implements PostTypeModifier
 {
+	/**
+	 * @inheritDoc
+	 */
 	public function modify(array $args): array
 	{
 		$args['menu_icon'] = 'dashicons-edit';

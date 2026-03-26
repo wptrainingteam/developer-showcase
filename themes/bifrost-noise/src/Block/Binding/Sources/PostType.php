@@ -20,8 +20,8 @@ use WP_Query;
 use WP_Term;
 
 /**
- * Handles registering the `bifrost-music/post-type` block bindings source and rendering its
- * output based on the given arguments.
+ * Handles registering the `bifrost-music/post-type` block bindings source and
+ * rendering its output based on the given arguments.
  */
 final class PostType extends BindingSource
 {
@@ -63,6 +63,9 @@ final class PostType extends BindingSource
 		};
 	}
 
+	/**
+	 * Helper function for getting the post type object.
+	 */
 	private function getType(array $args, WP_Block $block): ?WP_Post_Type
 	{
 		$postId = $block->context['postId'] ?? get_the_ID();
@@ -75,18 +78,18 @@ final class PostType extends BindingSource
 	 */
 	private function renderCount(array $args, WP_Block $block): ?string
 	{
-		if (! $postTypeObject = $this->getType($args, $block)) {
+		if (! $postType = $this->getType($args, $block)) {
 			return null;
 		}
 
-		$count = wp_count_posts($postTypeObject->name);
+		$count = wp_count_posts($postType->name);
 		$total = (int)$count->publish;
 
 		return sprintf(
 			// Translators: 1: Number of posts, 2: Post type label (singular or plural)
 			esc_html(_n('%1$s %2$s', '%1$s %2$s', $total, 'bifrost-noise')),
 			number_format_i18n($total),
-			$total === 1 ? $postTypeObject->labels->singular_name : $postTypeObject->labels->name
+			$total === 1 ? $postType->labels->singular_name : $postType->labels->name
 		);
 	}
 
@@ -95,13 +98,13 @@ final class PostType extends BindingSource
 	 */
 	private function renderLabel(array $args, WP_Block $block): ?string
 	{
-		if (! $postTypeObject = $this->getType($args, $block)) {
+		if (! $postType = $this->getType($args, $block)) {
 			return null;
 		}
 
 		$labelType = $args['label'] ?? 'singular_name';
 
-		return $postTypeObject->labels->$labelType ?? null;
+		return $postType->labels->$labelType ?? null;
 	}
 
 	/**
@@ -109,10 +112,10 @@ final class PostType extends BindingSource
 	 */
 	private function renderIcon(array $args, WP_Block $block): ?string
 	{
-		if (! $postTypeObject = $this->getType($args, $block)) {
+		if (! $postType = $this->getType($args, $block)) {
 			return null;
 		}
 
-		return self::ICONS[$postTypeObject->name] ?? self::ICONS['page'];
+		return self::ICONS[$postType->name] ?? self::ICONS['page'];
 	}
 }

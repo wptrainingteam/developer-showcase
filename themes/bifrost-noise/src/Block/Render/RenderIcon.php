@@ -29,34 +29,39 @@ final class RenderIcon implements Bootable
 		add_filter('render_block_outermost/icon-block', $this->render(...), 10, 3);
 	}
 
-	private function render(string $block_content, array $block, WP_Block $block_instance): string {
+	/**
+	 * Adds block binding support to Nick Diego's Icon Block.
+	 *
+	 * @link https://github.com/ndiego/icon-block
+	 */
+	private function render(string $content, array $block, WP_Block $instance): string {
 		$bindings = $block['attrs']['metadata']['bindings'] ?? [];
 
 		if (empty($bindings['icon']['source']) || $bindings['icon']['source'] !== 'bifrost-music/post-type') {
-			return $block_content;
+			return $content;
 		}
 
 		$source = get_block_bindings_source($bindings['icon']['source']);
 
 		if (! $source) {
-			return $block_content;
+			return $content;
 		}
 
-		$svg = $source->get_value($bindings['icon']['args'] ?? [], $block_instance, 'icon');
+		$svg = $source->get_value($bindings['icon']['args'] ?? [], $instance, 'icon');
 
 		if (! $svg) {
-			return $block_content;
+			return $content;
 		}
 
-		$start = strpos($block_content, '<svg');
+		$start = strpos($content, '<svg');
 
 		if ($start === false) {
-			return $block_content;
+			return $content;
 		}
 
-		$end = strpos($block_content, '</svg>', $start) + strlen('</svg>');
-		$before = substr($block_content, 0, $start);
-		$after = substr($block_content, $end);
+		$end    = strpos($content, '</svg>', $start) + strlen('</svg>');
+		$before = substr($content, 0, $start);
+		$after  = substr($content, $end);
 
 		return $before . $svg . $after;
 	}
