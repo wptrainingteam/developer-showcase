@@ -38,10 +38,10 @@ if (! class_exists(Application::class)) {
 add_action('plugins_loaded', function (): void {
 	do_action('bifrost/framework/register/plugin', app());
 	app()->boot();
-}, 999);
+}, -999);
 
 # Theme phase: allow consumers to register providers, then boot.
 add_action('after_setup_theme', function (): void {
 	do_action('bifrost/framework/register/theme', app());
 	app()->boot();
-}, 999);
+}, -999);
