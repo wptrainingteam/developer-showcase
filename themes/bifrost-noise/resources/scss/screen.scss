@@ -3,7 +3,7 @@
 	position: relative;
 }
 
-.wp-site-blocks > * {
+:root .wp-site-blocks > * {
 	margin-top: 0;
 	margin-bottom: 0;
 }
@@ -22,10 +22,6 @@
 	left: -10%;
 	pointer-events: none;
 	z-index: 99999;
-}
-
-.wp-site-blocks {
-	position: relative;
 }
 
 body::before {
@@ -69,10 +65,7 @@ body::after {
 	}
 }
 
-*,
-*::before,
-*::after,
-html body * {
+html body:not(.editor-styles-wrapper) * {
 	cursor: none !important;
 }
 
