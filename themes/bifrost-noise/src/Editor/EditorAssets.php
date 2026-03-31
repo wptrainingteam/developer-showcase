@@ -25,7 +25,18 @@ final class EditorAssets implements Bootable
 	 */
 	public function boot(): void
 	{
+		add_action('after_setup_theme', $this->addEditorStyles(...));
 		add_action('enqueue_block_editor_assets', $this->enqueue(...));
+	}
+
+	/**
+	 * Add editor stylesheets.
+	 */
+	private function addEditorStyles(): void
+	{
+		add_editor_style([
+			get_parent_theme_file_uri('public/css/screen.css')
+		]);
 	}
 
 	/**

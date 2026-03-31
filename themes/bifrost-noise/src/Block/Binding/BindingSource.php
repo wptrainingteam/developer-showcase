@@ -22,10 +22,14 @@ use WP_Block;
  */
 abstract class BindingSource
 {
+	/**
+	 * Name of the block binding source. This should always be overridden in
+	 * child classes (e.g., `bifrost-music/album`).
+	 */
 	protected const NAME = '';
 
 	/**
-	 * Returns the binding source name (e.g., 'x3p0/post').
+	 * Returns the binding source name (e.g., 'bifrost-music/album').
 	 */
 	public function getName(): string
 	{

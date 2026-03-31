@@ -17,6 +17,9 @@ use Bifrost\Noise\PostType\PostTypeModifier;
 
 final class Post implements PostTypeModifier
 {
+	/**
+	 * @inheritDoc
+	 */
 	public function modify(array $args): array
 	{
 		$args['menu_icon'] = 'dashicons-edit';
@@ -47,7 +50,7 @@ final class Post implements PostTypeModifier
 			'item_published_privately' => __('Article published privately.', 'bifrost-noise'),
 			'item_reverted_to_draft'   => __('Article reverted to draft.',   'bifrost-noise'),
 			'item_scheduled'           => __('Article scheduled.',           'bifrost-noise'),
-			'item_updated'             => __('Article updated.',             'bifrost-noise'),
+			'item_updated'             => __('Article updated.',             'bifrost-noise')
 		];
 
 		return $args;

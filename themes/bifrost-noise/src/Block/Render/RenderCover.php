@@ -30,26 +30,33 @@ final class RenderCover implements Bootable
 		add_filter('render_block_core/cover', $this->render(...), 10, 3);
 	}
 
-	private function render(string $block_content, array $block, WP_Block $block_instance): string {
+	/**
+	 * Adds block binding support to the Cover block so that it uses the
+	 * available source for the background image. Kind of a hacky
+	 * implementation until Core officially supports it.
+	 *
+	 * @link https://github.com/WordPress/gutenberg/issues/63763
+	 */
+	private function render(string $content, array $block, WP_Block $instance): string {
 		$bindings = $block['attrs']['metadata']['bindings'] ?? [];
 
 		if (empty($bindings['url']['source']) || $bindings['url']['source'] !== 'bifrost-music/term') {
-			return $block_content;
+			return $content;
 		}
 
 		$source = get_block_bindings_source($bindings['url']['source']);
 
 		if (! $source) {
-			return $block_content;
+			return $content;
 		}
 
-		$url = $source->get_value($bindings['url']['args'] ?? [], $block_instance, 'url');
+		$url = $source->get_value($bindings['url']['args'] ?? [], $instance, 'url');
 
 		if (! $url) {
-			return $block_content;
+			return $content;
 		}
 
-		$processor = new WP_HTML_Tag_Processor($block_content);
+		$processor = new WP_HTML_Tag_Processor($content);
 
 		while ($processor->next_tag([ 'class_name' => 'wp-block-cover__image-background' ])) {
 			$style = $processor->get_attribute('style');

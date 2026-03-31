@@ -17,8 +17,8 @@ use WP_Block;
 use Bifrost\Noise\Block\Binding\BindingSource;
 
 /**
- * Handles registering the `bifrost-music/album` block bindings source and rendering its
- * output based on the given arguments.
+ * Handles registering the `bifrost-music/album` block bindings source and
+ * rendering its output based on the given arguments.
  */
 final class Album extends BindingSource
 {
@@ -27,7 +27,7 @@ final class Album extends BindingSource
 	/**
 	 * Stores the post ID.
 	 */
-	private int $post_id = 0;
+	private int $postId = 0;
 
 	/**
 	 * @inheritDoc
@@ -50,7 +50,7 @@ final class Album extends BindingSource
 	 */
 	public function callback(array $args, WP_Block $block, string $name): ?string
 	{
-		$this->post_id = $block->context['postId'] ?? get_the_ID();
+		$this->postId = $block->context['postId'] ?? get_the_ID();
 
 		return match ($args['key'] ?? null) {
 			'artist' => $this->renderArtist($args),
@@ -64,8 +64,8 @@ final class Album extends BindingSource
 	private function renderArtist(array $args): ?string
 	{
 		if (
-			! has_post_parent($this->post_id)
-			|| ! $parent = get_post_parent($this->post_id)
+			! has_post_parent($this->postId)
+			|| ! $parent = get_post_parent($this->postId)
 		) {
 			return null;
 		}
