@@ -15,12 +15,11 @@ namespace Bifrost\Noise\Block\Binding\Sources;
 
 use WP_Block;
 use Bifrost\Noise\Block\Binding\BindingSource;
-use WP_Query;
 use WP_Term;
 
 /**
- * Handles registering the `bifrost-music/term` block bindings source and rendering its
- * output based on the given arguments.
+ * Handles registering the `bifrost-music/term` block bindings source and
+ * rendering its output based on the given arguments.
  */
 final class Term extends BindingSource
 {
@@ -52,6 +51,9 @@ final class Term extends BindingSource
 		};
 	}
 
+	/**
+	 * Helper function for getting the term object.
+	 */
 	private function getTerm(array $args): ?WP_Term
 	{
 		$term = isset($args['term'], $args['taxonomy'])
@@ -70,9 +72,9 @@ final class Term extends BindingSource
 			return null;
 		}
 
-		$postTypeObject = get_post_type_object(get_taxonomy($term->taxonomy)->object_type[0]);
+		$postType = get_post_type_object(get_taxonomy($term->taxonomy)->object_type[0]);
 
-		if (! $postTypeObject) {
+		if (! $postType) {
 			return null;
 		}
 
@@ -82,12 +84,15 @@ final class Term extends BindingSource
 			// Translators: 1: Number of posts, 2: Post type label (singular or plural)
 			esc_html(_n('%1$s %2$s', '%1$s %2$s', $total, 'bifrost-noise')),
 			number_format_i18n($total),
-			$total === 1 ? $postTypeObject->labels->singular_name : $postTypeObject->labels->name
+			$total === 1 ? $postType->labels->singular_name : $postType->labels->name
 		);
 	}
 
 	/**
-	 * Returns a term's featured image URL.
+	 * Returns a term's featured image URL. This integrates with the WP Term
+	 * Images plugin and relies on the `image` meta key to find an image.
+	 *
+	 * @link https://wordpress.org/plugins/wp-term-images/
 	 */
 	private function renderImage(array $args): ?string
 	{

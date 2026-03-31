@@ -20,6 +20,10 @@ use Bifrost\Framework\Contracts\Bootable;
  */
 final class BindingAttributeSupport implements Bootable
 {
+	/**
+	 * The filter hook prefix used before the block name when adding
+	 * bindable attributes.
+	 */
 	private const HOOK_PREFIX = 'block_bindings_supported_attributes';
 
 	/**

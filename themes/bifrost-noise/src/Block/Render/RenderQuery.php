@@ -55,15 +55,15 @@ final class RenderQuery implements Bootable
 	 * whether it has a specific namespace. If that namespace matches, we
 	 * add a filter on `query_loop_block_query_vars` to modify the query.
 	 */
-	private function preRender(string|null $pre_render, array $parsed_block): string|null
+	private function preRender(string|null $preRender, array $parsedBlock): string|null
 	{
-		$callback = $this->resolveCallback($parsed_block);
+		$callback = $this->resolveCallback($parsedBlock);
 
 		if ($callback !== null) {
 			add_filter(self::HOOK, $callback);
 		}
 
-		return $pre_render;
+		return $preRender;
 	}
 
 	/**
@@ -71,9 +71,9 @@ final class RenderQuery implements Bootable
 	 * any `query_loop_block_query_vars` filter that was added during pre-render,
 	 * preventing it from bleeding into subsequent Query blocks on the page.
 	 */
-	private function postRender(string $content, array $parsed_block): string
+	private function postRender(string $content, array $parsedBlock): string
 	{
-		$callback = $this->resolveCallback($parsed_block);
+		$callback = $this->resolveCallback($parsedBlock);
 
 		if ($callback !== null) {
 			remove_filter(self::HOOK, $callback);
@@ -86,9 +86,9 @@ final class RenderQuery implements Bootable
 	 * Resolves the appropriate query vars callback for a given parsed block,
 	 * based on its namespace attribute. Returns null if no match is found.
 	 */
-	private function resolveCallback(array $parsed_block): callable|null
+	private function resolveCallback(array $parsedBlock): callable|null
 	{
-		$namespace = $parsed_block['attrs']['namespace'] ?? null;
+		$namespace = $parsedBlock['attrs']['namespace'] ?? null;
 
 		return match ($namespace) {
 			self::NAMESPACE_ARTIST_ALBUMS => fn(array $query) => $this->artistAlbumsQueryVars($query),

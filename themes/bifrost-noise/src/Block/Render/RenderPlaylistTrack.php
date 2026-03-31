@@ -34,8 +34,8 @@ final class RenderPlaylistTrack implements Bootable
 	}
 
 	/**
-	 * Injects the album's featured image URL into the block attributes
-	 * before rendering if the track has no image of its own.
+	 * Automatically injects the track's album and artist data on the front
+	 * end if the track/attachment has a parent post of the album post type.
 	 */
 	private function renderBlockData(array $parsedBlock): array
 	{
@@ -43,46 +43,64 @@ final class RenderPlaylistTrack implements Bootable
 			return $parsedBlock;
 		}
 
-		$attachmentId = (int) ($parsedBlock['attrs']['id'] ?? 0);
+		$mediaId = (int) ($parsedBlock['attrs']['id'] ?? 0);
+		$track   = $mediaId !== 0 ? get_post($mediaId) : null;
 
-		if ($attachmentId === 0) {
-			return $parsedBlock;
+		// Merge in the album attributes if the track has an album
+		// parent post.
+		if ($track instanceof WP_Post && $album = $this->getAlbum($track)) {
+			$parsedBlock['attrs'] = array_merge(
+				$parsedBlock['attrs'],
+				$this->getAlbumAttrs($album)
+			);
 		}
-
-		$imageUrl = $this->resolveAlbumImageUrl($attachmentId);
-
-		if ($imageUrl === null) {
-			return $parsedBlock;
-		}
-
-		$parsedBlock['attrs']['image'] = $imageUrl;
 
 		return $parsedBlock;
 	}
 
 	/**
-	 * Resolves the album's featured image URL from the attachment's parent post.
+	 * Returns block attributes derived from the album and its artist.
 	 */
-	private function resolveAlbumImageUrl(int $attachmentId): ?string
+	private function getAlbumAttrs(WP_Post $album): array
 	{
-		$attachment = get_post($attachmentId);
+		$attrs = ['album' => get_the_title($album)];
 
-		if (! $attachment instanceof WP_Post || empty($attachment->post_parent)) {
-			return null;
+		if ($artist = $this->getArtist($album)) {
+			$attrs['artist'] = get_the_title($artist);
 		}
 
+		if ($thumbnailId = get_post_thumbnail_id($album->ID)) {
+			$attrs['image'] = wp_get_attachment_image_url($thumbnailId, 'full') ?: null;
+		}
+
+		return $attrs;
+	}
+
+	/**
+	 * Returns the parent album post for a track, or null if none exists.
+	 */
+	private function getAlbum(WP_Post $attachment): ?WP_Post
+	{
 		$album = get_post($attachment->post_parent);
 
-		if (! $album instanceof WP_Post || $album->post_type !== Definitions::POST_TYPE_ALBUM) {
-			return null;
+		if ($album instanceof WP_Post && $album->post_type === Definitions::POST_TYPE_ALBUM) {
+			return $album;
 		}
 
-		$thumbnailId = get_post_thumbnail_id($album->ID);
+		return null;
+	}
 
-		if (! $thumbnailId) {
-			return null;
+	/**
+	 * Returns the parent artist post for an album, or null if none exists.
+	 */
+	private function getArtist(WP_Post $album): ?WP_Post
+	{
+		$artist = get_post($album->post_parent);
+
+		if ($artist instanceof WP_Post && $artist->post_type === Definitions::POST_TYPE_ARTIST) {
+			return $artist;
 		}
 
-		return wp_get_attachment_image_url($thumbnailId, 'full') ?: null;
+		return null;
 	}
 }

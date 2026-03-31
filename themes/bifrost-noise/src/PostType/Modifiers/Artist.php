@@ -24,6 +24,9 @@ final class Artist implements PostTypeModifier
 	 */
 	private const PATTERN_ID_ARTIST_ALBUMS = 269;
 
+	/**
+	 * @inheritDoc
+	 */
 	public function modify(array $args): array
 	{
 		$args['template'] = $this->getTemplate();
@@ -31,6 +34,10 @@ final class Artist implements PostTypeModifier
 		return $args;
 	}
 
+	/**
+	 * Returns the post type's content template that's shown when a user
+	 * first loads the editor.
+	 */
 	private function getTemplate(): array
 	{
 		return [
