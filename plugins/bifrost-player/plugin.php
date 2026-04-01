@@ -26,8 +26,13 @@ const PLUGIN_DIR  = __DIR__;
 const PLUGIN_FILE = __FILE__;
 
 // Load the autoloader.
-if ( ! class_exists(Plugin::class) && is_file(__DIR__ . '/vendor/autoload.php') ) {
-	require_once PLUGIN_DIR . '/vendor/autoload.php';
+if ( ! class_exists(Plugin::class) ) {
+	if ( is_file(PLUGIN_DIR . '/vendor/autoload.php') ) {
+		require_once PLUGIN_DIR . '/vendor/autoload.php';
+	} elseif ( is_file(PLUGIN_DIR . '/inc/Autoload.php') ) {
+		require_once __DIR__ . '/inc/Autoload.php';
+		Autoload::register();
+	}
 }
 
 // Register activation hook.

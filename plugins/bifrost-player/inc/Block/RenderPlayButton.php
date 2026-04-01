@@ -31,14 +31,12 @@ use WP_Post;
  */
 final class RenderPlayButton implements Bootable
 {
-	private const BLOCK_NAME = 'core/button';
-
 	/**
 	 * Registers the WordPress filter hooks.
 	 */
 	public function boot(): void
 	{
-		add_filter('render_block', $this->renderBlock(...), 10, 2);
+		add_filter('render_block_core/button', $this->renderBlock(...), 10, 2);
 	}
 
 	/**
@@ -46,18 +44,14 @@ final class RenderPlayButton implements Bootable
 	 */
 	private function renderBlock(string $blockContent, array $block): string
 	{
-		if ( ( $block['blockName'] ?? '' ) !== self::BLOCK_NAME ) {
-			return $blockContent;
-		}
-
 		// Only enhance on album pages.
 		if ( ! class_exists(Definitions::class) || get_post_type() !== Definitions::POST_TYPE_ALBUM ) {
 			return $blockContent;
 		}
 
-		// Skip outline/secondary buttons.
+		// Only enhance the play-album button.
 		$className = $block['attrs']['className'] ?? '';
-		if ( str_contains($className, 'is-style-outline') ) {
+		if ( ! str_contains($className, 'play-album') ) {
 			return $blockContent;
 		}
 

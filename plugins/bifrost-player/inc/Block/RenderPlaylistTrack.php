@@ -27,14 +27,12 @@ use WP_Post;
  */
 final class RenderPlaylistTrack implements Bootable
 {
-	private const BLOCK_NAME = 'core/playlist-track';
-
 	/**
 	 * Registers the WordPress filter hooks.
 	 */
 	public function boot(): void
 	{
-		add_filter('render_block', $this->renderBlock(...), 10, 2);
+		add_filter('render_block_core/playlist-track', $this->renderBlock(...), 10, 2);
 	}
 
 	/**
@@ -42,10 +40,6 @@ final class RenderPlaylistTrack implements Bootable
 	 */
 	private function renderBlock(string $blockContent, array $block): string
 	{
-		if ( ( $block['blockName'] ?? '' ) !== self::BLOCK_NAME ) {
-			return $blockContent;
-		}
-
 		$attachmentId = (int) ( $block['attrs']['id'] ?? 0 );
 
 		if ( $attachmentId === 0 ) {

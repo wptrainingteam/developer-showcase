@@ -25,25 +25,19 @@ use WP_HTML_Tag_Processor;
  */
 final class RenderPlaylist implements Bootable
 {
-	private const BLOCK_NAME = 'core/playlist';
-
 	/**
 	 * Registers the WordPress filter hooks.
 	 */
 	public function boot(): void
 	{
-		add_filter('render_block', $this->renderBlock(...), 10, 2);
+		add_filter('render_block_core/playlist', $this->renderBlock(...), 10, 2);
 	}
 
 	/**
 	 * Hides the waveform player inside core/playlist.
 	 */
-	private function renderBlock(string $blockContent, array $block): string
+	private function renderBlock(string $blockContent): string
 	{
-		if ( ( $block['blockName'] ?? '' ) !== self::BLOCK_NAME ) {
-			return $blockContent;
-		}
-
 		$tags = new WP_HTML_Tag_Processor($blockContent);
 
 		// Find the waveform player container and hide it.
