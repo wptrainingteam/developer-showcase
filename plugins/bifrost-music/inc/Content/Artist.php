@@ -15,10 +15,41 @@ namespace Bifrost\Music\Content;
 
 use WP_Post;
 use Bifrost\Framework\Contracts\Bootable;
-use Bifrost\Music\Support\Definitions;
 
 final class Artist implements Bootable
 {
+	/**
+	 * The post type name.
+	 */
+	public const POST_TYPE = 'music_artist';
+
+	/**
+	 * Meta capabilities resolved via map_meta_cap(). Not assigned to roles.
+	 */
+	private const META_CAPS = [
+		'edit_post'   => 'edit_music_artist',
+		'read_post'   => 'read_music_artist',
+		'delete_post' => 'delete_music_artist'
+	];
+
+	/**
+	 * Primitive capabilities assigned to roles.
+	 */
+	public const PRIMITIVE_CAPS = [
+		'create_posts'           => 'create_music_artists',
+		'edit_posts'             => 'edit_music_artists',
+		'edit_others_posts'      => 'edit_others_music_artists',
+		'publish_posts'          => 'publish_music_artists',
+		'read_private_posts'     => 'read_private_music_artists',
+		'read'                   => 'read',
+		'delete_posts'           => 'delete_music_artists',
+		'delete_private_posts'   => 'delete_private_music_artists',
+		'delete_published_posts' => 'delete_published_music_artists',
+		'delete_others_posts'    => 'delete_others_music_artists',
+		'edit_private_posts'     => 'edit_private_music_artists',
+		'edit_published_posts'   => 'edit_published_music_artists',
+	];
+
 	/**
 	 * {@inheritdoc}
 	 */
@@ -40,7 +71,7 @@ final class Artist implements Bootable
 	 */
 	private function register(): void
 	{
-		register_post_type(Definitions::POST_TYPE_ARTIST, [
+		register_post_type(self::POST_TYPE, [
 			'description'         => '',
 			'public'              => true,
 			'publicly_queryable'  => true,
@@ -56,35 +87,12 @@ final class Artist implements Bootable
 			'delete_with_user'    => false,
 			'hierarchical'        => false,
 			'has_archive'         => 'artists',
-			'query_var'           => Definitions::POST_TYPE_ARTIST,
-			'capability_type'     => Definitions::POST_TYPE_ARTIST,
+			'query_var'           => self::POST_TYPE,
+			'capability_type'     => self::POST_TYPE,
 			'map_meta_cap'        => true,
 
 			// Post type capabilities.
-			'capabilities' => [
-				// meta caps (don't assign these to roles)
-				'edit_post'              => 'edit_music_artist',
-				'read_post'              => 'read_music_artist',
-				'delete_post'            => 'delete_music_artist',
-
-				// primitive/meta caps
-				'create_posts'           => 'create_music_artists',
-
-				// primitive caps used outside of map_meta_cap()
-				'edit_posts'             => 'edit_music_artists',
-				'edit_others_posts'      => 'edit_others_music_artists',
-				'publish_posts'          => 'publish_music_artists',
-				'read_private_posts'     => 'read_private_music_artists',
-
-				// primitive caps used inside of map_meta_cap()
-				'read'                   => 'read',
-				'delete_posts'           => 'delete_music_artists',
-				'delete_private_posts'   => 'delete_private_music_artists',
-				'delete_published_posts' => 'delete_published_music_artists',
-				'delete_others_posts'    => 'delete_others_music_artists',
-				'edit_private_posts'     => 'edit_private_music_artists',
-				'edit_published_posts'   => 'edit_published_music_artists'
-			],
+			'capabilities' => self::META_CAPS + self::PRIMITIVE_CAPS,
 
 			// Post type labels
 			'labels' => [
@@ -140,7 +148,7 @@ final class Artist implements Bootable
 	 */
 	private function enterTitleHere(string $title, WP_Post $post): string
 	{
-		return Definitions::POST_TYPE_ARTIST === $post->post_type
+		return self::POST_TYPE === $post->post_type
 			? esc_html__('Enter artist title', 'bifrost-music')
 			: $title;
 	}
@@ -150,7 +158,7 @@ final class Artist implements Bootable
 	 */
 	private function bulkPostUpdatedMessages(array $messages, array $counts): array
 	{
-		$type = Definitions::POST_TYPE_ARTIST;
+		$type = self::POST_TYPE;
 
 		$messages[$type]['updated']   = _n('%s artist updated.',                             '%s artists updated.',                               $counts['updated'],   'bifrost-music');
 		$messages[$type]['locked']    = _n('%s artist not updated, somebody is editing it.', '%s artists not updated, somebody is editing them.', $counts['locked'],    'bifrost-music');
@@ -168,7 +176,7 @@ final class Artist implements Bootable
 	{
 		global $post, $post_ID;
 
-		$artist_type = Definitions::POST_TYPE_ARTIST;
+		$artist_type = self::POST_TYPE;
 
 		if ($artist_type !== $post->post_type) {
 			return $messages;

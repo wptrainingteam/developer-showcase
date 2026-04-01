@@ -7,7 +7,7 @@
 		"core/group"
 	],
 	"styles": {
-		"css": "backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);",
+		"css": "position: relative; &::before { content: ''; position: absolute; inset: 0; z-index: -1; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }",
 		"background": {
 			"backgroundImage": "var(--wp--custom--image--noise)"
 		},

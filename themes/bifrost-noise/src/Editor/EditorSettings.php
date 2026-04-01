@@ -21,6 +21,14 @@ use Bifrost\Framework\Contracts\Bootable;
 final class EditorSettings implements Bootable
 {
 	/**
+	 * Custom block editor settings to merge into the defaults.
+	 */
+	private const SETTINGS = [
+		'disableContentOnlyForUnsyncedPatterns' => true,
+		'fontLibraryEnabled'                    => false
+	];
+
+	/**
 	 * @inheritDoc
 	 */
 	public function boot(): void
@@ -34,9 +42,6 @@ final class EditorSettings implements Bootable
 	 */
 	private function settings(array $settings): array
 	{
-		$settings['disableContentOnlyForUnsyncedPatterns'] = true;
-		$settings['fontLibraryEnabled'] = false;
-
-		return $settings;
+		return array_merge($settings, self::SETTINGS);
 	}
 }

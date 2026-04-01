@@ -24,6 +24,9 @@ final class Artist implements PostTypeModifier
 	 */
 	private const PATTERN_ID_ARTIST_ALBUMS = 269;
 
+	/**
+	 * @inheritDoc
+	 */
 	public function modify(array $args): array
 	{
 		$args['template'] = $this->getTemplate();
@@ -31,6 +34,10 @@ final class Artist implements PostTypeModifier
 		return $args;
 	}
 
+	/**
+	 * Returns the post type's content template that's shown when a user
+	 * first loads the editor.
+	 */
 	private function getTemplate(): array
 	{
 		return [
@@ -49,7 +56,7 @@ final class Artist implements PostTypeModifier
 					'lock' => ['remove' => true],
 				], [
 					['core/tab', [
-						'label'  => 'Albums',
+						'label'  => __('Albums', 'bifrost-noise'),
 						'lock'   => ['move' => true, 'remove' => true],
 						'layout' => ['type' => 'constrained', 'contentSize' => '80rem'],
 						'anchor' => 'albums',
@@ -57,7 +64,7 @@ final class Artist implements PostTypeModifier
 						['core/block', ['ref' => self::PATTERN_ID_ARTIST_ALBUMS], []]
 					]],
 					['core/tab', [
-						'label'  => 'Biography',
+						'label'  => __('Biography', 'bifrost-noise'),
 						'lock'   => ['move' => true, 'remove' => true],
 						'layout' => ['type' => 'constrained', 'contentSize' => '80rem', 'justifyContent' => 'center'],
 						'anchor' => 'biography',
@@ -69,7 +76,7 @@ final class Artist implements PostTypeModifier
 						]],
 					]],
 					['core/tab', [
-						'label'  => 'Gallery',
+						'label'  => __('Gallery', 'bifrost-noise'),
 						'lock'   => ['move' => true, 'remove' => true],
 						'layout' => ['type' => 'constrained', 'contentSize' => '80rem', 'wideSize' => '80rem'],
 						'anchor' => 'gallery',

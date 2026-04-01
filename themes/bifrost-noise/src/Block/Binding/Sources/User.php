@@ -50,9 +50,8 @@ final class User extends BindingSource
 	 */
 	private function renderCount(array $args): ?string
 	{
-		$userId         = $args['userId'] ?? 0;
-		$postType       = $args['postType'] ?? 'post';
-		$postTypeObject = get_post_type_object($postType);
+		$userId   = $args['userId'] ?? 0;
+		$postType = get_post_type_object($args['postType'] ?? 'post');
 
 		if ($userId === 0) {
 			$author = get_query_var('author_name')
@@ -62,21 +61,17 @@ final class User extends BindingSource
 			$userId = $author->ID ?? 0;
 		}
 
-		if ($postTypeObject === null || absint($userId) === 0) {
+		if ($postType === null || absint($userId) === 0) {
 			return null;
 		}
 
-		$total = absint(count_user_posts(absint($userId), $postType));
-
-		$label = $total === 1
-			? $postTypeObject->labels->singular_name
-			: $postTypeObject->labels->name;
+		$total = absint(count_user_posts(absint($userId), $postType->name));
 
 		return sprintf(
 			// Translators: 1: Number of posts, 2: Post type label (singular or plural)
 			esc_html(_n('%1$s %2$s', '%1$s %2$s', $total, 'bifrost-noise')),
 			number_format_i18n($total),
-			$label
+			$total === 1 ? $postType->labels->singular_name : $postType->labels->name
 		);
 	}
 }

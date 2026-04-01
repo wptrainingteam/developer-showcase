@@ -15,10 +15,41 @@ namespace Bifrost\Music\Content;
 
 use WP_Post;
 use Bifrost\Framework\Contracts\Bootable;
-use Bifrost\Music\Support\Definitions;
 
 final class Album implements Bootable
 {
+	/**
+	 * The post type name.
+	 */
+	public const POST_TYPE = 'music_album';
+
+	/**
+	 * Primitive capabilities assigned to roles.
+	 */
+	public const PRIMITIVE_CAPS = [
+		'create_posts'           => 'create_music_albums',
+		'edit_posts'             => 'edit_music_albums',
+		'edit_others_posts'      => 'edit_others_music_albums',
+		'publish_posts'          => 'publish_music_albums',
+		'read_private_posts'     => 'read_private_music_albums',
+		'read'                   => 'read',
+		'delete_posts'           => 'delete_music_albums',
+		'delete_private_posts'   => 'delete_private_music_albums',
+		'delete_published_posts' => 'delete_published_music_albums',
+		'delete_others_posts'    => 'delete_others_music_albums',
+		'edit_private_posts'     => 'edit_private_music_albums',
+		'edit_published_posts'   => 'edit_published_music_albums'
+	];
+
+	/**
+	 * Meta capabilities resolved via map_meta_cap(). Not assigned to roles.
+	 */
+	private const META_CAPS = [
+		'edit_post'   => 'edit_music_album',
+		'read_post'   => 'read_music_album',
+		'delete_post' => 'delete_music_album',
+	];
+
 	/**
 	 * {@inheritdoc}
 	 */
@@ -38,9 +69,9 @@ final class Album implements Bootable
 		add_filter('post_updated_messages', $this->postUpdatedMessages(...), 5);
 
 		// Admin columns.
-		add_filter('manage_' . Definitions::POST_TYPE_ALBUM . '_posts_columns', $this->addParentColumn(...));
-		add_filter('manage_' . Definitions::POST_TYPE_ALBUM . '_posts_custom_column', $this->displayParentColumn(...), 10, 2);
-		add_filter('manage_edit-' . Definitions::POST_TYPE_ALBUM . '_sortable_columns', $this->sortParentColumn(...));
+		add_filter('manage_' . self::POST_TYPE . '_posts_columns', $this->addParentColumn(...));
+		add_filter('manage_' . self::POST_TYPE . '_posts_custom_column', $this->displayParentColumn(...), 10, 2);
+		add_filter('manage_edit-' . self::POST_TYPE . '_sortable_columns', $this->sortParentColumn(...));
 	}
 
 	/**
@@ -48,7 +79,7 @@ final class Album implements Bootable
 	 */
 	private function register(): void
 	{
-		register_post_type(Definitions::POST_TYPE_ALBUM, [
+		register_post_type(self::POST_TYPE, [
 			'description'         => '',
 			'public'              => true,
 			'publicly_queryable'  => true,
@@ -64,35 +95,12 @@ final class Album implements Bootable
 			'delete_with_user'    => false,
 			'hierarchical'        => false,
 			'has_archive'         => 'albums',
-			'query_var'           => Definitions::POST_TYPE_ALBUM,
-			'capability_type'     => Definitions::POST_TYPE_ALBUM,
+			'query_var'           => self::POST_TYPE,
+			'capability_type'     => self::POST_TYPE,
 			'map_meta_cap'        => true,
 
 			// Post type capabilities.
-			'capabilities' => [
-				// meta caps (don't assign these to roles)
-				'edit_post'              => 'edit_music_album',
-				'read_post'              => 'read_music_album',
-				'delete_post'            => 'delete_music_album',
-
-				// primitive/meta caps
-				'create_posts'           => 'create_music_albums',
-
-				// primitive caps used outside of map_meta_cap()
-				'edit_posts'             => 'edit_music_albums',
-				'edit_others_posts'      => 'edit_others_music_albums',
-				'publish_posts'          => 'publish_music_albums',
-				'read_private_posts'     => 'read_private_music_albums',
-
-				// primitive caps used inside of map_meta_cap()
-				'read'                   => 'read',
-				'delete_posts'           => 'delete_music_albums',
-				'delete_private_posts'   => 'delete_private_music_albums',
-				'delete_published_posts' => 'delete_published_music_albums',
-				'delete_others_posts'    => 'delete_others_music_albums',
-				'edit_private_posts'     => 'edit_private_music_albums',
-				'edit_published_posts'   => 'edit_published_music_albums'
-			],
+			'capabilities' => self::META_CAPS + self::PRIMITIVE_CAPS,
 
 			// Post type labels
 			'labels' => [
@@ -149,7 +157,7 @@ final class Album implements Bootable
 	 */
 	private function restRegister(): void
 	{
-		register_rest_field(Definitions::POST_TYPE_ALBUM, 'parent', [
+		register_rest_field(self::POST_TYPE, 'parent', [
 			'get_callback'    => fn($post) => (int) $post['parent'],
 			'update_callback' => fn($value, $post) => wp_update_post([
 				'ID'          => $post->ID,
@@ -168,7 +176,7 @@ final class Album implements Bootable
 	 */
 	private function enterTitleHere(string $title, WP_Post $post): string
 	{
-		return Definitions::POST_TYPE_ALBUM === $post->post_type
+		return self::POST_TYPE === $post->post_type
 			? esc_html__('Enter album title', 'bifrost-music')
 			: $title;
 	}
@@ -178,7 +186,7 @@ final class Album implements Bootable
 	 */
 	private function bulkPostUpdatedMessages(array $messages, array $counts): array
 	{
-		$type = Definitions::POST_TYPE_ALBUM;
+		$type = self::POST_TYPE;
 
 		$messages[$type]['updated']   = _n('%s album updated.',                             '%s albums updated.',                               $counts['updated'],   'bifrost-music');
 		$messages[$type]['locked']    = _n('%s album not updated, somebody is editing it.', '%s albums not updated, somebody is editing them.', $counts['locked'],    'bifrost-music');
@@ -196,7 +204,7 @@ final class Album implements Bootable
 	{
 		global $post, $post_ID;
 
-		$album_type = Definitions::POST_TYPE_ALBUM;
+		$album_type = self::POST_TYPE;
 
 		if ($album_type !== $post->post_type) {
 			return $messages;

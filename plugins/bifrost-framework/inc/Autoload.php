@@ -31,10 +31,10 @@ class Autoload
 		}
 
 		$filename = __DIR__ . sprintf('/%s.php', str_replace(
-				[__NAMESPACE__ . '\\', '\\'],
-				['', DIRECTORY_SEPARATOR],
-				$class
-			));
+			[__NAMESPACE__ . '\\', '\\'],
+			['', DIRECTORY_SEPARATOR],
+			$class
+		));
 
 		if (file_exists($filename)) {
 			require_once $filename;

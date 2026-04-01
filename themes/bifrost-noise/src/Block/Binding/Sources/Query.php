@@ -31,7 +31,7 @@ final class Query extends BindingSource
 	 */
 	public function getLabel(): string
 	{
-		return __('Search Data', 'bifrost-noise');
+		return __('Query Data', 'bifrost-noise');
 	}
 
 	/**
