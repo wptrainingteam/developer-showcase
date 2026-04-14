@@ -1,0 +1,23 @@
+{
+  "name": "bifrost/player",
+  "type": "wordpress-plugin",
+  "license": "GPL-3.0-or-later",
+  "autoload": {
+    "psr-4": { "Bifrost\\Player\\": "inc/" }
+  },
+  "require": { "php": ">=8.1" },
+  "require-dev": {
+    "wp-coding-standards/wpcs": "^3.0",
+    "phpcompatibility/phpcompatibility-wp": "*",
+    "dealerdirect/phpcodesniffer-composer-installer": "^1.0"
+  },
+  "scripts": {
+    "build": "composer update --no-dev && composer dump-autoload -o --no-dev",
+    "dev": "composer update && composer dump-autoload"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  }
+}
