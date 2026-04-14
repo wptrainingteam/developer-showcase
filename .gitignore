@@ -42,7 +42,6 @@ Thumbs.db
 
 # Build artifacts
 dist/
-build/
 
 # AI
 .mcp.json
