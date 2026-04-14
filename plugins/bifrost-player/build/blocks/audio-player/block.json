@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bifrost-player/audio-player",
+  "title": "Audio Player",
+  "category": "media",
+  "icon": "controls-volumeon",
+  "description": "Persistent audio player bar.",
+  "textdomain": "bifrost-player",
+  "supports": {
+    "interactivity": true,
+    "html": false,
+    "inserter": false
+  },
+  "editorScript": "file:./index.js",
+  "render": "file:./render.php",
+  "viewScriptModule": "file:./view.js",
+  "style": "file:./style-index.css"
+}
