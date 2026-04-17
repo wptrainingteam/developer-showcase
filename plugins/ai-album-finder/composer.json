@@ -1,0 +1,29 @@
+{
+    "name": "wptrainingteam/ai-album-finder",
+    "description": "AI powered album search",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "WordPress Contributors"
+        }
+    ],
+    "minimum-stability": "stable",
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "php-http/discovery": true
+        }
+    },
+	"autoload": {
+		"psr-4": {
+			"Developer_Showcase\\": "includes/"
+		}
+	},
+    "require-dev": {
+        "wp-coding-standards/wpcs": "^3.0"
+    },
+    "require": {
+        "wordpress/wp-ai-client": "^0.2.1"
+    }
+}
