@@ -1,0 +1,22 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "developer-showcase/dev-inspector-display",
+	"version": "0.1.0",
+	"title": "Dev Inspector Display",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Example block scaffolded with Create Block tool.",
+	"example": {},
+	"supports": {
+		"html": false,
+		"interactivity": true,
+		"multiple": false
+	},
+	"textdomain": "dev-inspector-display",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScriptModule": "file:./view.js"
+}
